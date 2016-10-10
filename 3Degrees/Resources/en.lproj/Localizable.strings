@@ -1,0 +1,111 @@
+// Alerts common
+
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Error" = "Error";
+"Warning" = "Warning";
+
+// Common errors
+"ExpiredSessionUpdatingError" = "Current session is expired, please try to login again.";
+"PushNotificationsFailedRegistration" = "3Degrees needs permission to send push notification to keep your up to date about all kind of activities happening in your network!";
+
+// Authentification
+
+"UndefinedNetworkError" = "Sorry, something goes wrong, please try again later";
+"WrongLoginPassError" = "Sorry, email or password is not correct.";
+
+// SignInViewController
+"ForgotPassTitle" = "Forgot Password";
+"ForgotPassMessage" = "Type in your email";
+"ForgotPassTextFieldPlaceholder" = "Email";
+"ResetPassTitle" = "Reset Password";
+"ResetPassMessage" = "Type in your new password";
+"ResetPassTextPlaceholder" = "Password";
+"ResetPassActionTitle" = "Reset";
+"ResetPassActionName" = "Reset Password";
+"SignInWithFacebookButtonTitle" = "Sign in with Facebook";
+"EmptyEmailOrPassError" = "Email and password can't be empty.";
+"UserNotExistError" = "User with the given email address doesn't exist.";
+"ForgotPasswordConfirmation" = "We've sent you an email. Click the link in the email to reset your password.";
+
+// SignUpModeViewController
+"LoginButtonTitle" = "Log in";
+"SignUpWithFacebookButtonTitle" = "Sign up with Facebook";
+"SignUpWithEmailButtonTitle" = "Sign up with email";
+
+// SignUpWithEmailViewController
+"CheckInputDataAlertMessage" = "Please, make sure all fields in the form are filled and confirm password is equal to password";
+"IncorrectSignUpDataError" = "Please, check the info you entered.";
+"UserAlreadyExistsError" = "User with the same email is already exists, please choose another one and try again.";
+
+"FirstNamePlaceholder" = "First Name";
+"LastNamePlaceholder" = "Last Name";
+"EmailPlaceholder" = "Email";
+"PasswordPlaceholder" = "Password";
+"ConfirmPassPlaceholder" = "Confirm Password";
+"BirthdayPlaceholder" = "Birthday";
+"GenderPlaceholder" = "Gender";
+"SignUpButtonTitle" = "Sign up";
+
+// Left Menu
+"StaticPagesLoadingError" = "Unsupported type of content.";
+"GetCurrentUserError" = "Error occured while getting current user.";
+
+"GeneralButton" = "General";
+"SupportButton" = "Support";
+"AboutButton" = "About";
+
+//User Profile update
+"ExpiredSessionUpdatingError" = "Current session is expired, please try to login again.";
+"NamePlaceholder" = "Name";
+"TitlePlaceholder" = "Title";
+"EmployerPlaceholder" = "Place of work";
+"DegreePlaceholder" = "Degree";
+"SchoolPlaceholder" = "School";
+"BioPlaceholder" = "Biography";
+"DobPlaceholder" = "Birthday";
+"GenderPlaceholder" = "Gender";
+"LocationPlaceholder" = "City, State, Country";
+
+// My Network
+
+"UserDoesntExistsError" = "User doesn't exist!";
+"MatchmakerTabName" = "Matchmakers";
+"DatesTabName" = "Dates";
+"SinglesTabName" = "Singles";
+
+"MatchmakersInfoPostfix" = "Matchmakers";
+"SinglesInfoPostfix" = "Singles";
+
+// My Network search contact cell
+
+"InviteTitle" = "Invite";
+"InviteSentTitle" = "Invite Sent";
+
+
+// Activity Feed
+
+"AcceptedInviteConfirmation" = "You accepted the invitation.";
+"DeclinedInviteConfimation" = "You declined the invitation.";
+
+// Pair Up
+
+"EmptyPairUpScreenMessage" = "We are busy matching for you right now! Invite other matchmakers here to better your chances!";
+"EmptyProposedSinglesMessage" = "There aren't any matches for your selected single! Please, try again later!";
+
+// Date proposals screen
+
+"DateProposalTitle" = "Date Proposal";
+"EmptyDateProposalsMessage" = "Some great date proposal is yet to show up!";
+"ChooseDateTimeDescription" = "Please suggest up to 5 availabilities to make sure the upcoming date is going to be convenient for both parties.";
+"ChooseDateTimeSubtitle" = "Tap on selection to edit";
+"ChooseDateTimeTitle" = "Date";
+"ChooseDateTimeDoneButton" = "Done";
+"AcceptDateTimeTitle" = "Suggested Dates";
+"AcceptDateTimeSubtitle" = "";
+"AcceptDateTimeDescription" = "If the proposed times don't work, you can chat with your date immediately below to reschedule! Let's get you on a date!";
+"AcceptDateTimeDoneButton" = "Chat";
+"SchedulingDateTimesScreenTitle" = "Scheduling a Date";
+"ChooseDateTimesScreenTitle" = "Choose Date";
+"AcceptDateTimeScreenTitle" = "Date Proposals";
+"NumberOfSelectedDates" = " of 5 Selected";

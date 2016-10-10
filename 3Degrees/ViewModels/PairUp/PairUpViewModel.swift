@@ -1,0 +1,292 @@
+//
+//  PairUpViewModel.swift
+//  3Degrees
+//
+//  Created by Gigster Developer on 5/20/16.
+//  Copyright © 2016 Gigster. All rights reserved.
+//
+
+import UIKit
+import Bond
+import DZNEmptyDataSet
+import SwiftPaginator
+import ThreeDegreesClient
+
+extension PairUpViewModel: DZNEmptyDataSetSource {
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        var font = UIFont.systemFontOfSize(18, weight: UIFontWeightThin)
+        if let f = UIFont(name: "HelveticaNeue-Thin", size: 18) {
+            font = f
+        }
+        let attributes = [
+            NSFontAttributeName: font,
+            NSForegroundColorAttributeName: UIColor.blackColor()
+        ]
+
+        let attributedString = NSAttributedString(
+            string: R.string.localizable.emptyPairUpScreenMessage(),
+            attributes: attributes)
+        return attributedString
+    }
+}
+
+extension PairUpViewModel: DZNEmptyDataSetDelegate {
+    func emptyDataSetShouldFadeIn(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+
+    func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
+        return isEmptyMySingles()
+    }
+}
+
+extension PairUpViewModel: UITableViewDelegate {
+    func tableView(tableView: UITableView,
+                   estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 401
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 401
+        }
+        return UITableViewAutomaticDimension
+    }
+}
+
+extension PairUpViewModel: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isEmptyMySingles() ? 0 : 5
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return superTableViewDataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
+    }
+}
+
+extension PairUpViewModel: ProposedPeopleDelegate {
+    func personDisplayed(user: UserInfo, mode: ProposedPeopleCollectionViewModel.Own) {
+        switch mode {
+        case .Alian:
+            updateInfo(user)
+            markAsSeen()
+            break
+        default:
+            self.myPerson = user
+            proposedPeoplePaginator?.fetchFirstPage()
+            break
+        }
+    }
+
+    func loadMore(type: ProposedPeopleCollectionViewModel.Own) {
+        switch type {
+        case .Alian:
+            proposedPeoplePaginator?.fetchNextPage()
+        default:
+            myPeoplePaginator?.fetchNextPage()
+        }
+    }
+
+    func markAsSeen() {
+        guard let my = myPerson, proposed = proposedPerson else { return }
+        guard let myUsername = my.username, proposedUsername = proposed.username else { return }
+        api.markMatchAsViewed(myUsername, matchUsername: proposedUsername) { }
+    }
+}
+
+extension PairUpViewModel: PersonForMatchingSelected {
+    func selectMatchmakerForMatching(matchmaker: UserInfo) {
+        filterModel = FilterModel(matchmaker: matchmaker,
+                                  ageFrom: nil,
+                                  ageTo: nil,
+                                  gender: nil)
+        proposedPeoplePaginator?.fetchFirstPage()
+    }
+
+    func selectSingleForMatching(single: UserInfo) {
+        mySinglesViewModel.showUser(single)
+    }
+}
+
+extension PairUpViewModel: FilteringProtocol {
+    func filtersSelected(filter: FilterModel) {
+        filterModel = filter
+        proposedPeoplePaginator?.fetchFirstPage()
+    }
+}
+
+extension PairUpViewModel {
+    func fetchMySingles(paginator: Paginator<UserInfo>, page: Int, pageSize: Int) {
+        api.getSingles(page - 1, limit: pageSize) {[unowned self] (users) in
+            self.myPeoplePaginator?.receivedResults(users.map { $0 as UserInfo },
+                                      total: users.count)
+        }
+    }
+
+    func mySinglesResultsHandler(paginator: Paginator<UserInfo>, results: [UserInfo]) {
+        mySinglesViewModel.loadNewData(results)
+        tableView.reloadData()
+    }
+
+    func mySinglesResetHandler(paginator: Paginator<UserInfo>) {
+        mySinglesViewModel.reset()
+    }
+
+    func fetchProposed(paginator: Paginator<UserInfo>, page: Int, pageSize: Int) {
+        guard let myPersonUsername = myPerson?.username else { return }
+        let request = PotentialMatchesRequestModel(
+            username: myPersonUsername,
+            page: page - 1,
+            limit: pageSize,
+            ageFrom: filterModel?.ageFrom,
+            ageTo: filterModel?.ageTo,
+            gender: filterModel?.gender,
+            matchmakerUsername: filterModel?.matchmaker?.username) {[unowned self] (users) in
+                self.proposedPeoplePaginator?.receivedResults(users.map { $0 as UserInfo },
+                                                              total: users.count)
+        }
+        api.getPotentialMatches(request)
+    }
+
+    func proposedResultsHandler(paginator: Paginator<UserInfo>, results: [UserInfo]) {
+        proposedSinglesViewModel.loadNewData(results)
+        if isEmptyProposals() {
+            updateInfo(nil)
+        }
+    }
+
+    func proposedResetHandler(paginator: Paginator<UserInfo>) {
+        proposedSinglesViewModel.reset()
+    }
+}
+
+class PairUpViewModel: NSObject, ViewModelProtocol {
+    var api: PairUpApiProtocol = PairUpApiController()
+    var router: RoutingProtocol?
+    let tableView: UITableView
+    let superTableViewDataSource: UITableViewDataSource
+
+    let mySinglesViewModel: ProposedPeopleCollectionViewModel
+    let proposedSinglesViewModel: ProposedPeopleCollectionViewModel
+
+    let pairUpButton: Observable<String?>
+    let pairUpButtonHidden: Observable<Bool>
+    let matchmakerName: Observable<String?>
+    let whoseMatchmaker: Observable<String?>
+    let placeOfWork: Observable<String?>
+    let jobTitle: Observable<String?>
+    let degree: Observable<String?>
+    let school: Observable<String?>
+    let bio: Observable<String?>
+
+    private var myPerson: UserInfo? = nil
+    private var proposedPerson: UserInfo? = nil
+
+    var myPeoplePaginator: Paginator<UserInfo>? = nil
+    var proposedPeoplePaginator: Paginator<UserInfo>? = nil
+
+    var filterModel: FilterModel? = nil
+
+    init(router: RoutingProtocol, tableView: UITableView, superTableViewDataSource: UITableViewDataSource) {
+        self.router = router
+        self.tableView = tableView
+        self.superTableViewDataSource = superTableViewDataSource
+        pairUpButton = Observable("Pair Up")
+        pairUpButtonHidden = Observable(false)
+        matchmakerName = Observable(nil)
+        whoseMatchmaker = Observable(nil)
+        placeOfWork = Observable(nil)
+        jobTitle = Observable(nil)
+        degree = Observable(nil)
+        school = Observable(nil)
+        bio = Observable(nil)
+        mySinglesViewModel = ProposedPeopleCollectionViewModel(router: router, type: .Mine)
+        proposedSinglesViewModel = ProposedPeopleCollectionViewModel(router: router, type: .Alian)
+        super.init()
+        mySinglesViewModel.delegate = self
+        proposedSinglesViewModel.delegate = self
+
+        myPeoplePaginator = Paginator(pageSize: 40,
+                                      fetchHandler: self.fetchMySingles,
+                                      resultsHandler: self.mySinglesResultsHandler,
+                                      resetHandler: self.mySinglesResetHandler)
+        proposedPeoplePaginator = Paginator(pageSize: 40,
+                                            fetchHandler: self.fetchProposed,
+                                            resultsHandler: self.proposedResultsHandler,
+                                            resetHandler: self.proposedResetHandler)
+        myPeoplePaginator?.fetchFirstPage()
+    }
+
+    func updateInfo(user: UserInfo?) {
+        proposedPerson = user
+        pairUpButtonHidden.next(user == nil)
+        matchmakerName.next(user?.matchmakerInfo ?? nil)
+        if let name = user?.firstName {
+            whoseMatchmaker.next("\(name.capitalizedString)'s Matchmaker")
+        } else {
+            whoseMatchmaker.next("")
+        }
+        placeOfWork.next(user?.placeOfWork ?? "")
+        jobTitle.next(user?.title ?? "")
+        degree.next(user?.degree ?? "")
+        school.next(user?.school ?? "")
+        bio.next(user?.biography ?? "")
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+
+    func handlePairUpRequest() {
+        guard let my = myPerson, proposed = proposedPerson else { return }
+        guard let mySingleUsername = my.username,
+                  proposedSingleUsername = proposed.username else { return }
+
+        api.pairUp(mySingleUsername, matchUsername: proposedSingleUsername) {[weak self] in
+            self?.pairUpButton.next("Match Sent")
+            Observable("Pair Up").throttle(0.5, queue: .Main).observe { val in
+                self?.pairUpButton.next(val)
+            }
+            self?.proposedSinglesViewModel.removePerson(proposed)
+            self?.checkIfNoAvailablePairs()
+        }
+    }
+
+    func openFiltersPage() {
+        self.router?.showAction(
+            identifier: R.segue.pairUpViewController.toFilters.identifier
+        )
+    }
+
+    func checkIfNoAvailablePairs() {
+        if isEmptyProposals() && isEmptyMySingles() {
+            let indexPaths = (0...4).map {NSIndexPath(forRow: $0, inSection: 0)}
+            tableView.beginUpdates()
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+            tableView.endUpdates()
+        } else if isEmptyProposals() {
+            updateInfo(nil)
+        }
+    }
+
+    func isEmptyProposals() -> Bool {
+        return proposedSinglesViewModel.isEmpty()
+    }
+
+    func isEmptyMySingles() -> Bool {
+        return mySinglesViewModel.isEmpty()
+    }
+
+    func prepareForSegue(segue: UIStoryboardSegue) {
+        let identifier = R.segue.pairUpViewController.toFilters.identifier
+        if segue.identifier == identifier {
+            guard let viewController = segue.destinationViewController as? FilterViewController else {
+                return
+            }
+            viewController.delegate = self
+            viewController.prevFilter = filterModel
+        }
+    }
+}
