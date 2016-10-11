@@ -36,10 +36,22 @@ There is a comprehensive [Document from Apple](https://developer.apple.com/libra
 
 Basic steps: 
 
-1. Make sure you have set right team for your app in xcode in taget settings(click on project, choose 3Degrees target, General tab). 
+1. Make sure you have set right team for your app in xcode in target settings(click on project, choose 3Degrees target, General tab). 
 2. Signing profiles for `Debug` and `Release` modes are set as Automatic, so xcode should pick up right signing identities and certificates.
 3. Choose in `Target-Device` menu in Xcode top bar `3Degrees` target and `Generic iOS Device ` as a device, then from Xcode application context menu(status bar menu in OS X) choose `Product` menu and click on `Archive`. 
 
 Anyway, you must read above mentioned doc if you are not familiar with Xcode and App Distribution. It describes how to download provisioning profile from Xcode, how to archive the app and etc.
 
 There are 2 different types of provisioning profiles for build distribution: *AdHoc* and *AppStore*. *AdHoc* profile contains list of UUIDs of devices where a build signed with this profile could be installed. And *AppStore* profile doesn't contain any info about devices and you cannot sign a build with it and distribute it through Fabric or Diawi, App Store build could only be uloaded to [iTunesConnect](itunesconnect.apple.com) and distributed via TestFlight or submitted to App Store.
+
+## To distribute a test version
+
+1. Go to 3Degrees => General and set the Version and Build
+2. Ensure that the Team is correct
+3. Product => Archive
+4. Wait...
+5. Export build as AdHoc
+6. Save locally
+7. Switch to Fabric
+8. Choose Distributions => Archives => new build => Distribute
+9. Choose users to invite
