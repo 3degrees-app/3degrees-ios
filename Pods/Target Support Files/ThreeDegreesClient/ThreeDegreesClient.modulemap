@@ -1,0 +1,6 @@
+framework module ThreeDegreesClient {
+  umbrella header "ThreeDegreesClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,122 @@
+PODS:
+  - Alamofire (3.1.5)
+  - AwesomeCache (3.0.1)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - Bond (4.3.1)
+  - Crashlytics (3.8.2):
+    - Fabric (~> 1.6.3)
+  - DualSlideMenu (1.7.1)
+  - DynamicBlurView (1.1.1)
+  - DZNEmptyDataSet (1.8)
+  - Fabric (1.6.9)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FLTextView (1.0.5):
+    - FLTextView/Default (= 1.0.5)
+  - FLTextView/Default (1.0.5)
+  - ImagePicker (1.2)
+  - IQKeyboardManager (4.0.2)
+  - JTAppleCalendar (5.0.1)
+  - Kingfisher (2.4.0)
+  - LKAlertController (1.9.1)
+  - Nimble (4.1.0)
+  - PureLayout (3.0.2)
+  - Quick (0.9.3)
+  - R.swift (2.4.0):
+    - R.swift.Library (~> 2.2.0)
+  - R.swift.Library (2.2.0)
+  - Router (1.0.0)
+  - SlackTextViewController (1.9.2)
+  - SVProgressHUD (2.0.3)
+  - SwiftMoment (0.5.1)
+  - SwiftPaginator (1.0.1)
+  - ThreeDegreesClient (0.0.28):
+    - Alamofire (~> 3.1.5)
+  - TSMarkdownParser (2.1.1)
+  - UIImageView-Letters (1.1.4)
+
+DEPENDENCIES:
+  - AwesomeCache (= 3.0.1)
+  - Bond (= 4.3.1)
+  - Crashlytics
+  - DualSlideMenu (= 1.7.1)
+  - DynamicBlurView (= 1.1.1)
+  - DZNEmptyDataSet (= 1.8)
+  - Fabric
+  - FBSDKCoreKit (= 4.11)
+  - FBSDKLoginKit (= 4.11)
+  - FLTextView (from `https://github.com/freeletics/FLTextView.git`)
+  - ImagePicker (= 1.2)
+  - IQKeyboardManager (= 4.0.2)
+  - JTAppleCalendar (= 5.0.1)
+  - Kingfisher (= 2.4.0)
+  - LKAlertController (= 1.9.1)
+  - Nimble (= 4.1.0)
+  - PureLayout (= 3.0.2)
+  - Quick (= 0.9.3)
+  - R.swift (= 2.4.0)
+  - Router (= 1.0.0)
+  - SlackTextViewController (= 1.9.2)
+  - SVProgressHUD (= 2.0.3)
+  - SwiftMoment (= 0.5.1)
+  - SwiftPaginator (= 1.0.1)
+  - ThreeDegreesClient (from `https://github.com/3degreesapp/3degrees-swift-client.git`)
+  - TSMarkdownParser (= 2.1.1)
+  - UIImageView-Letters (= 1.1.4)
+
+EXTERNAL SOURCES:
+  FLTextView:
+    :git: https://github.com/freeletics/FLTextView.git
+  ThreeDegreesClient:
+    :git: https://github.com/3degreesapp/3degrees-swift-client.git
+
+CHECKOUT OPTIONS:
+  FLTextView:
+    :commit: 9c73df5ef550f61e8c2af9c16a05be8c4cfbd05a
+    :git: https://github.com/freeletics/FLTextView.git
+  ThreeDegreesClient:
+    :commit: b222140a20dece86c35ab3a54e31bb988dc7f78f
+    :git: https://github.com/3degreesapp/3degrees-swift-client.git
+
+SPEC CHECKSUMS:
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  AwesomeCache: a1561c926b6cf812c5f3f4262ea22e20bf8323c1
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  DualSlideMenu: c81d55c3b61c0053abdaadf000a7b32d7956245e
+  DynamicBlurView: 300e709fd793f85ee53b03bf5ffede4d7b2fc0a2
+  DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FLTextView: eac36e475bb81cd3369802207c6ba66c3129501e
+  ImagePicker: 85f14ed6872f46c08d210077b5540a890a6cd151
+  IQKeyboardManager: 2341089c4ae25fa2fa82ce356a259fcd267dc6b6
+  JTAppleCalendar: cb2417b1f3367d1993e31720a663646742139a5c
+  Kingfisher: 9171a424ee7f8031f518f649bb850d1eab541247
+  LKAlertController: 1e85a645e0bd3223a8f79abb9b7b54fe10036f6f
+  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
+  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
+  Router: 6088d6d321e097070d5ea4bd792cb015dfa0fbb4
+  SlackTextViewController: bac3350ccc639bc446bb14cbd09da238f5e01f32
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SwiftMoment: 469c0734b5d4d6631a15a91f8093cf436c3cbb7c
+  SwiftPaginator: 70cd05296e612a13b1882667d583621de8053354
+  ThreeDegreesClient: 16a26b7a2b858694806793adb9be1d667899cf24
+  TSMarkdownParser: 64cb52fe5a518b4875a6167a650cb0ed4b18cea5
+  UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
+
+PODFILE CHECKSUM: c755f427b6ac3d80181afae7e12a0051b06a3afe
+
+COCOAPODS: 1.0.1
