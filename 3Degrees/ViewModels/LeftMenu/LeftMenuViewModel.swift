@@ -65,15 +65,16 @@ extension LeftMenuViewModel: UITableViewDelegate {
         switch actions[index] {
         case .FAQ:
             selectedStaticContent = .FAQ
-            router?.showAction(
-                identifier: R.segue.leftMenuViewController.toStaticContent.identifier
-            )
             break
         case .ContactUs:
+            selectedStaticContent = .ContactUs
             break
         default:
             break
         }
+        router?.showAction(
+            identifier: R.segue.leftMenuViewController.toStaticContent.identifier
+        )
     }
 
     func handleAboutAction(index: Int, actions: [LeftMenuAction]) {

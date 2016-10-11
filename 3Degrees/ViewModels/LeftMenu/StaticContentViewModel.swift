@@ -23,6 +23,9 @@ struct StaticContentViewModel: ViewModelProtocol {
     func loadContent() {
         var type: StaticContentType
         switch contentType {
+        case .ContactUs:
+            type = .ContactUs
+            break
         case .FAQ:
             type = .FAQ
             break

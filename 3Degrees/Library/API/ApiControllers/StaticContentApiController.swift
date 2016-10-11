@@ -10,6 +10,7 @@ import Foundation
 import ThreeDegreesClient
 
 enum StaticContentType: String {
+    case ContactUs = "contact-us"
     case Tos = "tos"
     case PrivacyPolicy = "privacy-policy"
     case FAQ = "faq"
