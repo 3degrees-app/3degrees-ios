@@ -13,11 +13,6 @@ struct Constants {
         static let SessionKeyHeader = "session-key"
     }
 
-    struct Invite {
-        static let SingleInviteText = "Hey! Join me: http://threedegreesapp.com/invite/single?referral="
-        static let MatchMakerInviteText = "Hey! Join me: http://threedegreesapp.com/invite/mm?referral="
-    }
-
     struct Birthday {
         static let dateFormat = "MM/dd/yyyy"
     }
