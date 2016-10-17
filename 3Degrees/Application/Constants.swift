@@ -85,7 +85,7 @@ struct Constants {
 
     struct LeftMenu {
         static let ActionLabelColor = UIColor(r: 35, g: 31, b: 32)
-        static let ActionValueLabelColor = UIColor(white: 0.4, alpha: 0.6)
+        static let ToggleBackgroundColor = UIColor(r: 150, g: 200, b: 120, a: 0.75)
         static let InfoLabelColor = UIColor.whiteColor()
         static let ActionTableSeparatorColor = UIColor(white: 0.3, alpha: 0.1)
         static let ReturnButtonImageName = "returnButton"

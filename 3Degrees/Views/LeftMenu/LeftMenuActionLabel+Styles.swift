@@ -14,6 +14,6 @@ extension UILabel {
     }
 
     func applyActionValueLabelStyles() {
-        self.textColor = Constants.LeftMenu.ActionValueLabelColor
+        self.textColor = Constants.LeftMenu.ActionLabelColor
     }
 }
