@@ -15,8 +15,21 @@ protocol DateProposalRefreshDelegate {
 
 extension DateProposalViewModel: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        let row = indexPath.row
+        switch row {
+        case 0:
             return UIScreen.mainScreen().bounds.height / 2
+        case 2:
+            guard user.placeOfWork.isEmpty && user.title.isEmpty else { break }
+            return 0
+        case 3:
+            guard user.school.isEmpty && user.degree.isEmpty else { break }
+            return 0
+        case 4:
+            guard user.biography.isEmpty else { break }
+            return 0
+        default:
+            return UITableViewAutomaticDimension
         }
         return UITableViewAutomaticDimension
     }
@@ -30,6 +43,7 @@ extension DateProposalViewModel: UITableViewDelegate {
 
 class DateProposalViewModel: NSObject, ViewModelProtocol {
     var api: DateProposalApiProtocol = DateProposalApiController()
+    var superDataSource: UITableViewDataSource? = nil
     var user: UserInfo
     var delegate: DateProposalRefreshDelegate? = nil
     var router: RoutingProtocol?

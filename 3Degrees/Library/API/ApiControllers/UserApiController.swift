@@ -70,7 +70,8 @@ struct UserApiController: UserApiProtocol {
                 genderForMatching = .Male
             }
         }
-        api.matchWith(genderForMatching ?? DefaultAPI.Gender_meMatchWithGenderPut.Any) { (data, error, headers) in
+        api.matchWith(genderForMatching ?? DefaultAPI.Gender_meMatchWithGenderPut.Any) {
+            (data, error, headers) in
             guard self.handleError(error, getErrorMessage: self.getErrorMessage)
                 else { return }
             let user = AppController.shared.currentUser.value

@@ -9,7 +9,7 @@ def main_pods
         pod 'IQKeyboardManager', '4.0.2'
         pod 'SVProgressHUD', '2.0.3'
         pod 'DynamicBlurView', '1.1.1'
-        pod 'ImagePicker', '1.2'
+        pod 'ImagePicker', '1.4.1'
         pod 'FLTextView', :git => 'https://github.com/freeletics/FLTextView.git'
         pod 'Kingfisher', '2.4.0'
         pod 'DualSlideMenu', '1.7.1'

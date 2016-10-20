@@ -47,8 +47,23 @@ extension PairUpViewModel: UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        let row = indexPath.row
+        switch row {
+        case 0:
             return 401
+        case 2:
+            guard proposedPerson?.placeOfWork.isEmpty == true &&
+                  proposedPerson?.title.isEmpty == true else { break }
+            return 0
+        case 3:
+            guard proposedPerson?.school.isEmpty == true &&
+                  proposedPerson?.degree.isEmpty == true else { break }
+            return 0
+        case 4:
+            guard proposedPerson?.biography.isEmpty == true else { break }
+            return 0
+        default:
+            return UITableViewAutomaticDimension
         }
         return UITableViewAutomaticDimension
     }
@@ -64,7 +79,8 @@ extension PairUpViewModel: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return superTableViewDataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        return superTableViewDataSource.tableView(tableView,
+                                                  cellForRowAtIndexPath: indexPath)
     }
 }
 

@@ -8,12 +8,12 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - Bond (4.3.1)
-  - Crashlytics (3.8.2):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DualSlideMenu (1.7.1)
   - DynamicBlurView (1.1.1)
   - DZNEmptyDataSet (1.8)
-  - Fabric (1.6.9)
+  - Fabric (1.6.10)
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -21,7 +21,7 @@ PODS:
   - FLTextView (1.0.5):
     - FLTextView/Default (= 1.0.5)
   - FLTextView/Default (1.0.5)
-  - ImagePicker (1.2)
+  - ImagePicker (1.4.1)
   - IQKeyboardManager (4.0.2)
   - JTAppleCalendar (5.0.1)
   - Kingfisher (2.4.0)
@@ -53,7 +53,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (= 4.11)
   - FBSDKLoginKit (= 4.11)
   - FLTextView (from `https://github.com/freeletics/FLTextView.git`)
-  - ImagePicker (= 1.2)
+  - ImagePicker (= 1.4.1)
   - IQKeyboardManager (= 4.0.2)
   - JTAppleCalendar (= 5.0.1)
   - Kingfisher (= 2.4.0)
@@ -90,15 +90,15 @@ SPEC CHECKSUMS:
   AwesomeCache: a1561c926b6cf812c5f3f4262ea22e20bf8323c1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
-  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DualSlideMenu: c81d55c3b61c0053abdaadf000a7b32d7956245e
   DynamicBlurView: 300e709fd793f85ee53b03bf5ffede4d7b2fc0a2
   DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
-  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FLTextView: eac36e475bb81cd3369802207c6ba66c3129501e
-  ImagePicker: 85f14ed6872f46c08d210077b5540a890a6cd151
+  ImagePicker: c2b43f5201f34efb3459ac6af39992fdd802c2d4
   IQKeyboardManager: 2341089c4ae25fa2fa82ce356a259fcd267dc6b6
   JTAppleCalendar: cb2417b1f3367d1993e31720a663646742139a5c
   Kingfisher: 9171a424ee7f8031f518f649bb850d1eab541247
@@ -117,6 +117,6 @@ SPEC CHECKSUMS:
   TSMarkdownParser: 64cb52fe5a518b4875a6167a650cb0ed4b18cea5
   UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
 
-PODFILE CHECKSUM: c755f427b6ac3d80181afae7e12a0051b06a3afe
+PODFILE CHECKSUM: a7ec5c60c2c55059879df068c2b74b950ae8748d
 
 COCOAPODS: 1.0.1

@@ -82,11 +82,13 @@ extension ChatViewModel: QLPreviewControllerDataSource {
 }
 
 extension ChatViewModel: ImagePickerDelegate {
-    func wrapperDidPress(images: [UIImage]) {
+    func wrapperDidPress(imagePicker: ImagePickerController,
+                         images: [UIImage]) {
 
     }
 
-    func doneButtonDidPress(images: [UIImage]) {
+    func doneButtonDidPress(imagePicker: ImagePickerController,
+                            images: [UIImage]) {
         if !images.isEmpty {
             defer {
                 imagePickerController.dismissViewControllerAnimated(true, completion: nil)
@@ -106,7 +108,7 @@ extension ChatViewModel: ImagePickerDelegate {
         }
     }
 
-    func cancelButtonDidPress() {
+    func cancelButtonDidPress(imagePicker: ImagePickerController) {
         imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -126,11 +126,13 @@ extension ProfileViewModel: ProfileViewModelProtocol {
 }
 
 extension ProfileViewModel: ImagePickerDelegate {
-    func wrapperDidPress(images: [UIImage]) {
+    func wrapperDidPress(imagePicker: ImagePickerController,
+                         images: [UIImage]) {
 
     }
 
-    func doneButtonDidPress(images: [UIImage]) {
+    func doneButtonDidPress(imagePicker: ImagePickerController,
+                            images: [UIImage]) {
         if !images.isEmpty {
             imagePickerController?.dismissViewControllerAnimated(true, completion: nil)
 
@@ -140,7 +142,7 @@ extension ProfileViewModel: ImagePickerDelegate {
         }
     }
 
-    func cancelButtonDidPress() {
+    func cancelButtonDidPress(imagePicker: ImagePickerController) {
         imagePickerController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

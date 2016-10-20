@@ -82,6 +82,7 @@ extension ProposedPeopleCollectionViewModel: UICollectionViewDelegate {
             guard let width = collectionView?.frame.width, offset = collectionView?.contentOffset.x
                 else { return }
             let currentItem = Int(ceil(offset / width))
+            guard currentItem < people.count else { return }
             delegate?.personDisplayed(people[currentItem], mode: type)
         }
     }

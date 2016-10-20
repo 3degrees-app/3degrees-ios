@@ -6,10 +6,6 @@ protocol ImageGalleryPanGestureDelegate: class {
   func panGestureDidStart()
   func panGestureDidChange(translation: CGPoint)
   func panGestureDidEnd(translation: CGPoint, velocity: CGPoint)
-  func presentViewController(controller: UIAlertController)
-  func dismissViewController(controller: UIAlertController)
-  func permissionGranted()
-  func hideViews()
 }
 
 public class ImageGalleryView: UIView {
@@ -17,26 +13,26 @@ public class ImageGalleryView: UIView {
   struct Dimensions {
     static let galleryHeight: CGFloat = 160
     static let galleryBarHeight: CGFloat = 24
-    static let indicatorWidth: CGFloat = 41
-    static let indicatorHeight: CGFloat = 8
   }
 
   lazy public var collectionView: UICollectionView = { [unowned self] in
-    let collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0),
+    let collectionView = UICollectionView(frame: CGRect.zero,
       collectionViewLayout: self.collectionViewLayout)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.backgroundColor = Configuration.mainColor
     collectionView.showsHorizontalScrollIndicator = false
+    collectionView.dataSource = self
+    collectionView.delegate = self
 
     return collectionView
     }()
 
   lazy var collectionViewLayout: UICollectionViewLayout = { [unowned self] in
-    let layout = UICollectionViewFlowLayout()
+    let layout = ImageGalleryLayout()
     layout.scrollDirection = .Horizontal
     layout.minimumInteritemSpacing = Configuration.cellSpacing
     layout.minimumLineSpacing = 2
-    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    layout.sectionInset = UIEdgeInsetsZero
 
     return layout
     }()
@@ -50,18 +46,9 @@ public class ImageGalleryView: UIView {
     return view
     }()
 
-  lazy var indicator: UIView = {
-    let view = UIView()
-    view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.6)
-    view.layer.cornerRadius = Dimensions.indicatorHeight / 2
-    view.translatesAutoresizingMaskIntoConstraints = false
-
-    return view
-    }()
-
   lazy var panGestureRecognizer: UIPanGestureRecognizer = { [unowned self] in
     let gesture = UIPanGestureRecognizer()
-    gesture.addTarget(self, action: "handlePanGestureRecognizer:")
+    gesture.addTarget(self, action: #selector(handlePanGestureRecognizer(_:)))
 
     return gesture
     }()
@@ -101,7 +88,8 @@ public class ImageGalleryView: UIView {
 
     [collectionView, topSeparator].forEach { addSubview($0) }
 
-    topSeparator.addSubview(indicator)
+    topSeparator.addSubview(Configuration.indicatorView)
+
     imagesBeforeLoading = 0
     fetchPhotos()
   }
@@ -119,34 +107,36 @@ public class ImageGalleryView: UIView {
 
   func updateFrames() {
     let totalWidth = UIScreen.mainScreen().bounds.width
+    frame.size.width = totalWidth
     let collectionFrame = frame.height == Dimensions.galleryBarHeight ? 100 + Dimensions.galleryBarHeight : frame.height
-
-    collectionView.dataSource = self
-    collectionView.delegate = self
-
     topSeparator.frame = CGRect(x: 0, y: 0, width: totalWidth, height: Dimensions.galleryBarHeight)
-    topSeparator.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
-    indicator.frame = CGRect(x: (totalWidth - Dimensions.indicatorWidth) / 2, y: (topSeparator.frame.height - Dimensions.indicatorHeight) / 2,
-      width: Dimensions.indicatorWidth, height: Dimensions.indicatorHeight)
+    topSeparator.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleWidth]
+    Configuration.indicatorView.frame = CGRect(x: (totalWidth - Configuration.indicatorWidth) / 2, y: (topSeparator.frame.height - Configuration.indicatorHeight) / 2,
+      width: Configuration.indicatorWidth, height: Configuration.indicatorHeight)
     collectionView.frame = CGRect(x: 0, y: topSeparator.frame.height, width: totalWidth, height: collectionFrame - topSeparator.frame.height)
     collectionSize = CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
+
+    collectionView.reloadData()
   }
 
   func updateNoImagesLabel() {
-    let height = CGRectGetHeight(bounds)
+    let height = bounds.height
     let threshold = Dimensions.galleryBarHeight * 2
-    if threshold > height || collectionView.alpha != 0 {
-      noImagesLabel.alpha = 0
-    } else {
-      noImagesLabel.center = CGPoint(x: CGRectGetWidth(bounds)/2, y: height/2)
-      noImagesLabel.alpha = (height > threshold) ? 1 : (height - Dimensions.galleryBarHeight) / threshold
+
+    UIView.animateWithDuration(0.25) {
+      if threshold > height || self.collectionView.alpha != 0 {
+        self.noImagesLabel.alpha = 0
+      } else {
+        self.noImagesLabel.center = CGPoint(x: self.bounds.width / 2, y: height / 2)
+        self.noImagesLabel.alpha = (height > threshold) ? 1 : (height - Dimensions.galleryBarHeight) / threshold
+      }
     }
   }
 
   // MARK: - Photos handler
 
   func fetchPhotos(completion: (() -> Void)? = nil) {
-    ImagePicker.fetch { assets in
+    AssetManager.fetch { assets in
       self.assets.removeAll()
       self.assets.appendContentsOf(assets)
       self.collectionView.reloadData()
@@ -174,59 +164,9 @@ public class ImageGalleryView: UIView {
     }
   }
 
-  // MARK: - Private helpers
-
-  func getImage(name: String) -> UIImage {
-    let traitCollection = UITraitCollection(displayScale: 3)
-    var bundle = NSBundle(forClass: self.classForCoder)
-
-    if let bundlePath = NSBundle(forClass: self.classForCoder).resourcePath?.stringByAppendingString("/ImagePicker.bundle"), resourceBundle = NSBundle(path: bundlePath) {
-      bundle = resourceBundle
-    }
-
-    guard let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: traitCollection)
-      else { return UIImage() }
-
-    return image
-  }
-
   func displayNoImagesMessage(hideCollectionView: Bool) {
     collectionView.alpha = hideCollectionView ? 0 : 1
     updateNoImagesLabel()
-  }
-
-  func checkStatus() {
-    let currentStatus = PHPhotoLibrary.authorizationStatus()
-
-    guard currentStatus != .Authorized else { return }
-
-    if currentStatus == .NotDetermined {
-      delegate?.hideViews()
-    }
-
-    PHPhotoLibrary.requestAuthorization { (authorizationStatus) -> Void in
-      dispatch_async(dispatch_get_main_queue(), {
-        if authorizationStatus == .Denied {
-          let alertController = UIAlertController(title: "Permission denied", message: "Please, allow the application to access to your photo library.", preferredStyle: .Alert)
-
-          let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { _ in
-            if let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString) {
-              UIApplication.sharedApplication().openURL(settingsURL)
-            }
-          }
-
-          let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { _ in
-            self.delegate?.dismissViewController(alertController)
-          }
-
-          alertController.addAction(alertAction)
-          alertController.addAction(cancelAction)
-          self.delegate?.presentViewController(alertController)
-        } else if authorizationStatus == .Authorized {
-          self.delegate?.permissionGranted()
-        }
-      })
-    }
   }
 }
 
@@ -237,7 +177,7 @@ extension ImageGalleryView: UICollectionViewDelegateFlowLayout {
   public func collectionView(collectionView: UICollectionView,
     layout collectionViewLayout: UICollectionViewLayout,
     sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-      guard let collectionSize = collectionSize else { return CGSizeZero }
+      guard let collectionSize = collectionSize else { return CGSize.zero }
 
       return collectionSize
   }
@@ -253,7 +193,7 @@ extension ImageGalleryView: UICollectionViewDelegate {
 
     let asset = assets[indexPath.row]
 
-    ImagePicker.resolveAsset(asset) { image in
+    AssetManager.resolveAsset(asset, size: CGSize(width: 100, height: 100)) { image in
       guard let _ = image else { return }
 
       if cell.selectedImageView.image != nil {
@@ -264,7 +204,7 @@ extension ImageGalleryView: UICollectionViewDelegate {
         }
         self.selectedStack.dropAsset(asset)
       } else if self.imageLimit == 0 || self.imageLimit > self.selectedStack.assets.count {
-        cell.selectedImageView.image = self.getImage("selectedImageGallery")
+        cell.selectedImageView.image = AssetManager.getImage("selectedImageGallery")
         cell.selectedImageView.transform = CGAffineTransformMakeScale(0, 0)
         UIView.animateWithDuration(0.2) { _ in
           cell.selectedImageView.transform = CGAffineTransformIdentity

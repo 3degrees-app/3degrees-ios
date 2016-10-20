@@ -7,7 +7,7 @@ extension ImageGalleryView: UICollectionViewDataSource {
   }
 
   public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    displayNoImagesMessage(assets.count == 0)
+    displayNoImagesMessage(assets.isEmpty)
     return assets.count
   }
 
@@ -17,7 +17,7 @@ extension ImageGalleryView: UICollectionViewDataSource {
 
     let asset = assets[indexPath.row]
 
-    ImagePicker.resolveAsset(asset, size: CGSize(width: 160, height: 240)) { image in
+    AssetManager.resolveAsset(asset, size: CGSize(width: 160, height: 240)) { image in
       if let image = image {
         cell.configureCell(image)
 
@@ -32,7 +32,7 @@ extension ImageGalleryView: UICollectionViewDataSource {
         }
 
         if self.selectedStack.containsAsset(asset) {
-          cell.selectedImageView.image = self.getImage("selectedImageGallery")
+          cell.selectedImageView.image = AssetManager.getImage("selectedImageGallery")
           cell.selectedImageView.alpha = 1
           cell.selectedImageView.transform = CGAffineTransformIdentity
         } else {
