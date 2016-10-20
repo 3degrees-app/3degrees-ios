@@ -17,6 +17,7 @@ class ChatViewController: SLKTextViewController, ViewProtocol {
     var interlocutor: UserInfo? = nil
     private lazy var avatarImage: UIImageView = {[unowned self] in
         let avatar = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        avatar.contentMode = .ScaleAspectFill
         avatar.layer.cornerRadius = avatar.frame.height / 2
         avatar.layer.masksToBounds = true
         avatar.setAvatarImage(self.interlocutor?.avatarUrl,

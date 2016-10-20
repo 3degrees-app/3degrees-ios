@@ -176,8 +176,9 @@ class MyNetworkViewModel: NSObject, ViewModelProtocol {
         self.tableView = tableView
         self.tabsHeader = tabsView
         super.init()
+        selectedTab.next(.First)
         selectedTab.observeNew (observeNewTabSelected)
-        AppController.shared.currentUserMode.observe(self.observeNewMode)
+        AppController.shared.currentUserMode.observeNew (self.observeNewMode)
         let handleTabChangedAction = self.handleTabChanged
         let viewModel = TabsViewModel(tabChangedAction: handleTabChangedAction)
         tabsHeader.configure(viewModel)
@@ -213,5 +214,9 @@ class MyNetworkViewModel: NSObject, ViewModelProtocol {
         selectedTab.next(.First)
         tabsHeader.configure(tabsViewModel)
         tableView.reloadData()
+    }
+
+    func reloadScreenData() {
+        observeNewTabSelected(selectedTab.value)
     }
 }

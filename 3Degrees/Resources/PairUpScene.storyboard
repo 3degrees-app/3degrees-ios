@@ -192,14 +192,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="LpF-rC-5wm" firstAttribute="leading" secondItem="kMN-5G-eZc" secondAttribute="leading" id="1vv-ms-aRc"/>
-                                                <constraint firstItem="kMN-5G-eZc" firstAttribute="top" secondItem="YR9-JF-Kjs" secondAttribute="top" constant="35" id="2QM-Sb-ruL"/>
+                                                <constraint firstItem="kMN-5G-eZc" firstAttribute="top" secondItem="YR9-JF-Kjs" secondAttribute="top" priority="750" constant="35" id="2QM-Sb-ruL"/>
                                                 <constraint firstAttribute="trailing" secondItem="kMN-5G-eZc" secondAttribute="trailing" constant="30" id="ZzZ-FA-pWI"/>
                                                 <constraint firstItem="R5H-hI-JIh" firstAttribute="centerY" secondItem="YR9-JF-Kjs" secondAttribute="centerY" id="e4M-em-4X9"/>
                                                 <constraint firstItem="kMN-5G-eZc" firstAttribute="leading" secondItem="R5H-hI-JIh" secondAttribute="trailing" constant="15" id="fVV-xi-xwt"/>
                                                 <constraint firstItem="LpF-rC-5wm" firstAttribute="top" secondItem="kMN-5G-eZc" secondAttribute="bottom" constant="3" id="gbK-CD-Vf6"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="LpF-rC-5wm" secondAttribute="trailing" constant="30" id="j91-DG-cJv"/>
                                                 <constraint firstItem="R5H-hI-JIh" firstAttribute="leading" secondItem="YR9-JF-Kjs" secondAttribute="leading" constant="30" id="vyB-6z-gDy"/>
-                                                <constraint firstAttribute="bottom" secondItem="LpF-rC-5wm" secondAttribute="bottom" constant="25" id="ySE-h4-cIy"/>
+                                                <constraint firstAttribute="bottom" secondItem="LpF-rC-5wm" secondAttribute="bottom" priority="750" constant="25" id="ySE-h4-cIy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

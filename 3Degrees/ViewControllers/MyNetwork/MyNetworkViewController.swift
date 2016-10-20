@@ -20,6 +20,9 @@ class MyNetworkViewController: UIViewController, ViewProtocol, RootTabBarViewCon
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tabsView: TabsView!
 
+    var appWillEnterForegroundObserver: NSObjectProtocol?
+    var enterForegroundCallback: (() -> ())?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = false
@@ -27,6 +30,20 @@ class MyNetworkViewController: UIViewController, ViewProtocol, RootTabBarViewCon
         configureBindings()
         setUpLeftMenuButton()
         title = "My Network"
+        enterForegroundCallback = {[weak self] in
+            self?.viewModel.reloadScreenData()
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.reloadScreenData()
+        subscribeToForegroundNotification()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        unsubscribeFromForegroundNotification()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -46,4 +63,8 @@ class MyNetworkViewController: UIViewController, ViewProtocol, RootTabBarViewCon
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
     }
+}
+
+extension MyNetworkViewController: EnterForegroundNotificationProtocol {
+
 }

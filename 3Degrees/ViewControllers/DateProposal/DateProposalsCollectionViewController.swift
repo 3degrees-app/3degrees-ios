@@ -17,17 +17,29 @@ class DateProposalsCollectionViewController: UICollectionViewController {
                                                 router: self)
     }()
 
+    var enterForegroundCallback: (() -> ())?
+    var appWillEnterForegroundObserver: NSObjectProtocol?
+
     override func viewDidLoad() {
         applyDefaultStyle()
         configureBindings()
         setDefaultValues()
         super.viewDidLoad()
+        enterForegroundCallback = {[weak self] in
+            self?.viewModel.viewWillAppear()
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         configureCollectionLayout()
         viewModel.viewWillAppear()
+        subscribeToForegroundNotification()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        unsubscribeFromForegroundNotification()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -48,6 +60,10 @@ class DateProposalsCollectionViewController: UICollectionViewController {
     private func setDefaultValues() {
         title = R.string.localizable.dateProposalTitle()
     }
+}
+
+extension DateProposalsCollectionViewController: EnterForegroundNotificationProtocol {
+
 }
 
 extension DateProposalsCollectionViewController: RootTabBarViewControllerProtocol {}

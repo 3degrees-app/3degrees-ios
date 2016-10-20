@@ -136,6 +136,7 @@
 		E941AB571CF765A90087C154 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E941AB561CF765A90087C154 /* R.generated.swift */; };
 		E941AB591CF872390087C154 /* SignUpModeViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E941AB581CF872390087C154 /* SignUpModeViewModelSpec.swift */; };
 		E941AB5B1CF881760087C154 /* SignUpWithEmailViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E941AB5A1CF881760087C154 /* SignUpWithEmailViewModelSpec.swift */; };
+		E9439C081DB96CD90058E82F /* EnterForegroundNotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9439C071DB96CD90058E82F /* EnterForegroundNotificationProtocol.swift */; };
 		E94538241CFF58500001718B /* StaticContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94538231CFF58500001718B /* StaticContentViewController.swift */; };
 		E94538261CFF59110001718B /* StaticContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94538251CFF59110001718B /* StaticContentViewModel.swift */; };
 		E945697E1D386B8A0072A952 /* DateProfileViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945697D1D386B8A0072A952 /* DateProfileViewModelSpec.swift */; };
@@ -355,6 +356,7 @@
 		E941AB561CF765A90087C154 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E941AB581CF872390087C154 /* SignUpModeViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModeViewModelSpec.swift; sourceTree = "<group>"; };
 		E941AB5A1CF881760087C154 /* SignUpWithEmailViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewModelSpec.swift; sourceTree = "<group>"; };
+		E9439C071DB96CD90058E82F /* EnterForegroundNotificationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterForegroundNotificationProtocol.swift; sourceTree = "<group>"; };
 		E94538231CFF58500001718B /* StaticContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticContentViewController.swift; sourceTree = "<group>"; };
 		E94538251CFF59110001718B /* StaticContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticContentViewModel.swift; sourceTree = "<group>"; };
 		E945697D1D386B8A0072A952 /* DateProfileViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProfileViewModelSpec.swift; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 				E9B9CE991CD50BCD00C550F5 /* UITextField+InputView.swift */,
 				E915C6931D7DBDD000288FCB /* Moment+Extension.swift */,
 				BEBF17221DA298E0008B678A /* NSNotificationCenter+Extension.swift */,
+				E9439C071DB96CD90058E82F /* EnterForegroundNotificationProtocol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				E9F399FA1D478D5E00093989 /* MatchmakersCollectionView.swift in Sources */,
 				BEB017B91CEB86C300F33E18 /* DateProfileViewModel.swift in Sources */,
 				BE0C78551CDB782100B98B41 /* ModeInfoLabel+Styles.swift in Sources */,
+				E9439C081DB96CD90058E82F /* EnterForegroundNotificationProtocol.swift in Sources */,
 				E915C6881D7CA4DD00288FCB /* SelectedDateTimeTableViewCell.swift in Sources */,
 				BE0C78501CDB6A6200B98B41 /* ModeViewController.swift in Sources */,
 				BED523241DA67AAC00816845 /* TextShadow.swift in Sources */,

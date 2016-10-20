@@ -54,9 +54,7 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
     }
 
     func viewWillAppear() {
-        if users.isEmpty {
-            paginator?.fetchFirstPage()
-        }
+        paginator?.fetchFirstPage()
     }
 
     func fetchProposals(paginator: Paginator<UserInfo>, page: Int, pageSize: Int) {

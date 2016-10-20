@@ -63,7 +63,10 @@ extension PairUpViewModel: UITableViewDelegate {
             guard proposedPerson?.biography.isEmpty == true else { break }
             return 0
         default:
-            return UITableViewAutomaticDimension
+            break
+        }
+        if proposedPerson == nil {
+            return 0
         }
         return UITableViewAutomaticDimension
     }
