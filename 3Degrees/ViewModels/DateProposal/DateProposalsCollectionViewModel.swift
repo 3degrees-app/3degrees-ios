@@ -74,7 +74,7 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
 
     func paginatorResetHandler(paginator: Paginator<UserInfo>) {
         users = []
-        collectionView.reloadData()
+        collectionView.reloadSections(NSIndexSet(index: 0))
     }
 
     func prepareForSegue(segue: UIStoryboardSegue) {
