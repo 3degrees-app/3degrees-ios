@@ -28,6 +28,8 @@ struct R: Rswift.Validatable {
   
   /// This `R.image` struct is generated, and contains static references to 33 images.
   struct image {
+    /// Image `accountButton`.
+    static let accountButton = ImageResource(bundle: _R.hostingBundle, name: "accountButton")
     /// Image `activityAndHistory`.
     static let activityAndHistory = ImageResource(bundle: _R.hostingBundle, name: "activityAndHistory")
     /// Image `activityAndHistorySelected`.
@@ -70,8 +72,6 @@ struct R: Rswift.Validatable {
     static let forwardIcon = ImageResource(bundle: _R.hostingBundle, name: "forward-icon")
     /// Image `importAvatarFromFb`.
     static let importAvatarFromFb = ImageResource(bundle: _R.hostingBundle, name: "importAvatarFromFb")
-    /// Image `leftMenuButton`.
-    static let leftMenuButton = ImageResource(bundle: _R.hostingBundle, name: "leftMenuButton")
     /// Image `mathProfileButton`.
     static let mathProfileButton = ImageResource(bundle: _R.hostingBundle, name: "mathProfileButton")
     /// Image `modeScreenBackground`.
@@ -94,6 +94,11 @@ struct R: Rswift.Validatable {
     static let tabBarBack = ImageResource(bundle: _R.hostingBundle, name: "tabBarBack")
     /// Image `timeIcon`.
     static let timeIcon = ImageResource(bundle: _R.hostingBundle, name: "timeIcon")
+    
+    /// `UIImage(named: "accountButton", bundle: ..., traitCollection: ...)`
+    static func accountButton(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.accountButton, compatibleWithTraitCollection: traitCollection)
+    }
     
     /// `UIImage(named: "activityAndHistory", bundle: ..., traitCollection: ...)`
     static func activityAndHistory(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -198,11 +203,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "importAvatarFromFb", bundle: ..., traitCollection: ...)`
     static func importAvatarFromFb(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.importAvatarFromFb, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "leftMenuButton", bundle: ..., traitCollection: ...)`
-    static func leftMenuButton(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.leftMenuButton, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "mathProfileButton", bundle: ..., traitCollection: ...)`
@@ -348,6 +348,48 @@ struct R: Rswift.Validatable {
   
   /// This `R.segue` struct is generated, and contains static references to 12 view controllers.
   struct segue {
+    /// This struct is generated for `AccountViewController`, and contains static references to 4 segues.
+    struct accountViewController {
+      /// Segue identifier `ToEdit`.
+      static let toEdit: StoryboardSegueIdentifier<UIStoryboardSegue, AccountViewController, ProfileViewController> = StoryboardSegueIdentifier(identifier: "ToEdit")
+      /// Segue identifier `ToSelectPreferene`.
+      static let toSelectPreferene: StoryboardSegueIdentifier<UIStoryboardSegue, AccountViewController, SelectValueTableViewController> = StoryboardSegueIdentifier(identifier: "ToSelectPreferene")
+      /// Segue identifier `ToStaticContent`.
+      static let toStaticContent: StoryboardSegueIdentifier<UIStoryboardSegue, AccountViewController, StaticContentViewController> = StoryboardSegueIdentifier(identifier: "ToStaticContent")
+      /// Segue identifier `ToSwitchMode`.
+      static let toSwitchMode: StoryboardSegueIdentifier<UIStoryboardSegue, AccountViewController, ModeViewController> = StoryboardSegueIdentifier(identifier: "ToSwitchMode")
+      
+      /// Optionally returns a typed version of segue `ToEdit`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func toEdit(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, AccountViewController, ProfileViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.accountViewController.toEdit, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ToSelectPreferene`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func toSelectPreferene(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, AccountViewController, SelectValueTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.accountViewController.toSelectPreferene, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ToStaticContent`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func toStaticContent(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, AccountViewController, StaticContentViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.accountViewController.toStaticContent, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ToSwitchMode`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func toSwitchMode(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, AccountViewController, ModeViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.accountViewController.toSwitchMode, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
     /// This struct is generated for `ActivityTableViewController`, and contains static references to 2 segues.
     struct activityTableViewController {
       /// Segue identifier `ShowSuggestedTimes`.
@@ -406,48 +448,6 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func scheduleTime(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, DateProposalsCollectionViewController, ScheduleResultsViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.dateProposalsCollectionViewController.scheduleTime, segue: segue)
-      }
-      
-      private init() {}
-    }
-    
-    /// This struct is generated for `LeftMenuViewController`, and contains static references to 4 segues.
-    struct leftMenuViewController {
-      /// Segue identifier `ToEdit`.
-      static let toEdit: StoryboardSegueIdentifier<UIStoryboardSegue, LeftMenuViewController, ProfileViewController> = StoryboardSegueIdentifier(identifier: "ToEdit")
-      /// Segue identifier `ToSelectPreferene`.
-      static let toSelectPreferene: StoryboardSegueIdentifier<UIStoryboardSegue, LeftMenuViewController, SelectValueTableViewController> = StoryboardSegueIdentifier(identifier: "ToSelectPreferene")
-      /// Segue identifier `ToStaticContent`.
-      static let toStaticContent: StoryboardSegueIdentifier<UIStoryboardSegue, LeftMenuViewController, StaticContentViewController> = StoryboardSegueIdentifier(identifier: "ToStaticContent")
-      /// Segue identifier `ToSwitchMode`.
-      static let toSwitchMode: StoryboardSegueIdentifier<UIStoryboardSegue, LeftMenuViewController, ModeViewController> = StoryboardSegueIdentifier(identifier: "ToSwitchMode")
-      
-      /// Optionally returns a typed version of segue `ToEdit`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toEdit(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, LeftMenuViewController, ProfileViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.leftMenuViewController.toEdit, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `ToSelectPreferene`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toSelectPreferene(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, LeftMenuViewController, SelectValueTableViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.leftMenuViewController.toSelectPreferene, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `ToStaticContent`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toStaticContent(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, LeftMenuViewController, StaticContentViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.leftMenuViewController.toStaticContent, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `ToSwitchMode`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toSwitchMode(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, LeftMenuViewController, ModeViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.leftMenuViewController.toSwitchMode, segue: segue)
       }
       
       private init() {}
@@ -1758,14 +1758,14 @@ struct _R: Rswift.Validatable {
     struct userProfileScene: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UINavigationController
       
+      let accountViewController = StoryboardViewControllerResource<AccountViewController>(identifier: "AccountViewController")
       let bundle = _R.hostingBundle
-      let leftMenuViewController = StoryboardViewControllerResource<LeftMenuViewController>(identifier: "LeftMenuViewController")
       let name = "UserProfileScene"
       let profileViewController = StoryboardViewControllerResource<ProfileViewController>(identifier: "ProfileViewController")
       let userProfileNavController = StoryboardViewControllerResource<UINavigationController>(identifier: "UserProfileNavController")
       
-      func leftMenuViewController(_: Void) -> LeftMenuViewController? {
-        return UIStoryboard(resource: self).instantiateViewController(leftMenuViewController)
+      func accountViewController(_: Void) -> AccountViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(accountViewController)
       }
       
       func profileViewController(_: Void) -> ProfileViewController? {
@@ -1785,7 +1785,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "returnButton") == nil { throw ValidationError(description: "[R.swift] Image named 'returnButton' is used in storyboard 'UserProfileScene', but couldn't be loaded.") }
         if UIImage(named: "importAvatarFromFb") == nil { throw ValidationError(description: "[R.swift] Image named 'importAvatarFromFb' is used in storyboard 'UserProfileScene', but couldn't be loaded.") }
         if _R.storyboard.userProfileScene().userProfileNavController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'userProfileNavController' could not be loaded from storyboard 'UserProfileScene' as 'UINavigationController'.") }
-        if _R.storyboard.userProfileScene().leftMenuViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'leftMenuViewController' could not be loaded from storyboard 'UserProfileScene' as 'LeftMenuViewController'.") }
+        if _R.storyboard.userProfileScene().accountViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'accountViewController' could not be loaded from storyboard 'UserProfileScene' as 'AccountViewController'.") }
         if _R.storyboard.userProfileScene().profileViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'profileViewController' could not be loaded from storyboard 'UserProfileScene' as 'ProfileViewController'.") }
       }
       

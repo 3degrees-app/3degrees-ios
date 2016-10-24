@@ -10,16 +10,16 @@ import UIKit
 
 protocol SwitchActionViewModelProtocol {
     var actionName: String { get }
-    init(action: LeftMenuAction)
+    init(action: AccountAction)
     func switchValueChanged(isOn: Bool)
 }
 
 struct SwitchActionViewModel: ViewModelProtocol {
     var router: RoutingProtocol? = nil
-    let action: LeftMenuAction
+    let action: AccountAction
     var userApi: UserApiProtocol = UserApiController()
 
-    init(action: LeftMenuAction) {
+    init(action: AccountAction) {
         self.action = action
     }
 

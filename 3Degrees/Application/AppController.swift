@@ -45,14 +45,14 @@ struct AppController: AppControllerProtocol {
         router = Router()
 
         let userProfileScene = R.storyboard.userProfileScene()
-        let leftMenuViewController = userProfileScene.instantiateInitialViewController()
+        let accountViewController = userProfileScene.instantiateInitialViewController()
         let commonScene = R.storyboard.commonScene()
         let tabbarController = commonScene.instantiateViewControllerWithIdentifier(
             "TabBarViewController"
         )
         leftMenu = DualSlideMenuViewController(
             mainViewController: tabbarController,
-            leftMenuViewController: leftMenuViewController!
+            leftMenuViewController: accountViewController!
         )
         leftMenu?.leftSideOffset = 0
 

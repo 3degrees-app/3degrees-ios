@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="1556" y="-325"/>
         </scene>
-        <!--Left Menu View Controller-->
+        <!--Account View Controller-->
         <scene sceneID="x1Y-rf-Zsv">
             <objects>
-                <viewController storyboardIdentifier="LeftMenuViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OZl-Fy-7bd" customClass="LeftMenuViewController" customModule="_Degrees" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OZl-Fy-7bd" customClass="AccountViewController" customModule="_Degrees" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="n27-x4-4f2"/>
                         <viewControllerLayoutGuide type="bottom" id="YxV-Aj-2O4"/>

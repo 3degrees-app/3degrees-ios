@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 extension UILabel {
-    func applyLeftMenuInfoLabelStyles() {
+    func applyAccountInfoLabelStyles() {
         self.textColor = Constants.Profile.InfoLabelColor
         self.shadowOffset = CGSize()
         self.layer.shadowOpacity = 1

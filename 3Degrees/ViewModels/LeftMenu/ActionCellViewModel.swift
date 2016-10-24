@@ -10,15 +10,15 @@ import Foundation
 
 protocol ActionCellViewModelProtocol {
     var actionName: String { get }
-    init(action: LeftMenuAction)
+    init(action: AccountAction)
 }
 
 class ActionCellViewModel: ActionCellViewModelProtocol, ViewModelProtocol {
     var router: RoutingProtocol?
-    let action: LeftMenuAction
+    let action: AccountAction
     var currentUserMode: Mode
 
-    required init(action: LeftMenuAction) {
+    required init(action: AccountAction) {
         self.action = action
         currentUserMode = AppController.shared.currentUserMode.value
     }

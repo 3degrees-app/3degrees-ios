@@ -1,5 +1,5 @@
 //
-//  LeftMenuViewController.swift
+//  AccountViewController.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 4/28/16.
@@ -9,9 +9,9 @@
 import UIKit
 import DynamicBlurView
 
-class LeftMenuViewController: UIViewController, ViewProtocol {
-    private lazy var viewModel: LeftMenuViewModel = {[unowned self] () in
-        return LeftMenuViewModel(actionTableView: self.actionTableView, router: self)
+class AccountViewController: UIViewController, ViewProtocol {
+    private lazy var viewModel: AccountViewModel = {[unowned self] () in
+        return AccountViewModel(actionTableView: self.actionTableView, router: self)
     }()
 
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -46,14 +46,14 @@ class LeftMenuViewController: UIViewController, ViewProtocol {
         self.automaticallyAdjustsScrollViewInsets = false
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.view.backgroundColor = Constants.ViewOnBackground.Color
-        self.generalButton.applyLeftMenuTabButtonStyles()
+        self.generalButton.applyAccountTabButtonStyles()
         self.generalButton.applySelectedStyles()
-        self.supportButton.applyLeftMenuTabButtonStyles()
-        self.aboutButton.applyLeftMenuTabButtonStyles()
-        self.userInfoLabel.applyLeftMenuInfoLabelStyles()
-        self.nameLabel.applyLeftMenuInfoLabelStyles()
+        self.supportButton.applyAccountTabButtonStyles()
+        self.aboutButton.applyAccountTabButtonStyles()
+        self.userInfoLabel.applyAccountInfoLabelStyles()
+        self.nameLabel.applyAccountInfoLabelStyles()
 
-        self.actionTableView.separatorColor = Constants.LeftMenu.ActionTableSeparatorColor
+        self.actionTableView.separatorColor = Constants.Account.ActionTableSeparatorColor
         self.actionTableView.tableFooterView = UIView()
         self.actionTableView.tableHeaderView = UIView()
 
@@ -62,7 +62,7 @@ class LeftMenuViewController: UIViewController, ViewProtocol {
         self.bluredView.blurRadius = 10
         self.bluredView.blurRatio = 10
 
-        self.avatarImageView.applyLeftMenuAvatarStyles()
+        self.avatarImageView.applyAccountAvatarStyles()
 
         self.view.sendSubviewToBack(self.bluredView)
         self.view.sendSubviewToBack(self.avatarBackgroundImageView)
@@ -130,7 +130,7 @@ class LeftMenuViewController: UIViewController, ViewProtocol {
         }
     }
 
-    private func handleTabChanged(mode: LeftMenuMode) {
+    private func handleTabChanged(mode: AccountMode) {
         deselectTabButton()
         viewModel.menuMode = mode
         selectTabButton()

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
-    func applyLeftMenuTabButtonStyles() {
+    func applyAccountTabButtonStyles() {
         self.backgroundColor = UIColor.clearColor()
         self.setTitleColor(Constants.Profile.InfoLabelColor, forState: .Normal)
         self.dropShadow()

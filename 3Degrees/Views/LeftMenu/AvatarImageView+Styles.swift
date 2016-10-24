@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIImageView {
-    func applyLeftMenuAvatarStyles() {
+    func applyAccountAvatarStyles() {
         applyDefaultAvatarStyle()
         self.layer.borderWidth = 7
-        self.layer.borderColor = Constants.LeftMenu.AvatarBorderColor.CGColor
+        self.layer.borderColor = Constants.Account.AvatarBorderColor.CGColor
     }
 
     func applyDefaultAvatarStyle() {

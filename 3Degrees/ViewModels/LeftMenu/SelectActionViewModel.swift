@@ -12,15 +12,15 @@ import Bond
 protocol SelectActionViewModelProtocol {
     var actionName: String { get }
     var observableValue: Observable<String?> { get }
-    init(action: LeftMenuAction, value: Observable<String?>)
+    init(action: AccountAction, value: Observable<String?>)
 }
 
 struct SelectActionViewModel: ViewModelProtocol, SelectActionViewModelProtocol {
     var router: RoutingProtocol? = nil
-    let action: LeftMenuAction
+    let action: AccountAction
     let observableVal: Observable<String?>
 
-    init(action: LeftMenuAction, value: Observable<String?>) {
+    init(action: AccountAction, value: Observable<String?>) {
         self.action = action
         self.observableVal = value
     }

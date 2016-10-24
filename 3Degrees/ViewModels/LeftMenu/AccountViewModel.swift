@@ -1,5 +1,5 @@
 //
-//  LeftMenuViewModel.swift
+//  AccountViewModel.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 4/28/16.
@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import MessageUI
 import ThreeDegreesClient
 
-extension LeftMenuViewModel: UITableViewDelegate {
+extension AccountViewModel: UITableViewDelegate {
     func tableView(tableView: UITableView,
                    heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 40
@@ -22,22 +22,22 @@ extension LeftMenuViewModel: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch menuMode {
         case .General:
-            handleGeneralAction(indexPath.row, actions: LeftMenuAction.generalActions)
+            handleGeneralAction(indexPath.row, actions: AccountAction.generalActions)
             break
         case .About:
-            handleAboutAction(indexPath.row, actions: LeftMenuAction.aboutActions)
+            handleAboutAction(indexPath.row, actions: AccountAction.aboutActions)
             break
         case .Support:
-            handleSupportAction(indexPath.row, actions: LeftMenuAction.supportActions)
+            handleSupportAction(indexPath.row, actions: AccountAction.supportActions)
             break
         }
     }
 
-    func handleGeneralAction(index: Int, actions: [LeftMenuAction]) {
+    func handleGeneralAction(index: Int, actions: [AccountAction]) {
         let currentAction = actions[index]
         switch currentAction {
         case .EditProfile:
-            let segueId = R.segue.leftMenuViewController.toEdit.identifier
+            let segueId = R.segue.accountViewController.toEdit.identifier
             router?.showAction(identifier: segueId)
             break
         case .LogOut:
@@ -54,14 +54,14 @@ extension LeftMenuViewModel: UITableViewDelegate {
             AppController.shared.currentUserMode.next(currentMode.getOppositeValue())
             break
         case .Preference:
-            let segueId = R.segue.leftMenuViewController.toSelectPreferene.identifier
+            let segueId = R.segue.accountViewController.toSelectPreferene.identifier
             router?.showAction(identifier: segueId)
         default:
             break
         }
     }
 
-    func handleSupportAction(index: Int, actions: [LeftMenuAction]) {
+    func handleSupportAction(index: Int, actions: [AccountAction]) {
         switch actions[index] {
         case .FAQ:
             selectedStaticContent = .FAQ
@@ -73,11 +73,11 @@ extension LeftMenuViewModel: UITableViewDelegate {
             break
         }
         router?.showAction(
-            identifier: R.segue.leftMenuViewController.toStaticContent.identifier
+            identifier: R.segue.accountViewController.toStaticContent.identifier
         )
     }
 
-    func handleAboutAction(index: Int, actions: [LeftMenuAction]) {
+    func handleAboutAction(index: Int, actions: [AccountAction]) {
         switch actions[index] {
         case .TermsOfService:
             selectedStaticContent = .TermsOfService
@@ -88,12 +88,12 @@ extension LeftMenuViewModel: UITableViewDelegate {
             break
         }
         router?.showAction(
-            identifier: R.segue.leftMenuViewController.toStaticContent.identifier
+            identifier: R.segue.accountViewController.toStaticContent.identifier
         )
     }
 }
 
-extension LeftMenuViewModel: MFMessageComposeViewControllerDelegate {
+extension AccountViewModel: MFMessageComposeViewControllerDelegate {
     func messageComposeViewController(controller: MFMessageComposeViewController,
                                       didFinishWithResult result: MessageComposeResult) {
         controller.dismissViewControllerAnimated(true, completion: nil)
@@ -104,7 +104,7 @@ extension LeftMenuViewModel: MFMessageComposeViewControllerDelegate {
     }
 }
 
-extension LeftMenuViewModel: UITableViewDataSource {
+extension AccountViewModel: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuMode.actions.count
     }
@@ -139,7 +139,7 @@ extension LeftMenuViewModel: UITableViewDataSource {
         }
     }
 
-    func getActionCell(tableView: UITableView, action: LeftMenuAction) -> UITableViewCell {
+    func getActionCell(tableView: UITableView, action: AccountAction) -> UITableViewCell {
         let cellId = R.reuseIdentifier.actionTableViewCell.identifier
         let cellViewModel = ActionCellViewModel(action: action)
         guard let cell: ActionTableViewCell = tableView.getCell(cellViewModel, cellIdentifier: cellId)
@@ -147,7 +147,7 @@ extension LeftMenuViewModel: UITableViewDataSource {
         return cell
     }
 
-     func getSwitchActionCell(tableView: UITableView, action: LeftMenuAction) -> UITableViewCell {
+     func getSwitchActionCell(tableView: UITableView, action: AccountAction) -> UITableViewCell {
         let cellId = R.reuseIdentifier.switchActionTableViewCell.identifier
         let viewModel = SwitchActionViewModel(action: action)
         guard let cell:SwitchActionTableViewCell = tableView.getCell(viewModel, cellIdentifier: cellId)
@@ -155,7 +155,7 @@ extension LeftMenuViewModel: UITableViewDataSource {
         return cell
     }
 
-     func getSelectActionCell(tableView: UITableView, action: LeftMenuAction) -> UITableViewCell {
+     func getSelectActionCell(tableView: UITableView, action: AccountAction) -> UITableViewCell {
         let cellId = R.reuseIdentifier.selectActionTableViewCell.identifier
         let viewModel = SelectActionViewModel(action: action, value: observablePreference)
         guard let cell: SelectActionTableViewCell = tableView.getCell(viewModel, cellIdentifier: cellId)
@@ -164,7 +164,7 @@ extension LeftMenuViewModel: UITableViewDataSource {
     }
 }
 
-extension LeftMenuViewModel {
+extension AccountViewModel {
     func loadCurrentUser() {
         userApi.currentUser {[unowned self] in
             self.observablePreference.next(
@@ -176,7 +176,7 @@ extension LeftMenuViewModel {
     }
 }
 
-extension LeftMenuViewModel: SelectValueDelegate {
+extension AccountViewModel: SelectValueDelegate {
     func valueSelected(value: String) {
         guard let preference = UserPreference(rawValue: value) else { return }
         let gender = preference.getGender()
@@ -186,16 +186,16 @@ extension LeftMenuViewModel: SelectValueDelegate {
     }
 }
 
-class LeftMenuViewModel: NSObject, ViewModelProtocol {
+class AccountViewModel: NSObject, ViewModelProtocol {
     var router: RoutingProtocol?
     var staticContentApi: StaticContentApiProtocol = StaticContentApiController()
     var authApi: AuthApiProtocol = AuthApiController()
     var userApi: UserApiProtocol = UserApiController()
 
-    var selectedStaticContent: LeftMenuAction? = nil
+    var selectedStaticContent: AccountAction? = nil
 
-    private var currentMenuMode: LeftMenuMode = .General
-    var menuMode: LeftMenuMode {
+    private var currentMenuMode: AccountMode = .General
+    var menuMode: AccountMode {
         get {
             return currentMenuMode
         }
@@ -228,15 +228,15 @@ class LeftMenuViewModel: NSObject, ViewModelProtocol {
 
     func prepareForSegue(segue: UIStoryboardSegue) {
         guard let identifier = segue.identifier else { return }
-        if identifier == R.segue.leftMenuViewController.toSelectPreferene.identifier {
+        if identifier == R.segue.accountViewController.toSelectPreferene.identifier {
             guard let targetVc = segue.destinationViewController as? SelectValueTableViewController
                 else { return }
-            targetVc.title = LeftMenuAction.Preference.rawValue
+            targetVc.title = AccountAction.Preference.rawValue
             targetVc.delegate = self
             let values = UserPreference.allValues.map { $0.rawValue }
             targetVc.values = values
         }
-        if identifier == R.segue.leftMenuViewController.toStaticContent.identifier {
+        if identifier == R.segue.accountViewController.toStaticContent.identifier {
             guard let type = selectedStaticContent else { return }
             guard let targetVc = segue.destinationViewController as? StaticContentViewController
                 else { return }

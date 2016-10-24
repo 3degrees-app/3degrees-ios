@@ -31,7 +31,7 @@ struct Constants {
     struct TabBar {
         static let BackgroundImage = "tabBarBack"
 
-        static let LeftMenuButtonImage = "leftMenuButton"
+        static let AccountButtonImage = "accountButton"
 
         static let ImageInset = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
 
@@ -83,7 +83,7 @@ struct Constants {
         static let TextFieldTextColor = UIColor.whiteColor()
     }
 
-    struct LeftMenu {
+    struct Account {
         static let ActionLabelColor = UIColor(r: 35, g: 31, b: 32)
         static let ToggleBackgroundColor = UIColor(r: 150, g: 200, b: 120, a: 0.75)
         static let InfoLabelColor = UIColor.whiteColor()

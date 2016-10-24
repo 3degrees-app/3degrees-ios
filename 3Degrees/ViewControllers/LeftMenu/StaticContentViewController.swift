@@ -19,7 +19,7 @@ class StaticContentViewController: UIViewController, ViewProtocol {
 
     @IBOutlet weak var textView: FLTextView!
 
-    var actionType: LeftMenuAction!
+    var actionType: AccountAction!
 
     override func viewDidLoad() {
         applyDefaultStyle()

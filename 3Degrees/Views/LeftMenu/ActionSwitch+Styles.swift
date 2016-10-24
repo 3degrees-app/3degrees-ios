@@ -10,6 +10,6 @@ import UIKit
 
 extension UISwitch {
     func applyActionSwitchStyles() {
-        self.onTintColor = Constants.LeftMenu.ToggleBackgroundColor
+        self.onTintColor = Constants.Account.ToggleBackgroundColor
     }
 }

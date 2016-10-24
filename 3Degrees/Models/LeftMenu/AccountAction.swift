@@ -1,5 +1,5 @@
 //
-//  LeftMenuAction.swift
+//  AccountAction.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 5/7/16.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum LeftMenuAction: String {
+enum AccountAction: String {
 
     // MARK: General Actions
     case EditProfile = "Edit My Profile"
@@ -21,7 +21,7 @@ enum LeftMenuAction: String {
     case SwitchMode = "Switch to "
     case LogOut = "Log Out"
 
-    static var fullGeneralActionsList:[LeftMenuAction] = [
+    static var fullGeneralActionsList:[AccountAction] = [
         .EditProfile,
         .InviteMatchMaker,
         .InviteSingle,
@@ -32,7 +32,7 @@ enum LeftMenuAction: String {
         .LogOut
     ]
 
-    static var matchmakerModeGeneralActionsList: [LeftMenuAction] = [
+    static var matchmakerModeGeneralActionsList: [AccountAction] = [
         .EditProfile,
         .InviteMatchMaker,
         .InviteSingle,
@@ -42,7 +42,7 @@ enum LeftMenuAction: String {
         .LogOut
     ]
 
-    static var singleModeGeneralActionsList: [LeftMenuAction] = [
+    static var singleModeGeneralActionsList: [AccountAction] = [
         .EditProfile,
         .InviteMatchMaker,
         .OpenToDate,
@@ -52,7 +52,7 @@ enum LeftMenuAction: String {
         .LogOut
     ]
 
-    static var generalActions:[LeftMenuAction] {
+    static var generalActions:[AccountAction] {
         if AppController.shared.currentUserMode.value == .Matchmaker {
             return matchmakerModeGeneralActionsList
         }
@@ -63,7 +63,7 @@ enum LeftMenuAction: String {
     case FAQ = "Frequently Asked Questions"
     case ContactUs = "Contact Us"
 
-    static var supportActions:[LeftMenuAction] {
+    static var supportActions:[AccountAction] {
         return [.FAQ, .ContactUs]
     }
 
@@ -71,7 +71,7 @@ enum LeftMenuAction: String {
     case PrivacyPolicy = "Privacy Policy"
     case TermsOfService = "Terms Of Service"
 
-    static var aboutActions:[LeftMenuAction] {
+    static var aboutActions:[AccountAction] {
         return [.PrivacyPolicy, .TermsOfService]
     }
 }

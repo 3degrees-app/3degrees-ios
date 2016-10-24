@@ -1,5 +1,5 @@
 //
-//  LeftMenuMode.swift
+//  AccountMode.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 5/7/16.
@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum LeftMenuMode: String {
+enum AccountMode: String {
     case General = "General"
     case Support = "Support"
     case About = "About"
 
-    var actions:[LeftMenuAction] {
+    var actions:[AccountAction] {
         switch self {
         case .About:
-            return LeftMenuAction.aboutActions
+            return AccountAction.aboutActions
         case .Support:
-            return LeftMenuAction.supportActions
+            return AccountAction.supportActions
         case .General:
-            return LeftMenuAction.generalActions
+            return AccountAction.generalActions
         }
     }
 }

@@ -18,7 +18,7 @@ class SwitchActionViewModelSpec: QuickSpec {
 
         describe("switched value for open to date") {
             beforeEach {
-                viewModel = SwitchActionViewModel(action: LeftMenuAction.OpenToDate)
+                viewModel = SwitchActionViewModel(action: AccountAction.OpenToDate)
                 userApi = UserApiControllerMock()
                 viewModel.userApi = userApi
             }

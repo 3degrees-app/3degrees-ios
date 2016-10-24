@@ -1,5 +1,5 @@
 //
-//  LeftMenuViewModelSpec.swift
+//  AccountViewModelSpec.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 6/2/16.
@@ -12,9 +12,9 @@ import ThreeDegreesClient
 
 @testable import _Degrees
 
-class LeftMenuViewModelSpec: QuickSpec {
+class AccountViewModelSpec: QuickSpec {
     override func spec() {
-        var viewModel: LeftMenuViewModel!
+        var viewModel: AccountViewModel!
         var router: RouterMock!
         var userApi: UserApiControllerMock!
         var authApi: AuthApiControllerMock!
@@ -26,7 +26,7 @@ class LeftMenuViewModelSpec: QuickSpec {
             beforeEach {
                 router = RouterMock()
                 tableViewMock = TableViewMock()
-                viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                 userApi = UserApiControllerMock()
                 authApi = AuthApiControllerMock()
                 staticContentApi = StaticContentApiControllerMock()
@@ -51,7 +51,7 @@ class LeftMenuViewModelSpec: QuickSpec {
             beforeEach {
                 router = RouterMock()
                 tableViewMock = TableViewMock()
-                viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                 userApi = UserApiControllerMock()
                 authApi = AuthApiControllerMock()
                 staticContentApi = StaticContentApiControllerMock()
@@ -86,7 +86,7 @@ class LeftMenuViewModelSpec: QuickSpec {
             beforeEach {
                 router = RouterMock()
                 tableViewMock = TableViewMock()
-                viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                 userApi = UserApiControllerMock()
                 authApi = AuthApiControllerMock()
                 staticContentApi = StaticContentApiControllerMock()
@@ -117,7 +117,7 @@ class LeftMenuViewModelSpec: QuickSpec {
             beforeEach {
                 router = RouterMock()
                 tableViewMock = TableViewMock()
-                viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                 userApi = UserApiControllerMock()
                 authApi = AuthApiControllerMock()
                 staticContentApi = StaticContentApiControllerMock()
@@ -152,7 +152,7 @@ class LeftMenuViewModelSpec: QuickSpec {
                 beforeEach {
                     router = RouterMock()
                     tableViewMock = TableViewMock()
-                    viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                    viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                     userApi = UserApiControllerMock()
                     authApi = AuthApiControllerMock()
                     staticContentApi = StaticContentApiControllerMock()
@@ -161,14 +161,14 @@ class LeftMenuViewModelSpec: QuickSpec {
                     viewModel.staticContentApi = staticContentApi
                 }
                 it("did select edit profile") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.EditProfile)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
-                    let id = R.segue.leftMenuViewController.toEdit.identifier
+                    let indexOfAction = AccountAction.generalActions.indexOf(.EditProfile)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
+                    let id = R.segue.accountViewController.toEdit.identifier
                     expect(router.showedVcWithId).to(equal(id))
                 }
                 it("did select logout") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.LogOut)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    let indexOfAction = AccountAction.generalActions.indexOf(.LogOut)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
                     let vc = (UIApplication.sharedApplication().keyWindow?.rootViewController as! UINavigationController).topViewController
                     expect(vc).to(beAnInstanceOf(SignUpModeViewController))
                 }
@@ -176,8 +176,8 @@ class LeftMenuViewModelSpec: QuickSpec {
                     let user = PrivateUser()
                     user.username = "username"
                     AppController.shared.currentUser.next(user)
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.InviteMatchMaker)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    let indexOfAction = AccountAction.generalActions.indexOf(.InviteMatchMaker)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
                     #if (arch(i386) || arch(x86_64))
                         expect(router.presentedViewController).to(beFalse())
                     #else
@@ -185,8 +185,8 @@ class LeftMenuViewModelSpec: QuickSpec {
                     #endif
                 }
                 it("did select invite single") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.InviteSingle)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    let indexOfAction = AccountAction.generalActions.indexOf(.InviteSingle)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
                     #if (arch(i386) || arch(x86_64))
                         expect(router.presentedViewController).to(beFalse())
                     #else
@@ -194,21 +194,21 @@ class LeftMenuViewModelSpec: QuickSpec {
                     #endif
                 }
                 it("did select switching mode") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.SwitchMode)!
+                    let indexOfAction = AccountAction.generalActions.indexOf(.SwitchMode)!
                     let oldModeValue = AppController.shared.currentUserMode.value
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
                     let newModeValue = AppController.shared.currentUserMode.value
                     expect(oldModeValue).toNot(equal(newModeValue))
                 }
                 it("did select select preference row") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.Preference)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.generalActions)
-                    let segueId = R.segue.leftMenuViewController.toSelectPreferene.identifier
+                    let indexOfAction = AccountAction.generalActions.indexOf(.Preference)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
+                    let segueId = R.segue.accountViewController.toSelectPreferene.identifier
                     expect(router.showedVcWithId).to(equal(segueId))
                 }
                 it("did select somehow not general action") {
-                    let indexOfAction = LeftMenuAction.supportActions.indexOf(.FAQ)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: LeftMenuAction.supportActions)
+                    let indexOfAction = AccountAction.supportActions.indexOf(.FAQ)!
+                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.supportActions)
                     expect(router.showedVcWithId).to(equal(""))
                     expect(router.presentedViewController).to(beFalse())
                 }
@@ -217,7 +217,7 @@ class LeftMenuViewModelSpec: QuickSpec {
                 beforeEach {
                     router = RouterMock()
                     tableViewMock = TableViewMock()
-                    viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                    viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                     userApi = UserApiControllerMock()
                     authApi = AuthApiControllerMock()
                     staticContentApi = StaticContentApiControllerMock()
@@ -226,14 +226,14 @@ class LeftMenuViewModelSpec: QuickSpec {
                     viewModel.staticContentApi = staticContentApi
                 }
                 it("did select faq") {
-                    let indexOfAction = LeftMenuAction.supportActions.indexOf(.FAQ)!
-                    viewModel.handleSupportAction(indexOfAction, actions: LeftMenuAction.supportActions)
-                    let segueId = R.segue.leftMenuViewController.toStaticContent.identifier
+                    let indexOfAction = AccountAction.supportActions.indexOf(.FAQ)!
+                    viewModel.handleSupportAction(indexOfAction, actions: AccountAction.supportActions)
+                    let segueId = R.segue.accountViewController.toStaticContent.identifier
                     expect(router.showedVcWithId).to(equal(segueId))
                 }
                 it("did select somehow not support action") {
-                    let indexOfAction = LeftMenuAction.generalActions.indexOf(.Preference)!
-                    viewModel.handleSupportAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    let indexOfAction = AccountAction.generalActions.indexOf(.Preference)!
+                    viewModel.handleSupportAction(indexOfAction, actions: AccountAction.generalActions)
                     expect(router.showedVcWithId).to(equal(""))
                     expect(router.presentedViewController).to(beFalse())
                 }
@@ -243,7 +243,7 @@ class LeftMenuViewModelSpec: QuickSpec {
                 beforeEach {
                     router = RouterMock()
                     tableViewMock = TableViewMock()
-                    viewModel = LeftMenuViewModel(actionTableView: tableViewMock, router: router)
+                    viewModel = AccountViewModel(actionTableView: tableViewMock, router: router)
                     userApi = UserApiControllerMock()
                     authApi = AuthApiControllerMock()
                     staticContentApi = StaticContentApiControllerMock()
@@ -252,20 +252,20 @@ class LeftMenuViewModelSpec: QuickSpec {
                     viewModel.staticContentApi = staticContentApi
                 }
                 it("did select TOS") {
-                    let indexOfAction = LeftMenuAction.aboutActions.indexOf(.TermsOfService)!
-                    viewModel.handleAboutAction(indexOfAction, actions: LeftMenuAction.aboutActions)
-                    let segueId = R.segue.leftMenuViewController.toStaticContent.identifier
+                    let indexOfAction = AccountAction.aboutActions.indexOf(.TermsOfService)!
+                    viewModel.handleAboutAction(indexOfAction, actions: AccountAction.aboutActions)
+                    let segueId = R.segue.accountViewController.toStaticContent.identifier
                     expect(router.showedVcWithId).to(equal(segueId))
                 }
                 it("did select privacy policy") {
-                    let indexOfAction = LeftMenuAction.aboutActions.indexOf(.TermsOfService)!
-                    viewModel.handleAboutAction(indexOfAction, actions: LeftMenuAction.aboutActions)
-                    let segueId = R.segue.leftMenuViewController.toStaticContent.identifier
+                    let indexOfAction = AccountAction.aboutActions.indexOf(.TermsOfService)!
+                    viewModel.handleAboutAction(indexOfAction, actions: AccountAction.aboutActions)
+                    let segueId = R.segue.accountViewController.toStaticContent.identifier
                     expect(router.showedVcWithId).to(equal(segueId))
                 }
                 it("did select somehow not about action") {
-                    let indexOfAction = LeftMenuAction.supportActions.indexOf(.FAQ)!
-                    viewModel.handleSupportAction(indexOfAction, actions: LeftMenuAction.generalActions)
+                    let indexOfAction = AccountAction.supportActions.indexOf(.FAQ)!
+                    viewModel.handleSupportAction(indexOfAction, actions: AccountAction.generalActions)
                     expect(router.showedVcWithId).to(equal(""))
                     expect(router.presentedViewController).to(beFalse())
                 }
@@ -274,9 +274,9 @@ class LeftMenuViewModelSpec: QuickSpec {
         describe("table view data source") {
             beforeEach {
                 router = RouterMock()
-                let vc = R.storyboard.userProfileScene.leftMenuViewController()!
+                let vc = R.storyboard.userProfileScene.accountViewController()!
                 _ = vc.view
-                viewModel = LeftMenuViewModel(actionTableView: vc.actionTableView, router: router)
+                viewModel = AccountViewModel(actionTableView: vc.actionTableView, router: router)
                 userApi = UserApiControllerMock()
                 authApi = AuthApiControllerMock()
                 staticContentApi = StaticContentApiControllerMock()

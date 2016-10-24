@@ -26,7 +26,7 @@ class ActionCellViewModelSpec: QuickSpec {
         }
         describe("action cell with other types") {
             it("has valid action name for general types except .SwitchMode") {
-                LeftMenuAction.generalActions.forEach({ (action) in
+                AccountAction.generalActions.forEach({ (action) in
                     if action == .SwitchMode { return }
                     viewModel = ActionCellViewModel(action: action)
                     expect(viewModel.actionName).to(equal(action.rawValue))

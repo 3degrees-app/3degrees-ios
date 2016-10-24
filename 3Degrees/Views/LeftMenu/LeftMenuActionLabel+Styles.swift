@@ -10,10 +10,10 @@ import UIKit
 
 extension UILabel {
     func applyActionLabelStyles() {
-        self.textColor = Constants.LeftMenu.ActionLabelColor
+        self.textColor = Constants.Account.ActionLabelColor
     }
 
     func applyActionValueLabelStyles() {
-        self.textColor = Constants.LeftMenu.ActionLabelColor
+        self.textColor = Constants.Account.ActionLabelColor
     }
 }

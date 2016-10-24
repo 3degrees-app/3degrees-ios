@@ -18,18 +18,18 @@ class SelectActionViewModelSpec: QuickSpec {
 
         describe("action name value") {
             it("should return raw value of action") {
-                viewModel = SelectActionViewModel(action: LeftMenuAction.ContactUs, value: Observable(""))
-                expect(viewModel.actionName).to(equal(LeftMenuAction.ContactUs.rawValue))
-                viewModel = SelectActionViewModel(action: LeftMenuAction.FAQ, value: Observable(""))
-                expect(viewModel.actionName).to(equal(LeftMenuAction.FAQ.rawValue))
-                viewModel = SelectActionViewModel(action: LeftMenuAction.InviteSingle, value: Observable(""))
-                expect(viewModel.actionName).to(equal(LeftMenuAction.InviteSingle.rawValue))
+                viewModel = SelectActionViewModel(action: AccountAction.ContactUs, value: Observable(""))
+                expect(viewModel.actionName).to(equal(AccountAction.ContactUs.rawValue))
+                viewModel = SelectActionViewModel(action: AccountAction.FAQ, value: Observable(""))
+                expect(viewModel.actionName).to(equal(AccountAction.FAQ.rawValue))
+                viewModel = SelectActionViewModel(action: AccountAction.InviteSingle, value: Observable(""))
+                expect(viewModel.actionName).to(equal(AccountAction.InviteSingle.rawValue))
             }
         }
         describe("value observable") {
             it("should return observable") {
                 let value: Observable<String?> = Observable("")
-                viewModel = SelectActionViewModel(action: LeftMenuAction.Preference, value: value)
+                viewModel = SelectActionViewModel(action: AccountAction.Preference, value: value)
                 expect(viewModel.observableValue).to(beIdenticalTo(value))
             }
         }

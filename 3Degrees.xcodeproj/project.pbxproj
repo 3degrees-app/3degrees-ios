@@ -25,7 +25,7 @@
 		BE16F0211CF4AB7500046837 /* FilterAgeRangePickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16F0201CF4AB7500046837 /* FilterAgeRangePickerSource.swift */; };
 		BE16F0231CF4B5FF00046837 /* FilterDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16F0221CF4B5FF00046837 /* FilterDistance.swift */; };
 		BE16F0251CF4B6C100046837 /* FilterDistancePickerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16F0241CF4B6C100046837 /* FilterDistancePickerSource.swift */; };
-		BE18867B1DA7BA4500B02E4B /* LeftMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18867A1DA7BA4500B02E4B /* LeftMenuViewModel.swift */; };
+		BE18867B1DA7BA4500B02E4B /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18867A1DA7BA4500B02E4B /* AccountViewModel.swift */; };
 		BE2009011CEF280D0062586B /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2009001CEF280D0062586B /* ForgotPasswordViewModel.swift */; };
 		BE2009031CEF37780062586B /* AlertController+ForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2009021CEF37780062586B /* AlertController+ForgotPass.swift */; };
 		BE2009061CEF3ADF0062586B /* PairUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2009051CEF3ADF0062586B /* PairUpViewModel.swift */; };
@@ -155,7 +155,7 @@
 		E96AA1CA1D04AE6E00549DE1 /* ChatViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96AA1C91D04AE6E00549DE1 /* ChatViewModelSpec.swift */; };
 		E96AA1CC1D05859D00549DE1 /* MyNetworkApiControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96AA1CB1D05859D00549DE1 /* MyNetworkApiControllerMock.swift */; };
 		E96C20301CD1F8BE00BC9A40 /* UserProfileScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96C202E1CD1F8BE00BC9A40 /* UserProfileScene.storyboard */; };
-		E96C20331CD21A8900BC9A40 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96C20321CD21A8900BC9A40 /* LeftMenuViewController.swift */; };
+		E96C20331CD21A8900BC9A40 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96C20321CD21A8900BC9A40 /* AccountViewController.swift */; };
 		E96F71EF1CF632CB0036CBDD /* SignInViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D4A4F1CF5B5CA00F0BB87 /* SignInViewModelSpec.swift */; };
 		E96F71F01CF632CF0036CBDD /* UIColorExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91B39091CCF8E2C00F6598E /* UIColorExtensionSpec.swift */; };
 		E977768C1D00DD2800087770 /* ProfileViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977768B1D00DD2800087770 /* ProfileViewModelSpec.swift */; };
@@ -166,8 +166,8 @@
 		E97BF0431CDD4FCA0073C638 /* SwitchActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0421CDD4FCA0073C638 /* SwitchActionViewModel.swift */; };
 		E97BF0451CDD50410073C638 /* SelectActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0441CDD50410073C638 /* SelectActionViewModel.swift */; };
 		E97BF0471CDD50510073C638 /* SelectActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0461CDD50500073C638 /* SelectActionTableViewCell.swift */; };
-		E97BF04A1CDD52100073C638 /* LeftMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0491CDD52100073C638 /* LeftMenuAction.swift */; };
-		E97BF04C1CDD525B0073C638 /* LeftMenuMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF04B1CDD525B0073C638 /* LeftMenuMode.swift */; };
+		E97BF04A1CDD52100073C638 /* AccountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0491CDD52100073C638 /* AccountAction.swift */; };
+		E97BF04C1CDD525B0073C638 /* AccountMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF04B1CDD525B0073C638 /* AccountMode.swift */; };
 		E97BF04E1CDD5F780073C638 /* ActionSwitch+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF04D1CDD5F780073C638 /* ActionSwitch+Styles.swift */; };
 		E97BF0501CDD607D0073C638 /* SelectValueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF04F1CDD607D0073C638 /* SelectValueTableViewController.swift */; };
 		E97BF0521CDD62850073C638 /* SelectValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BF0511CDD62850073C638 /* SelectValueViewModel.swift */; };
@@ -239,7 +239,7 @@
 		BE16F0201CF4AB7500046837 /* FilterAgeRangePickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterAgeRangePickerSource.swift; sourceTree = "<group>"; };
 		BE16F0221CF4B5FF00046837 /* FilterDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDistance.swift; sourceTree = "<group>"; };
 		BE16F0241CF4B6C100046837 /* FilterDistancePickerSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDistancePickerSource.swift; sourceTree = "<group>"; };
-		BE18867A1DA7BA4500B02E4B /* LeftMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewModel.swift; sourceTree = "<group>"; };
+		BE18867A1DA7BA4500B02E4B /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		BE2009001CEF280D0062586B /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		BE2009021CEF37780062586B /* AlertController+ForgotPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlertController+ForgotPass.swift"; sourceTree = "<group>"; };
 		BE2009051CEF3ADF0062586B /* PairUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairUpViewModel.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		E96AA1C71D02FCC900549DE1 /* AddToNetworkViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToNetworkViewModelSpec.swift; sourceTree = "<group>"; };
 		E96AA1C91D04AE6E00549DE1 /* ChatViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModelSpec.swift; sourceTree = "<group>"; };
 		E96AA1CB1D05859D00549DE1 /* MyNetworkApiControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNetworkApiControllerMock.swift; sourceTree = "<group>"; };
-		E96C20321CD21A8900BC9A40 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		E96C20321CD21A8900BC9A40 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		E96F71E51CF6327E0036CBDD /* 3DegreesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3DegreesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E977768B1D00DD2800087770 /* ProfileViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModelSpec.swift; sourceTree = "<group>"; };
 		E979988C1D78E80800E06063 /* DateProposalCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProposalCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -384,8 +384,8 @@
 		E97BF0421CDD4FCA0073C638 /* SwitchActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchActionViewModel.swift; sourceTree = "<group>"; };
 		E97BF0441CDD50410073C638 /* SelectActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActionViewModel.swift; sourceTree = "<group>"; };
 		E97BF0461CDD50500073C638 /* SelectActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActionTableViewCell.swift; sourceTree = "<group>"; };
-		E97BF0491CDD52100073C638 /* LeftMenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuAction.swift; sourceTree = "<group>"; };
-		E97BF04B1CDD525B0073C638 /* LeftMenuMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuMode.swift; sourceTree = "<group>"; };
+		E97BF0491CDD52100073C638 /* AccountAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAction.swift; sourceTree = "<group>"; };
+		E97BF04B1CDD525B0073C638 /* AccountMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountMode.swift; sourceTree = "<group>"; };
 		E97BF04D1CDD5F780073C638 /* ActionSwitch+Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionSwitch+Styles.swift"; sourceTree = "<group>"; };
 		E97BF04F1CDD607D0073C638 /* SelectValueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectValueTableViewController.swift; sourceTree = "<group>"; };
 		E97BF0511CDD62850073C638 /* SelectValueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectValueViewModel.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				E99D4A4D1CF5ACB000F0BB87 /* Filter */,
-				E97BF0481CDD51FB0073C638 /* LeftMenu */,
+				E97BF0481CDD51FB0073C638 /* Account */,
 				E94810471D64D7FB0033BE1A /* PairUp */,
 				BE3876251CDA6E3900C8D9BD /* GenderPickerSource.swift */,
 				BE483EF51CE49BDF007BA430 /* Mode.swift */,
@@ -644,7 +644,7 @@
 				E91B391D1CD0A03800F6598E /* Authentication */,
 				BE0C784E1CDB6A3D00B98B41 /* Common */,
 				E916C8E11CDEBDAB00668A41 /* DateProposal */,
-				E9B9CE901CD3EEEF00C550F5 /* LeftMenu */,
+				E9B9CE901CD3EEEF00C550F5 /* Account */,
 				BEFBCC831CE645F8009E6EBB /* MyNetwork */,
 				BE2009091CEF40610062586B /* PairUp */,
 				E96C20311CD21A6A00BC9A40 /* UserProfile */,
@@ -828,7 +828,7 @@
 				E91B391E1CD0A04D00F6598E /* Authentication */,
 				BE0C78581CDBA34900B98B41 /* Common */,
 				E916C8E41CDF9F6800668A41 /* DateProposal */,
-				E99C83691CD3E241004421C6 /* LeftMenu */,
+				E99C83691CD3E241004421C6 /* Account */,
 				BEFBCC841CE64605009E6EBB /* MyNetwork */,
 				BE2009041CEF3ACF0062586B /* PairUp */,
 				E96812791CD224FB001C7288 /* UserProfile */,
@@ -982,12 +982,13 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
-		E97BF0481CDD51FB0073C638 /* LeftMenu */ = {
+		E97BF0481CDD51FB0073C638 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				E97BF0491CDD52100073C638 /* LeftMenuAction.swift */,
-				E97BF04B1CDD525B0073C638 /* LeftMenuMode.swift */,
+				E97BF0491CDD52100073C638 /* AccountAction.swift */,
+				E97BF04B1CDD525B0073C638 /* AccountMode.swift */,
 			);
+			name = Account;
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
@@ -1019,15 +1020,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		E99C83691CD3E241004421C6 /* LeftMenu */ = {
+		E99C83691CD3E241004421C6 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				BE18867A1DA7BA4500B02E4B /* LeftMenuViewModel.swift */,
+				BE18867A1DA7BA4500B02E4B /* AccountViewModel.swift */,
 				E968127C1CD22527001C7288 /* ActionCellViewModel.swift */,
 				E97BF0441CDD50410073C638 /* SelectActionViewModel.swift */,
 				E94538251CFF59110001718B /* StaticContentViewModel.swift */,
 				E97BF0421CDD4FCA0073C638 /* SwitchActionViewModel.swift */,
 			);
+			name = Account;
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
@@ -1083,12 +1085,13 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		E9B9CE901CD3EEEF00C550F5 /* LeftMenu */ = {
+		E9B9CE901CD3EEEF00C550F5 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				E96C20321CD21A8900BC9A40 /* LeftMenuViewController.swift */,
+				E96C20321CD21A8900BC9A40 /* AccountViewController.swift */,
 				E94538231CFF58500001718B /* StaticContentViewController.swift */,
 			);
+			name = Account;
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
@@ -1363,7 +1366,7 @@
 				E97BF04E1CDD5F780073C638 /* ActionSwitch+Styles.swift in Sources */,
 				E915C6921D7D901F00288FCB /* DayView.swift in Sources */,
 				BE4518381CD7A095009E1C86 /* AuthenticationViewController+Styles.swift in Sources */,
-				E96C20331CD21A8900BC9A40 /* LeftMenuViewController.swift in Sources */,
+				E96C20331CD21A8900BC9A40 /* AccountViewController.swift in Sources */,
 				E968127D1CD22527001C7288 /* ActionCellViewModel.swift in Sources */,
 				E93779971CE260D1000B52C5 /* ActivityItemTableViewCell.swift in Sources */,
 				E91B39281CD0C28000F6598E /* SignUpWithEmailViewModel.swift in Sources */,
@@ -1416,7 +1419,7 @@
 				E979988F1D78FE2A00E06063 /* DateProposalsCollectionViewModel.swift in Sources */,
 				BE16F0191CF4A42600046837 /* FilterViewModel.swift in Sources */,
 				BEB017BB1CEB86CE00F33E18 /* HeaderCellViewModel.swift in Sources */,
-				E97BF04C1CDD525B0073C638 /* LeftMenuMode.swift in Sources */,
+				E97BF04C1CDD525B0073C638 /* AccountMode.swift in Sources */,
 				E9C52BF91D5F554E006D22D7 /* PairUpApiController.swift in Sources */,
 				E9F399F61D478B6200093989 /* MatchmakerTableViewCell.swift in Sources */,
 				BEB017BF1CEB871800F33E18 /* OneFieldCellViewModel.swift in Sources */,
@@ -1433,7 +1436,7 @@
 				BE2009111CEF517E0062586B /* ProposedPersonCollectionCell.swift in Sources */,
 				E9B9CE961CD3F68000C550F5 /* ProfileViewModel.swift in Sources */,
 				E97BF0431CDD4FCA0073C638 /* SwitchActionViewModel.swift in Sources */,
-				BE18867B1DA7BA4500B02E4B /* LeftMenuViewModel.swift in Sources */,
+				BE18867B1DA7BA4500B02E4B /* AccountViewModel.swift in Sources */,
 				BE2009011CEF280D0062586B /* ForgotPasswordViewModel.swift in Sources */,
 				E9B9CE9E1CD66D1000C550F5 /* String+Extensions.swift in Sources */,
 				E937799A1CE261A3000B52C5 /* ActivityItemViewModel.swift in Sources */,
@@ -1447,7 +1450,7 @@
 				E91B39151CD01FC800F6598E /* SignUpModeViewModel.swift in Sources */,
 				BE643E2A1CFDB0DB00068636 /* AuthApiController.swift in Sources */,
 				E9B9CEAC1CD6B54700C550F5 /* PrivateUser+FormattedInfo.swift in Sources */,
-				E97BF04A1CDD52100073C638 /* LeftMenuAction.swift in Sources */,
+				E97BF04A1CDD52100073C638 /* AccountAction.swift in Sources */,
 				BE51E05E1CFF16B200A94D6D /* UITableView+GetCell.swift in Sources */,
 				E91B39301CD0D0DE00F6598E /* Constants.swift in Sources */,
 				BEFBCC8D1CE64882009E6EBB /* MyNetworkViewModel.swift in Sources */,

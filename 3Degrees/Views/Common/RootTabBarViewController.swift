@@ -22,7 +22,7 @@ extension RootTabBarViewControllerProtocol where Self: UIViewController {
     private func getLeftButton() -> UIBarButtonItem {
         let buttonFrame = CGRect(x: 0, y: 0, width: 35, height: 35)
         let leftButton = UIButton(frame: buttonFrame)
-        let leftButtonImage = UIImage(named: Constants.TabBar.LeftMenuButtonImage)
+        let leftButtonImage = UIImage(named: Constants.TabBar.AccountButtonImage)
         leftButton.setImage(leftButtonImage, forState: .Normal)
         leftButton.bnd_tap.observe { () in
             AppController.shared.leftMenu?.toggle("right")

@@ -12,10 +12,10 @@ import Bond
 struct StaticContentViewModel: ViewModelProtocol {
     var router: RoutingProtocol?
     var staticApi: StaticContentApiProtocol = StaticContentApiController()
-    let contentType: LeftMenuAction
+    let contentType: AccountAction
     let content: Observable<String> = Observable("")
 
-    init(router: RoutingProtocol?, contentType: LeftMenuAction) {
+    init(router: RoutingProtocol?, contentType: AccountAction) {
         self.router = router
         self.contentType = contentType
     }
