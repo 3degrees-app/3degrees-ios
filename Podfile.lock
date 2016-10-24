@@ -8,12 +8,12 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - Bond (4.3.1)
-  - Crashlytics (3.8.3):
+  - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
   - DualSlideMenu (1.7.1)
   - DynamicBlurView (1.1.1)
   - DZNEmptyDataSet (1.8)
-  - Fabric (1.6.10)
+  - Fabric (1.6.9)
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -90,11 +90,11 @@ SPEC CHECKSUMS:
   AwesomeCache: a1561c926b6cf812c5f3f4262ea22e20bf8323c1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   DualSlideMenu: c81d55c3b61c0053abdaadf000a7b32d7956245e
   DynamicBlurView: 300e709fd793f85ee53b03bf5ffede4d7b2fc0a2
   DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
-  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FLTextView: eac36e475bb81cd3369802207c6ba66c3129501e
