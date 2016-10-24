@@ -193,7 +193,7 @@ extension ImageGalleryView: UICollectionViewDelegate {
 
     let asset = assets[indexPath.row]
 
-    AssetManager.resolveAsset(asset, size: CGSize(width: 100, height: 100)) { image in
+    AssetManager.resolveAsset(asset) { image in
       guard let _ = image else { return }
 
       if cell.selectedImageView.image != nil {

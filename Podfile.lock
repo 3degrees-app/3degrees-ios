@@ -21,7 +21,7 @@ PODS:
   - FLTextView (1.0.5):
     - FLTextView/Default (= 1.0.5)
   - FLTextView/Default (1.0.5)
-  - ImagePicker (1.4.1)
+  - ImagePicker (1.4.0)
   - IQKeyboardManager (4.0.2)
   - JTAppleCalendar (5.0.1)
   - Kingfisher (2.4.0)
@@ -53,7 +53,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (= 4.11)
   - FBSDKLoginKit (= 4.11)
   - FLTextView (from `https://github.com/freeletics/FLTextView.git`)
-  - ImagePicker (= 1.4.1)
+  - ImagePicker (from `https://github.com/rlmartin/ImagePicker.git`, branch `swift-2.3`)
   - IQKeyboardManager (= 4.0.2)
   - JTAppleCalendar (= 5.0.1)
   - Kingfisher (= 2.4.0)
@@ -74,6 +74,9 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   FLTextView:
     :git: https://github.com/freeletics/FLTextView.git
+  ImagePicker:
+    :branch: swift-2.3
+    :git: https://github.com/rlmartin/ImagePicker.git
   ThreeDegreesClient:
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
 
@@ -81,6 +84,9 @@ CHECKOUT OPTIONS:
   FLTextView:
     :commit: 9c73df5ef550f61e8c2af9c16a05be8c4cfbd05a
     :git: https://github.com/freeletics/FLTextView.git
+  ImagePicker:
+    :commit: 87d4c7d3d4394db3e3621dccc2d854c84d5fe034
+    :git: https://github.com/rlmartin/ImagePicker.git
   ThreeDegreesClient:
     :commit: b222140a20dece86c35ab3a54e31bb988dc7f78f
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
@@ -98,7 +104,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FLTextView: eac36e475bb81cd3369802207c6ba66c3129501e
-  ImagePicker: c2b43f5201f34efb3459ac6af39992fdd802c2d4
+  ImagePicker: 6659ccdd4737bfa14ed3b4aa7ffe18b193d92a0c
   IQKeyboardManager: 2341089c4ae25fa2fa82ce356a259fcd267dc6b6
   JTAppleCalendar: cb2417b1f3367d1993e31720a663646742139a5c
   Kingfisher: 9171a424ee7f8031f518f649bb850d1eab541247
@@ -117,6 +123,6 @@ SPEC CHECKSUMS:
   TSMarkdownParser: 64cb52fe5a518b4875a6167a650cb0ed4b18cea5
   UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
 
-PODFILE CHECKSUM: a7ec5c60c2c55059879df068c2b74b950ae8748d
+PODFILE CHECKSUM: d4a1700cbf27528f4433934d76aaede4bd2ebfe1
 
 COCOAPODS: 1.0.1

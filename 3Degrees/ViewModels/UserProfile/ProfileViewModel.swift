@@ -209,6 +209,7 @@ class ProfileViewModel: NSObject {
         self.genderPickerDelegate = GenderPickerDelegate(observableValue: genderObservableValue)
         self.imagePickerController = ImagePickerController()
         self.imagePickerController?.imageLimit = 1
+        self.imagePickerController?.startOnFrontCamera = true
         super.init()
         self.imagePickerController?.delegate = self
         self.observableImageUrl.next(user.image)
