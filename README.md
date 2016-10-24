@@ -55,3 +55,13 @@ There are 2 different types of provisioning profiles for build distribution: *Ad
 7. Switch to Fabric
 8. Choose Distributions => Archives => new build => Distribute
 9. Choose users to invite
+
+If you see a build error about chmod, you may need to run the following:
+
+```
+  rm -rf Pods
+  rm Podfile.lock
+  pod install
+```
+
+Then quit and re-open Xcode.
