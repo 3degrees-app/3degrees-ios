@@ -783,7 +783,7 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let employerPlaceholder = StringResource(key: "EmployerPlaceholder", tableName: "Localizable", locales: ["en"])
-      /// en translation: Some great date proposal is yet to show up!
+      /// en translation: Want a date? Invite more matchmakers!
       /// 
       /// Locales: en
       static let emptyDateProposalsMessage = StringResource(key: "EmptyDateProposalsMessage", tableName: "Localizable", locales: ["en"])
@@ -1148,7 +1148,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("EmployerPlaceholder", comment: "")
       }
       
-      /// en translation: Some great date proposal is yet to show up!
+      /// en translation: Want a date? Invite more matchmakers!
       /// 
       /// Locales: en
       static func emptyDateProposalsMessage(_: Void) -> String {

@@ -96,7 +96,7 @@
 // Date proposals screen
 
 "DateProposalTitle" = "Date Proposal";
-"EmptyDateProposalsMessage" = "Some great date proposal is yet to show up!";
+"EmptyDateProposalsMessage" = "Want a date? Invite more matchmakers!";
 "ChooseDateTimeDescription" = "Please suggest up to 5 availabilities to make sure the upcoming date is going to be convenient for both parties.";
 "ChooseDateTimeSubtitle" = "Tap on selection to edit";
 "ChooseDateTimeTitle" = "Date";
