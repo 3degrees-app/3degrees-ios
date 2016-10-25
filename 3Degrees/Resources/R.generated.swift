@@ -715,7 +715,7 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let acceptedInviteConfirmation = StringResource(key: "AcceptedInviteConfirmation", tableName: "Localizable", locales: ["en"])
-      /// en translation: Biography
+      /// en translation: What would friends say about you?
       /// 
       /// Locales: en
       static let bioPlaceholder = StringResource(key: "BioPlaceholder", tableName: "Localizable", locales: ["en"])
@@ -1029,7 +1029,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("AcceptedInviteConfirmation", comment: "")
       }
       
-      /// en translation: Biography
+      /// en translation: What would friends say about you?
       /// 
       /// Locales: en
       static func bioPlaceholder(_: Void) -> String {
