@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -40,24 +40,20 @@
                                                 <constraint firstAttribute="width" constant="30" id="of6-hA-BVn"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YC3-fC-dav">
-                                            <rect key="frame" x="45" y="14" width="30" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdi-nw-jgm">
                                             <rect key="frame" x="90" y="18" width="45" height="22"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZW-Wf-dMG">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZW-Wf-dMG">
                                             <rect key="frame" x="45" y="50" width="510" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="EOX-CP-7W7"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-vO-aF1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-vO-aF1">
                                             <rect key="frame" x="45" y="57" width="510" height="22"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,9 +79,6 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="esS-aw-sfc" secondAttribute="bottom" constant="14" id="3mR-tq-Yub"/>
                                         <constraint firstAttribute="trailing" secondItem="DZW-Wf-dMG" secondAttribute="trailing" constant="45" id="E6W-B8-IAb"/>
-                                        <constraint firstItem="YC3-fC-dav" firstAttribute="bottom" secondItem="vAE-GZ-eVA" secondAttribute="bottom" id="Emp-ci-0EF"/>
-                                        <constraint firstItem="YC3-fC-dav" firstAttribute="leading" secondItem="vAE-GZ-eVA" secondAttribute="leading" id="FKC-NN-rMW"/>
-                                        <constraint firstItem="YC3-fC-dav" firstAttribute="top" secondItem="vAE-GZ-eVA" secondAttribute="top" id="GIx-vG-DEx"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="esS-aw-sfc" secondAttribute="trailing" constant="45" id="Jbq-vA-DWu"/>
                                         <constraint firstItem="esS-aw-sfc" firstAttribute="leading" secondItem="bGn-DL-Hka" secondAttribute="leading" constant="45" id="KsS-hT-6ku"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WFz-vO-aF1" secondAttribute="bottom" priority="750" constant="14" id="LzZ-jr-u0X"/>
@@ -96,13 +89,11 @@
                                         <constraint firstItem="WFz-vO-aF1" firstAttribute="top" secondItem="DZW-Wf-dMG" secondAttribute="bottom" constant="6" id="Yvd-Nw-pq0"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="xdi-nw-jgm" secondAttribute="trailing" constant="45" id="c97-VJ-zpz"/>
                                         <constraint firstAttribute="trailing" secondItem="pkZ-ty-Eai" secondAttribute="trailing" constant="30" id="cZe-iG-3FM"/>
-                                        <constraint firstItem="YC3-fC-dav" firstAttribute="trailing" secondItem="vAE-GZ-eVA" secondAttribute="trailing" id="dah-hz-uyH"/>
                                         <constraint firstAttribute="trailing" secondItem="WFz-vO-aF1" secondAttribute="trailing" constant="45" id="eBi-yC-0vE"/>
                                         <constraint firstItem="vAE-GZ-eVA" firstAttribute="top" secondItem="bGn-DL-Hka" secondAttribute="top" constant="14" id="fp4-h8-JAb"/>
                                         <constraint firstItem="xdi-nw-jgm" firstAttribute="leading" secondItem="vAE-GZ-eVA" secondAttribute="trailing" constant="15" id="g1p-Kp-ZBb"/>
                                         <constraint firstItem="vAE-GZ-eVA" firstAttribute="leading" secondItem="bGn-DL-Hka" secondAttribute="leading" constant="45" id="idS-1I-rv0"/>
                                         <constraint firstItem="xdi-nw-jgm" firstAttribute="centerY" secondItem="vAE-GZ-eVA" secondAttribute="centerY" id="oLu-SO-Y4Q"/>
-                                        <constraint firstItem="DZW-Wf-dMG" firstAttribute="top" secondItem="YC3-fC-dav" secondAttribute="bottom" constant="6" id="rL1-WY-OJi"/>
                                         <constraint firstAttribute="bottom" secondItem="pkZ-ty-Eai" secondAttribute="bottom" constant="8" id="wdg-D8-Iej"/>
                                         <constraint firstItem="DZW-Wf-dMG" firstAttribute="leading" secondItem="bGn-DL-Hka" secondAttribute="leading" constant="45" id="zfb-oP-BXy"/>
                                     </constraints>
@@ -112,7 +103,6 @@
                                     <outlet property="actionsStackView" destination="esS-aw-sfc" id="g8Z-0M-Ugb"/>
                                     <outlet property="avatarImageView" destination="vAE-GZ-eVA" id="oc5-fJ-LrW"/>
                                     <outlet property="backgroundContainerView" destination="pkZ-ty-Eai" id="pvc-rj-qeV"/>
-                                    <outlet property="blurView" destination="YC3-fC-dav" id="sD5-hz-373"/>
                                     <outlet property="bodyTextLabel" destination="WFz-vO-aF1" id="mhK-I6-kHr"/>
                                     <outlet property="separatorView" destination="DZW-Wf-dMG" id="1nX-Ju-fh4"/>
                                     <outlet property="userNameLabel" destination="xdi-nw-jgm" id="4im-NX-26S"/>

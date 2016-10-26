@@ -11,7 +11,6 @@ PODS:
   - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
   - DualSlideMenu (1.7.1)
-  - DynamicBlurView (1.1.1)
   - DZNEmptyDataSet (1.8)
   - Fabric (1.6.9)
   - FBSDKCoreKit (4.11.0):
@@ -47,7 +46,6 @@ DEPENDENCIES:
   - Bond (= 4.3.1)
   - Crashlytics
   - DualSlideMenu (= 1.7.1)
-  - DynamicBlurView (= 1.1.1)
   - DZNEmptyDataSet (= 1.8)
   - Fabric
   - FBSDKCoreKit (= 4.11)
@@ -98,7 +96,6 @@ SPEC CHECKSUMS:
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
   Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   DualSlideMenu: c81d55c3b61c0053abdaadf000a7b32d7956245e
-  DynamicBlurView: 300e709fd793f85ee53b03bf5ffede4d7b2fc0a2
   DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
   Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
@@ -123,6 +120,6 @@ SPEC CHECKSUMS:
   TSMarkdownParser: 64cb52fe5a518b4875a6167a650cb0ed4b18cea5
   UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
 
-PODFILE CHECKSUM: d4a1700cbf27528f4433934d76aaede4bd2ebfe1
+PODFILE CHECKSUM: 9f5fb3a03beb19aa1c06d3655138ba2d0e914117
 
 COCOAPODS: 1.0.1

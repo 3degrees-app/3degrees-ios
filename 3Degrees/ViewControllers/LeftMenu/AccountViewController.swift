@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DynamicBlurView
 
 class AccountViewController: UIViewController, ViewProtocol {
     private lazy var viewModel: AccountViewModel = {[unowned self] () in
@@ -16,7 +15,6 @@ class AccountViewController: UIViewController, ViewProtocol {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarBackgroundImageView: UIImageView!
-    @IBOutlet weak var bluredView: DynamicBlurView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var returnButton: UIButton!
@@ -57,14 +55,8 @@ class AccountViewController: UIViewController, ViewProtocol {
         self.actionTableView.tableFooterView = UIView()
         self.actionTableView.tableHeaderView = UIView()
 
-        self.bluredView.backgroundColor = UIColor(r: 255, g: 255, b: 255, a: 0.3)
-
-        self.bluredView.blurRadius = 10
-        self.bluredView.blurRatio = 10
-
         self.avatarImageView.applyAccountAvatarStyles()
 
-        self.view.sendSubviewToBack(self.bluredView)
         self.view.sendSubviewToBack(self.avatarBackgroundImageView)
     }
 
@@ -89,13 +81,8 @@ class AccountViewController: UIViewController, ViewProtocol {
         viewModel.observableUserInfo.bindTo(userInfoLabel.bnd_text)
         viewModel.observableAvatarImage.observe {[unowned self] in
             let fullName = self.viewModel.observableName.value ?? ""
-            self.avatarImageView.setAvatarImage($0, fullName: fullName) {
-                self.bluredView.refresh()
-            }
-            self.avatarBackgroundImageView.setAvatarImage($0, fullName: fullName) {
-                self.bluredView.refresh()
-            }
-            self.bluredView.refresh()
+            self.avatarImageView.setAvatarImage($0, fullName: fullName)
+            self.avatarBackgroundImageView.setAvatarImage($0, fullName: fullName)
         }
 
         actionTableView.dataSource = viewModel

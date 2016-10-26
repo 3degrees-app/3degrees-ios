@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DynamicBlurView
 
 class DateProposalViewController: UITableViewController, ViewProtocol {
 
@@ -24,7 +23,6 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
-    @IBOutlet weak var blurView: DynamicBlurView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarMaskView: UIView!
 
@@ -40,10 +38,6 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         tableView.tableFooterView = UIView()
         tableView.preservesSuperviewLayoutMargins = false
 
-        blurView.blurRatio = 10
-        blurView.blurRadius = 10
-        blurView.dynamicMode = .None
-
         acceptButton.titleLabel?.dropShadow()
         declineButton.titleLabel?.dropShadow()
     }
@@ -53,10 +47,7 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         guard let user = viewModel?.user else {
             return
         }
-        avatarImageView.setAvatarImage(user.avatarUrl, fullName: user.fullName) {[unowned self] in
-            self.blurView.refresh()
-        }
-        blurView.refresh()
+        avatarImageView.setAvatarImage(user.avatarUrl, fullName: user.fullName)
         nameTextField.bnd_text.next(user.fullName)
         userInfoTextField.bnd_text.next(user.info)
 

@@ -16,7 +16,6 @@ class ActivityItemTableViewCell: UITableViewCell, TableCellProtocol {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var bodyTextLabel: UILabel!
-    @IBOutlet weak var blurView: UIView!
 
     @IBOutlet weak var actionsStackView: UIStackView!
 

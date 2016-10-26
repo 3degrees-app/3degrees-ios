@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d4U-0U-cUj">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d4U-0U-cUj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -438,10 +438,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="248"/>
                                                     <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="0.1511524823" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqd-LI-PEb" customClass="DynamicBlurView" customModule="DynamicBlurView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="248"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P45-hC-7bt">
                                                     <rect key="frame" x="165.5" y="177" width="45" height="22"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
@@ -475,18 +471,14 @@
                                                 <constraint firstItem="P45-hC-7bt" firstAttribute="centerX" secondItem="ZV7-hU-y4Q" secondAttribute="centerX" id="PeB-30-Omv"/>
                                                 <constraint firstItem="TkB-UG-ImM" firstAttribute="top" secondItem="ZV7-hU-y4Q" secondAttribute="top" id="RLK-Mp-chu"/>
                                                 <constraint firstItem="MgN-pA-XDM" firstAttribute="centerY" secondItem="ZV7-hU-y4Q" secondAttribute="centerY" id="RhK-Ai-w76"/>
-                                                <constraint firstItem="qqd-LI-PEb" firstAttribute="trailing" secondItem="TkB-UG-ImM" secondAttribute="trailing" id="YhV-p1-N1a"/>
                                                 <constraint firstAttribute="trailing" secondItem="MgN-pA-XDM" secondAttribute="trailing" constant="30" id="Za1-tQ-21S"/>
                                                 <constraint firstItem="TkB-UG-ImM" firstAttribute="bottom" secondItem="ZV7-hU-y4Q" secondAttribute="bottom" id="fFN-DO-Uz6"/>
                                                 <constraint firstAttribute="trailing" secondItem="TkB-UG-ImM" secondAttribute="trailing" id="fat-37-kDX"/>
                                                 <constraint firstAttribute="bottom" secondItem="L9N-WC-HBU" secondAttribute="bottom" constant="30" id="gCC-9p-g82"/>
                                                 <constraint firstItem="65C-Vj-qqW" firstAttribute="bottom" secondItem="TkB-UG-ImM" secondAttribute="bottom" priority="750" id="kYD-AW-toy"/>
                                                 <constraint firstItem="TkB-UG-ImM" firstAttribute="leading" secondItem="ZV7-hU-y4Q" secondAttribute="leading" id="lht-lj-ePw"/>
-                                                <constraint firstItem="qqd-LI-PEb" firstAttribute="bottom" secondItem="TkB-UG-ImM" secondAttribute="bottom" id="o2d-Xw-RaZ"/>
-                                                <constraint firstItem="qqd-LI-PEb" firstAttribute="top" secondItem="TkB-UG-ImM" secondAttribute="top" id="syf-3a-Eyu"/>
                                                 <constraint firstItem="65C-Vj-qqW" firstAttribute="trailing" secondItem="TkB-UG-ImM" secondAttribute="trailing" id="tCl-Pc-dwy"/>
                                                 <constraint firstItem="wc2-Th-r1P" firstAttribute="leading" secondItem="ZV7-hU-y4Q" secondAttribute="leading" constant="30" id="tF3-UW-hMJ"/>
-                                                <constraint firstItem="qqd-LI-PEb" firstAttribute="leading" secondItem="TkB-UG-ImM" secondAttribute="leading" id="wQ0-WY-afp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -676,7 +668,6 @@
                         <outlet property="avatarImageView" destination="TkB-UG-ImM" id="W1A-Ih-vIY"/>
                         <outlet property="avatarMaskView" destination="65C-Vj-qqW" id="OGY-D9-2Ox"/>
                         <outlet property="bioLabel" destination="JkY-jQ-lKM" id="4qq-c1-U4P"/>
-                        <outlet property="blurView" destination="qqd-LI-PEb" id="hUR-5h-9Um"/>
                         <outlet property="declineButton" destination="MgN-pA-XDM" id="FcG-mp-p6I"/>
                         <outlet property="degreeLabel" destination="2HK-8e-y9u" id="kQZ-M3-wZc"/>
                         <outlet property="mmNameLabel" destination="JgN-f5-zX0" id="8dk-Nn-jzS"/>
