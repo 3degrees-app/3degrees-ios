@@ -207,6 +207,7 @@ class ProfileViewModel: NSObject {
         self.tableView = tableView
         self.genderPickerDataSource = GenderPickerDataSource()
         self.genderPickerDelegate = GenderPickerDelegate(observableValue: genderObservableValue)
+        Configuration.requestPermissionMessage = "To capture and use an in-app photo, 3degrees needs to access both Camera and Photos"
         self.imagePickerController = ImagePickerController()
         self.imagePickerController?.imageLimit = 1
         self.imagePickerController?.startOnFrontCamera = true
