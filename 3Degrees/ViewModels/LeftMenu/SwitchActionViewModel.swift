@@ -15,7 +15,7 @@ protocol SwitchActionViewModelProtocol {
 }
 
 struct SwitchActionViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let action: AccountAction
     var userApi: UserApiProtocol = UserApiController()
 

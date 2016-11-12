@@ -15,7 +15,7 @@ protocol ModeViewModelProtocol {
 }
 
 struct ModeViewModel: ViewModelProtocol, ModeViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 
     func handleSingleSelected() {
         AppController.shared.setupMainAppContent()

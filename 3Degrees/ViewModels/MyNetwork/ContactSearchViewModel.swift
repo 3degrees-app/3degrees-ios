@@ -52,7 +52,7 @@ extension ContactSearchViewModel: UITableViewDataSource {
 
 
 class ContactSearchViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     var myNetworkApi: MyNetworkApiProtocol = MyNetworkApiController()
     var people: [UserInfo] = []
     var tableView: UITableView? = nil
@@ -61,8 +61,8 @@ class ContactSearchViewModel: NSObject, ViewModelProtocol {
     var selectionDelegate: ContactSelectDelegate? = nil
     let userType: Observable<MyNetworkTab.UsersType> = Observable<MyNetworkTab.UsersType>(.Singles)
 
-    init(router: RoutingProtocol, mode: SearchMode) {
-        self.router = router
+    init(appNavigator: AppNavigator, mode: SearchMode) {
+        self.appNavigator = appNavigator
         self.mode = mode
         super.init()
         searchText.ignoreNil()

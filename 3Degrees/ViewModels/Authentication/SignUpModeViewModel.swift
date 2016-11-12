@@ -19,7 +19,7 @@ extension SignUpModeViewModel: FacebookLoginDelegate {
         }
         apiController.signUp(token) {[unowned self] in
             let segueId = R.segue.signUpModeViewController.toModeSelection.identifier
-            self.router?.showAction(identifier: segueId)
+            self.appNavigator?.showAction(identifier: segueId)
         }
     }
 
@@ -31,23 +31,23 @@ extension SignUpModeViewModel: FacebookLoginDelegate {
 extension SignUpModeViewModel: SignUpModeViewControllerDelegate {
     func signUpWithEmail() {
         let seguedId = R.segue.signUpModeViewController.toSignUpWithEmail.identifier
-        router?.showAction(identifier: seguedId)
+        appNavigator?.showAction(identifier: seguedId)
     }
 
     func login() {
         let seguedId = R.segue.signUpModeViewController.toLogin.identifier
-        router?.showAction(identifier: seguedId)
+        appNavigator?.showAction(identifier: seguedId)
     }
 }
 
 class SignUpModeViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol = AuthApiController()
     lazy var facebookLoginViewModel: FacebookLoginViewModel = {
         return FacebookLoginViewModel(delegate: self)
     }()
 
-    init(router: RoutingProtocol) {
-        self.router = router
+    init(appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
     }
 }

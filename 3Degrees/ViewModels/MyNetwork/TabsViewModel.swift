@@ -9,7 +9,7 @@
 import UIKit
 
 struct TabsViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 
     typealias TabChangedType = (MyNetworkTab) -> ()
 

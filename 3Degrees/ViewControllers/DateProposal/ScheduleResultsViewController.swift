@@ -16,7 +16,7 @@ class ScheduleResultsViewController: UIViewController, ViewProtocol {
             dates = proposedDates
         }
         guard let user = self.user else { return nil }
-        return ScheduleResultsViewModel(router: self,
+        return ScheduleResultsViewModel(appNavigator: self,
                                         mode: self.mode,
                                         dates: dates,
                                         user: user,

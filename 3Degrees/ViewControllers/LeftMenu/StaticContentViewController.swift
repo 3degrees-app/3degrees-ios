@@ -12,7 +12,7 @@ import TSMarkdownParser
 
 class StaticContentViewController: UIViewController, ViewProtocol {
     private lazy var viewModel: StaticContentViewModel = {[unowned self] in
-        let viewModel = StaticContentViewModel(router: self, contentType: self.actionType)
+        let viewModel = StaticContentViewModel(appNavigator: self, contentType: self.actionType)
         viewModel.loadContent()
         return viewModel
     }()

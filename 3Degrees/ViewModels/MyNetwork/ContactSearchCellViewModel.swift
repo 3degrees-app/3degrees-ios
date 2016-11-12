@@ -16,7 +16,7 @@ struct ContactSearchCellViewModel: ViewModelProtocol {
     let invitedHandler: InvitedHandlerType
     let mode: ContactSearchViewModel.SearchMode
     var api: MyNetworkApiProtocol = MyNetworkApiController()
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 
     init(contact: UserInfo, userType: MyNetworkTab.UsersType,
          invitedHandler: InvitedHandlerType, mode: ContactSearchViewModel.SearchMode) {

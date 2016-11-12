@@ -30,18 +30,18 @@ extension SelectValueViewModel: UITableViewDataSource {
 extension SelectValueViewModel: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let value = values[indexPath.row]
-        router?.popAction()
+        appNavigator?.popAction()
         delegate.valueSelected(value)
     }
 }
 
 class SelectValueViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     let values: [String]
     let delegate: SelectValueDelegate
 
-    init(router: RoutingProtocol, values: [String], delegate: SelectValueDelegate) {
-        self.router = router
+    init(appNavigator: AppNavigator, values: [String], delegate: SelectValueDelegate) {
+        self.appNavigator = appNavigator
         self.values = values
         self.delegate = delegate
     }

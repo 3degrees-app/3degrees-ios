@@ -10,7 +10,7 @@ import UIKit
 
 @testable import _Degrees
 
-class RouterMock: RoutingProtocol {
+class RouterMock: AppNavigator {
     var poped: Bool
     var dismissed: Bool
     var presentedViewController: Bool

@@ -10,13 +10,13 @@ import Foundation
 import Bond
 
 struct StaticContentViewModel: ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var staticApi: StaticContentApiProtocol = StaticContentApiController()
     let contentType: AccountAction
     let content: Observable<String> = Observable("")
 
-    init(router: RoutingProtocol?, contentType: AccountAction) {
-        self.router = router
+    init(appNavigator: AppNavigator?, contentType: AccountAction) {
+        self.appNavigator = appNavigator
         self.contentType = contentType
     }
 

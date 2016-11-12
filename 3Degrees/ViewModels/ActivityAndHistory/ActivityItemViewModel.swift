@@ -10,10 +10,10 @@ import UIKit
 import ThreeDegreesClient
 import SwiftMoment
 
-class ActivityItemViewModel: ViewModelProtocol {
+class ActivityItemViewModel: ViewModelProtocol, Routable {
     var api: ActivityApiProtocol = ActivityApiController()
     var dateProposalApi: DateProposalApiProtocol = DateProposalApiController()
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let activityItem: Activity
     var showConfirmationCallback: ((message: String) -> ())? = nil
 
@@ -35,9 +35,9 @@ class ActivityItemViewModel: ViewModelProtocol {
         return icon
     }
 
-    init(activityItem: Activity, router: RoutingProtocol?) {
+    init(activityItem: Activity, appNavigator: AppNavigator?) {
         self.activityItem = activityItem
-        self.router = router
+        self.appNavigator = appNavigator
     }
 
     func acceptConnectionInvite(confirmation: String?) {
@@ -59,16 +59,11 @@ class ActivityItemViewModel: ViewModelProtocol {
 
     @objc func showMessagesScreen() {
         guard let username = activityUsername else { return }
-        api.getUser(username) {[weak self](user) in
-            guard let viewController = R.storyboard.myNetworkScene.chatViewController()
-                else { return }
-            viewController.interlocutor = user
-            self?.router?.showVcAction(vc: viewController)
-        }
+        self.routeToMessages(username)
     }
 
     func showMainTab() {
-        router?.switchTab(tabNumber: 1)
+        appNavigator?.switchTab(tabNumber: 1)
     }
 
     func postOriginUserToShow() {
@@ -84,7 +79,7 @@ class ActivityItemViewModel: ViewModelProtocol {
                     else { return }
                 vc.mode = .Accept(dates: dates.map { moment($0) })
                 vc.user = user
-                self?.router?.showVcAction(vc: vc)
+                self?.appNavigator?.showVcAction(vc: vc)
             }
         }
     }
@@ -96,7 +91,7 @@ class ActivityItemViewModel: ViewModelProtocol {
                 else { return }
             vc.mode = .Choose
             vc.user = user
-            self?.router?.showVcAction(vc: vc)
+            self?.appNavigator?.showVcAction(vc: vc)
         }
     }
 

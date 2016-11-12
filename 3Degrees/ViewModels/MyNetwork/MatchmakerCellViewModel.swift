@@ -10,5 +10,5 @@ import UIKit
 
 struct MatchmakerCellViewModel: ViewModelProtocol {
     var matchmaker: UserInfo
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 }

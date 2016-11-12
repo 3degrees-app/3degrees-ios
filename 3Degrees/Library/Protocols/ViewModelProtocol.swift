@@ -10,5 +10,5 @@ import Foundation
 import SVProgressHUD
 
 protocol ViewModelProtocol {
-    var router: RoutingProtocol? { get set }
+    var appNavigator: AppNavigator? { get set }
 }

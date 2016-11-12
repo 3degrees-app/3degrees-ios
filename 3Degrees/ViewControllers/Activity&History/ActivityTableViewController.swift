@@ -15,7 +15,7 @@ class ActivityTableViewController: UITableViewController, ViewProtocol, RootTabB
     private lazy var viewModel: ActivityTableViewModel = {[unowned self] in
         return ActivityTableViewModel(
             tabBarController: self.tabBarController!,
-            router: self,
+            appNavigator: self,
             tableView: self.tableView
         )
     }()

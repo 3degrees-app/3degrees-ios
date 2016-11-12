@@ -10,7 +10,7 @@ import UIKit
 
 class AccountViewController: UIViewController, ViewProtocol {
     private lazy var viewModel: AccountViewModel = {[unowned self] () in
-        return AccountViewModel(actionTableView: self.actionTableView, router: self)
+        return AccountViewModel(actionTableView: self.actionTableView, appNavigator: self)
     }()
 
     @IBOutlet weak var avatarImageView: UIImageView!

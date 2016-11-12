@@ -12,16 +12,16 @@ import Bond
 
 extension AddToNetworkViewModel: UISearchControllerDelegate {
     func willPresentSearchController(searchController: UISearchController) {
-        self.router?.navController?.navigationBar.translucent = true
+        self.appNavigator?.navController?.navigationBar.translucent = true
     }
 
     func willDismissSearchController(searchController: UISearchController) {
-        self.router?.navController?.navigationBar.translucent = false
+        self.appNavigator?.navController?.navigationBar.translucent = false
     }
 }
 
 class AddToNetworkViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var actionTitle: String {
         return "Add a New \(postfix)"
     }
@@ -51,13 +51,13 @@ class AddToNetworkViewModel: NSObject, ViewModelProtocol {
         return searchController
     }()
 
-    init(router: RoutingProtocol?) {
-        self.router = router
+    init(appNavigator: AppNavigator?) {
+        self.appNavigator = appNavigator
     }
 
     func tapped() {
         guard let searchController = searchController
             else { return }
-        router?.presentOnWindowRootVc(vc: searchController)
+        appNavigator?.presentOnWindowRootVc(vc: searchController)
     }
 }

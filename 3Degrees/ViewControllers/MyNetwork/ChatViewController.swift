@@ -11,7 +11,7 @@ import SlackTextViewController
 
 class ChatViewController: SLKTextViewController, ViewProtocol {
     private lazy var viewModel: ChatViewModel = {[unowned self] in
-        return ChatViewModel(tableView: self.tableView!, interlocutor: self.interlocutor!, router: self)
+        return ChatViewModel(tableView: self.tableView!, interlocutor: self.interlocutor!, appNavigator: self)
     }()
 
     var interlocutor: UserInfo? = nil

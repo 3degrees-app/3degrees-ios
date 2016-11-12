@@ -9,7 +9,7 @@
 import UIKit
 
 struct ContactViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let contact: UserInfo
     let userType: MyNetworkTab.UsersType
 

@@ -11,7 +11,7 @@ import Bond
 
 class FilterViewController: UITableViewController, ViewProtocol {
     private lazy var viewModel: FilterViewModel = {[unowned self] in
-        return FilterViewModel(router: self, delegate: self.delegate, prevFilter: self.prevFilter)
+        return FilterViewModel(appNavigator: self, delegate: self.delegate, prevFilter: self.prevFilter)
     }()
 
     @IBOutlet var borderViews: [UIView]!

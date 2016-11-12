@@ -17,7 +17,7 @@ protocol SignUpModeViewControllerDelegate {
 
 class SignUpModeViewController: UIViewController, ViewProtocol {
     private lazy var viewModel: SignUpModeViewModel = {
-        return SignUpModeViewModel (router: self)
+        return SignUpModeViewModel (appNavigator: self)
     }()
 
     @IBOutlet weak var fbSignUpButton: UIButton!

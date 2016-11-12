@@ -28,7 +28,7 @@ extension MyNetworkViewModel: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedRow = indexPath.row
-        self.router?.showAction(identifier: R.segue.myNetworkViewController.toProfile.identifier)
+        self.appNavigator?.showAction(identifier: R.segue.myNetworkViewController.toProfile.identifier)
     }
 }
 
@@ -94,7 +94,7 @@ extension MyNetworkViewModel: UITableViewDataSource {
 
     private func handleChatAction(index: Int) {
         self.selectedRow = index
-        self.router?.showAction(identifier: R.segue.myNetworkViewController.toChat.identifier)
+        self.appNavigator?.showAction(identifier: R.segue.myNetworkViewController.toChat.identifier)
     }
 
     private func handleRemoveAction(indexPath: NSIndexPath) {
@@ -150,7 +150,7 @@ extension MyNetworkViewModel: UITableViewDataSource {
 
 class MyNetworkViewModel: NSObject, ViewModelProtocol {
     var matchClickedDelegate: PersonForMatchingSelected? = nil
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var myNetworkApi: MyNetworkApiProtocol = MyNetworkApiController()
     var contacts: [UserInfo] = []
     let tableView: UITableView
@@ -166,13 +166,13 @@ class MyNetworkViewModel: NSObject, ViewModelProtocol {
     }
 
     lazy var addToNetworkViewModel: AddToNetworkViewModel = {[unowned self] in
-        let viewModel = AddToNetworkViewModel(router: self.router)
+        let viewModel = AddToNetworkViewModel(appNavigator: self.appNavigator)
         self.selectedTab.map { $0.tabKind }.bindTo(viewModel.userType)
         return viewModel
     }()
 
-    init(tableView: UITableView, tabsView: TabsView, router: RoutingProtocol) {
-        self.router = router
+    init(tableView: UITableView, tabsView: TabsView, appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
         self.tableView = tableView
         self.tabsHeader = tabsView
         super.init()

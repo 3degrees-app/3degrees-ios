@@ -14,7 +14,7 @@ class DateProposalsCollectionViewController: UICollectionViewController {
     private lazy var viewModel: DateProposalsCollectionViewModel = {[unowned self] in
         let unwrappedCollectionView = self.collectionView ?? UICollectionView()
         return DateProposalsCollectionViewModel(collectionView: unwrappedCollectionView,
-                                                router: self)
+                                                appNavigator: self)
     }()
 
     var enterForegroundCallback: (() -> ())?

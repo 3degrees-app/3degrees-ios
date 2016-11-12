@@ -14,5 +14,5 @@ struct HeaderCellViewModel: ViewModelProtocol {
     let info: String
     let chatButtonPressed: () -> ()
     let matchButtonPressed: () -> ()
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 }

@@ -14,7 +14,7 @@ import Bond
 class ScheduleDateTimeViewController: UIViewController, ViewProtocol {
     lazy var viewModel: ScheduleDateTimeViewModel = {[unowned self] in
         return ScheduleDateTimeViewModel(dates: self.dates,
-                                         router: self,
+                                         appNavigator: self,
                                          timesCollection: self.timesCollectionView,
                                          calendarView: self.calendarView,
                                          selectedDatesCount: self.selectedDatesCount)

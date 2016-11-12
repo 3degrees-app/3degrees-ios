@@ -185,7 +185,7 @@ extension PairUpViewModel {
 
 class PairUpViewModel: NSObject, ViewModelProtocol {
     var api: PairUpApiProtocol = PairUpApiController()
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     let tableView: UITableView
     let superTableViewDataSource: UITableViewDataSource
 
@@ -210,8 +210,8 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
 
     var filterModel: FilterModel? = nil
 
-    init(router: RoutingProtocol, tableView: UITableView, superTableViewDataSource: UITableViewDataSource) {
-        self.router = router
+    init(appNavigator: AppNavigator, tableView: UITableView, superTableViewDataSource: UITableViewDataSource) {
+        self.appNavigator = appNavigator
         self.tableView = tableView
         self.superTableViewDataSource = superTableViewDataSource
         pairUpButton = Observable("Pair Up")
@@ -223,8 +223,8 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
         degree = Observable(nil)
         school = Observable(nil)
         bio = Observable(nil)
-        mySinglesViewModel = ProposedPeopleCollectionViewModel(router: router, type: .Mine)
-        proposedSinglesViewModel = ProposedPeopleCollectionViewModel(router: router, type: .Alian)
+        mySinglesViewModel = ProposedPeopleCollectionViewModel(appNavigator: appNavigator, type: .Mine)
+        proposedSinglesViewModel = ProposedPeopleCollectionViewModel(appNavigator: appNavigator, type: .Alian)
         super.init()
         mySinglesViewModel.delegate = self
         proposedSinglesViewModel.delegate = self
@@ -274,7 +274,7 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
     }
 
     func openFiltersPage() {
-        self.router?.showAction(
+        self.appNavigator?.showAction(
             identifier: R.segue.pairUpViewController.toFilters.identifier
         )
     }

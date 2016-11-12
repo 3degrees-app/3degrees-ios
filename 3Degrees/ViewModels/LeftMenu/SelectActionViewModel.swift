@@ -16,7 +16,7 @@ protocol SelectActionViewModelProtocol {
 }
 
 struct SelectActionViewModel: ViewModelProtocol, SelectActionViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let action: AccountAction
     let observableVal: Observable<String?>
 

@@ -99,13 +99,13 @@ extension ProposedPeopleCollectionViewModel: UICollectionViewDelegateFlowLayout 
 
 class ProposedPeopleCollectionViewModel: NSObject, ViewModelProtocol {
     var people: [UserInfo] = []
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var delegate: ProposedPeopleDelegate? = nil
     let type: Own
     var collectionView: UICollectionView? = nil
 
-    init(router: RoutingProtocol, type: Own) {
-        self.router = router
+    init(appNavigator: AppNavigator, type: Own) {
+        self.appNavigator = appNavigator
         self.type = type
     }
 

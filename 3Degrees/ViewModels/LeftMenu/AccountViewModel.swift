@@ -38,7 +38,7 @@ extension AccountViewModel: UITableViewDelegate {
         switch currentAction {
         case .EditProfile:
             let segueId = R.segue.accountViewController.toEdit.identifier
-            router?.showAction(identifier: segueId)
+            appNavigator?.showAction(identifier: segueId)
             break
         case .LogOut:
             logout()
@@ -55,7 +55,7 @@ extension AccountViewModel: UITableViewDelegate {
             break
         case .Preference:
             let segueId = R.segue.accountViewController.toSelectPreferene.identifier
-            router?.showAction(identifier: segueId)
+            appNavigator?.showAction(identifier: segueId)
         default:
             break
         }
@@ -72,7 +72,7 @@ extension AccountViewModel: UITableViewDelegate {
         default:
             break
         }
-        router?.showAction(
+        appNavigator?.showAction(
             identifier: R.segue.accountViewController.toStaticContent.identifier
         )
     }
@@ -87,7 +87,7 @@ extension AccountViewModel: UITableViewDelegate {
         default:
             break
         }
-        router?.showAction(
+        appNavigator?.showAction(
             identifier: R.segue.accountViewController.toStaticContent.identifier
         )
     }
@@ -187,7 +187,7 @@ extension AccountViewModel: SelectValueDelegate {
 }
 
 class AccountViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var staticContentApi: StaticContentApiProtocol = StaticContentApiController()
     var authApi: AuthApiProtocol = AuthApiController()
     var userApi: UserApiProtocol = UserApiController()
@@ -212,9 +212,9 @@ class AccountViewModel: NSObject, ViewModelProtocol {
 
     var actionsTableView: UITableView
 
-    init(actionTableView: UITableView, router: RoutingProtocol) {
+    init(actionTableView: UITableView, appNavigator: AppNavigator) {
         self.actionsTableView = actionTableView
-        self.router = router
+        self.appNavigator = appNavigator
         AppController.shared.currentUserImage.bindTo(observableAvatarImage)
         super.init()
         AppController.shared.currentUserMode.observeNew(self.observeModeChanges)
@@ -261,7 +261,7 @@ class AccountViewModel: NSObject, ViewModelProtocol {
         composeSms.messageComposeDelegate = self
         staticContentApi.getWithType(type) {[weak self] (content) in
             composeSms.body = content
-            self?.router?.presentVcAction(vc: composeSms)
+            self?.appNavigator?.presentVcAction(vc: composeSms)
         }
     }
 

@@ -14,7 +14,7 @@ class DateProfileViewController: UITableViewController, ViewProtocol {
             user: self.user,
             selectedTab: self.selectedTab,
             tableView: self.tableView,
-            router: self
+            appNavigator: self
         )
         if let tabBarController = self.tabBarController as? TabBarViewController {
             viewModel.matchingDelegate = tabBarController

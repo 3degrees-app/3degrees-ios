@@ -1,5 +1,5 @@
 //
-//  RoutingProtocol.swift
+//  AppNavigator.swift
 //  3Degrees
 //
 //  Created by Gigster Developer on 5/17/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RoutingProtocol {
+protocol AppNavigator {
     var showAction: (identifier: String) -> () { get }
     var presentAction: (identifier: String) -> () { get }
     var showVcAction: (vc: UIViewController) -> () { get }
@@ -21,7 +21,7 @@ protocol RoutingProtocol {
     var navController: UINavigationController? { get }
 }
 
-extension RoutingProtocol where Self: UIViewController {
+extension AppNavigator where Self: UIViewController {
     var showAction: (identifier: String) -> () {
         return {[unowned self](identifier) in
             self.performSegueWithIdentifier(identifier, sender: self)
@@ -74,4 +74,4 @@ extension RoutingProtocol where Self: UIViewController {
 }
 
 
-extension UIViewController: RoutingProtocol {}
+extension UIViewController: AppNavigator {}

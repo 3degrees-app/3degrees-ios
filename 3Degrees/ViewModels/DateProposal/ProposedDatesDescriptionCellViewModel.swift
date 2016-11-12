@@ -9,7 +9,7 @@
 import Foundation
 
 struct ProposedDatesDescriptionCellViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 
     let mode: ScheduleResultsViewController.ScreenMode
 

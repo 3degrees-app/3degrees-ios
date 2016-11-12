@@ -9,7 +9,7 @@
 import Foundation
 
 struct ResetPasswordViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     var api: AuthApiProtocol = AuthApiController()
 
     func resetPassword(password: String, completion: () -> ()) {

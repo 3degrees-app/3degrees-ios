@@ -68,7 +68,7 @@ extension DateProfileViewModel: UITableViewDataSource {
         let viewModel = TwoFieldsCellViewModel(icon: icon,
                                                title: title,
                                                subtitle: subtitle,
-                                               router: nil)
+                                               appNavigator: nil)
         guard let cell: TwoFieldsTableViewCell = tableView.getCell(viewModel,
                                                                    cellIdentifier: cellId)
             else { return UITableViewCell() }
@@ -77,7 +77,7 @@ extension DateProfileViewModel: UITableViewDataSource {
 
     private func getOneFieldCell(title: String,
                                  icon: String = "") -> UITableViewCell {
-        let viewModel = OneFieldCellViewModel(icon: icon, title: title, router: nil)
+        let viewModel = OneFieldCellViewModel(icon: icon, title: title, appNavigator: nil)
         let cellId = R.reuseIdentifier.oneFieldCell.identifier
         guard let cell: OneFieldTableViewCell = tableView.getCell(viewModel,
                                                                   cellIdentifier: cellId)
@@ -94,7 +94,7 @@ extension DateProfileViewModel: UITableViewDataSource {
             info: info,
             chatButtonPressed: goToChat,
             matchButtonPressed: matchUser,
-            router: router
+            appNavigator: appNavigator
         )
         let cellId = R.reuseIdentifier.headerCell.identifier
         guard let cell: HeaderTableViewCell = tableView.getCell(viewModel,
@@ -105,7 +105,7 @@ extension DateProfileViewModel: UITableViewDataSource {
     }
 
     private func getMatchmakersCell(matchmakers: [UserInfo]) -> UITableViewCell {
-        let viewModel = MatchmakersViewModel(matchmakers: matchmakers, router: router)
+        let viewModel = MatchmakersViewModel(matchmakers: matchmakers, appNavigator: appNavigator)
         let cellId = R.reuseIdentifier.matchmakerTableViewCell.identifier
         guard let cell: MatchmakerTableViewCell = tableView.getCell(viewModel,
                                                                     cellIdentifier: cellId)
@@ -116,7 +116,7 @@ extension DateProfileViewModel: UITableViewDataSource {
 
     func goToChat() {
         let segueId = R.segue.dateProfileViewController.toChat.identifier
-        router?.showAction(identifier: segueId)
+        appNavigator?.showAction(identifier: segueId)
         return
     }
 
@@ -135,14 +135,14 @@ class DateProfileViewModel: NSObject, ViewModelProtocol {
     let user: UserInfo
     let tableView: UITableView
     let selectedTab: MyNetworkTab
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var matchmakersViewModel: MatchmakersViewModel? = nil
     let rowsDescriptors: [TableRows]
 
-    init(user: UserInfo, selectedTab: MyNetworkTab, tableView: UITableView, router: RoutingProtocol) {
+    init(user: UserInfo, selectedTab: MyNetworkTab, tableView: UITableView, appNavigator: AppNavigator) {
         self.user = user
         self.tableView = tableView
-        self.router = router
+        self.appNavigator = appNavigator
         self.selectedTab = selectedTab
         self.rowsDescriptors = TableRows.getRowsForUser(user, userType: selectedTab.tabKind)
     }

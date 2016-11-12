@@ -13,7 +13,7 @@ import Bond
 
 class ScheduleDateTimeViewModel: NSObject, ViewModelProtocol {
     var dates: [Moment] = []
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 
     var currentDate: Moment
     var selectedDateTimes: [Moment]
@@ -25,26 +25,26 @@ class ScheduleDateTimeViewModel: NSObject, ViewModelProtocol {
     var currentMonthName: Observable<String>
 
     convenience init(dates: [NSDate],
-                     router: RoutingProtocol?,
+                     appNavigator: AppNavigator?,
                      timesCollection: UICollectionView,
                      calendarView: JTAppleCalendarView,
                      selectedDatesCount: Observable<Int>) {
         self.init(dates: dates.map { moment($0) },
-                  router: router,
+                  appNavigator: appNavigator,
                   timesCollection: timesCollection,
                   calendarView: calendarView,
                   selectedDatesCount: selectedDatesCount)
     }
 
     init(dates: [Moment],
-         router: RoutingProtocol?,
+         appNavigator: AppNavigator?,
          timesCollection: UICollectionView,
          calendarView: JTAppleCalendarView,
          selectedDatesCount: Observable<Int>) {
         self.dates = dates
         self.currentDate = dates.first ?? moment()
         self.selectedDateTimes = dates
-        self.router = router
+        self.appNavigator = appNavigator
         let baseDuration = 43200 // 12 PM in seconds
         self.timesCollectionView = timesCollection
         self.calendarView = calendarView
@@ -55,7 +55,7 @@ class ScheduleDateTimeViewModel: NSObject, ViewModelProtocol {
     }
 
     func done() {
-        router?.showAction(identifier: R.segue.scheduleDateTimeViewController
+        appNavigator?.showAction(identifier: R.segue.scheduleDateTimeViewController
                                               .doneSelectingDates.identifier)
     }
 

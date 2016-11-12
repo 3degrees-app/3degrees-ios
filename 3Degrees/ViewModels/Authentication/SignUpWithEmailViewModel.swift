@@ -34,7 +34,7 @@ extension SignUpWithEmailViewModel: SignUpWithEmailViewDelegate {
             let segueId = R.segue
                            .signUpWithEmailViewController
                            .toModeSelection.identifier
-            self.router?.showAction(identifier: segueId)
+            self.appNavigator?.showAction(identifier: segueId)
         }
     }
 
@@ -48,7 +48,7 @@ extension SignUpWithEmailViewModel: SignUpWithEmailViewDelegate {
 
 struct SignUpWithEmailViewModel: ViewModelProtocol {
 
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol
     let genderPickerDelegate: UIPickerViewDelegate
     let genderPickerDataSource: UIPickerViewDataSource
@@ -62,8 +62,8 @@ struct SignUpWithEmailViewModel: ViewModelProtocol {
     var birthday: String? = ""
     var gender: PrivateUser.Gender? = nil
 
-    init(router: RoutingProtocol) {
-        self.router = router
+    init(appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
         self.apiController = AuthApiController()
         self.genderObservableValue = Observable(gender?.rawValue)
         self.genderPickerDelegate = GenderPickerDelegate(observableValue: self.genderObservableValue)
@@ -81,6 +81,6 @@ struct SignUpWithEmailViewModel: ViewModelProtocol {
     }
 
     func backButtonPressed() {
-        router?.popAction()
+        appNavigator?.popAction()
     }
 }

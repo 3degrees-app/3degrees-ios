@@ -32,14 +32,14 @@ extension ProfileViewModel: ProfileViewModelProtocol {
 
     func avatarTapped() {
         guard let picker = imagePickerController else { return }
-        router?.presentVcAction(vc: picker)
+        appNavigator?.presentVcAction(vc: picker)
     }
 
     func editButtonTapped() {
         updateImage {[unowned self] in
             self.userApi.updateUser(self.user) {[unowned self] in
                 AppController.shared.currentUser.next(self.user)
-                self.router?.popAction()
+                self.appNavigator?.popAction()
             }
         }
     }
@@ -187,7 +187,7 @@ extension ProfileViewModel: UITableViewDelegate {
 }
 
 class ProfileViewModel: NSObject {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var userApi: UserApiProtocol = UserApiController()
 
     let imagePickerController: ImagePickerController?
@@ -200,9 +200,9 @@ class ProfileViewModel: NSObject {
 
     init(user: PrivateUser,
          tableView: UITableView,
-         router: RoutingProtocol,
+         appNavigator: AppNavigator,
          genderObservableValue: Observable<String?>) {
-        self.router = router
+        self.appNavigator = appNavigator
         self.user = user
         self.tableView = tableView
         self.genderPickerDataSource = GenderPickerDataSource()

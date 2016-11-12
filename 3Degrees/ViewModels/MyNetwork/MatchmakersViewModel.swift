@@ -24,7 +24,7 @@ extension MatchmakersViewModel: UICollectionViewDataSource {
             ) as? MatchmakerCollectionViewCell
             else { return UICollectionViewCell() }
         let matchmaker = matchmakers[indexPath.item]
-        let viewModel = MatchmakerCellViewModel(matchmaker: matchmaker, router: router)
+        let viewModel = MatchmakerCellViewModel(matchmaker: matchmaker, appNavigator: appNavigator)
         cell.configure(viewModel)
         return cell
     }
@@ -35,7 +35,7 @@ extension MatchmakersViewModel: UICollectionViewDelegate {
                         didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedMatchmakerIndex.next(indexPath.item)
         let identifier = R.segue.dateProfileViewController.toChatWithMatchmaker.identifier
-        router?.showAction(identifier: identifier)
+        appNavigator?.showAction(identifier: identifier)
     }
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -45,13 +45,13 @@ extension MatchmakersViewModel: UICollectionViewDelegate {
 }
 
 class MatchmakersViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let matchmakers: [UserInfo]
     var selectedMatchmakerIndex: Observable<Int> = Observable(0)
 
-    init(matchmakers: [UserInfo], router: RoutingProtocol?) {
+    init(matchmakers: [UserInfo], appNavigator: AppNavigator?) {
         self.matchmakers = matchmakers
-        self.router = router
+        self.appNavigator = appNavigator
     }
 
     func getCurrentSelectedMatchmaker() -> UserInfo {

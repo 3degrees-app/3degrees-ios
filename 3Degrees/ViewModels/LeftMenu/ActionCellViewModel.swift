@@ -14,7 +14,7 @@ protocol ActionCellViewModelProtocol {
 }
 
 class ActionCellViewModel: ActionCellViewModelProtocol, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     let action: AccountAction
     var currentUserMode: Mode
 

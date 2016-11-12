@@ -10,7 +10,7 @@ import UIKit
 
 class MyNetworkViewController: UIViewController, ViewProtocol, RootTabBarViewControllerProtocol {
     private lazy var viewModel: MyNetworkViewModel = {[unowned self] in
-        let viewModel = MyNetworkViewModel(tableView: self.tableView, tabsView: self.tabsView, router: self)
+        let viewModel = MyNetworkViewModel(tableView: self.tableView, tabsView: self.tabsView, appNavigator: self)
         if let tabBarController = self.tabBarController as? TabBarViewController {
             viewModel.matchClickedDelegate = tabBarController
         }

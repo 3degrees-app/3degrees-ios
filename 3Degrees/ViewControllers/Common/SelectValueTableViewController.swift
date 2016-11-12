@@ -18,7 +18,7 @@ class SelectValueTableViewController: UITableViewController, ViewProtocol {
             self.navigationController?.popViewControllerAnimated(true)
             return
         }
-        return SelectValueViewModel(router: self, values: self.values, delegate: self.delegate!)
+        return SelectValueViewModel(appNavigator: self, values: self.values, delegate: self.delegate!)
     }()
 
     var values: [String] = []

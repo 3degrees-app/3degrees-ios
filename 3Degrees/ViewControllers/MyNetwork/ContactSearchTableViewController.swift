@@ -11,7 +11,7 @@ import Bond
 
 class ContactSearchTableViewController: UITableViewController, ViewProtocol {
     private lazy var viewModel: ContactSearchViewModel = {[unowned self] in
-        var viewModel = ContactSearchViewModel(router: self, mode: self.mode)
+        var viewModel = ContactSearchViewModel(appNavigator: self, mode: self.mode)
         viewModel.selectionDelegate = self.selectionDelegate
         self.userType.bindTo(viewModel.userType)
         return viewModel

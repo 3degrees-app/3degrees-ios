@@ -12,7 +12,7 @@ import Rswift
 import SVProgressHUD
 
 struct ForgotPasswordViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     var apiController: AuthApiProtocol? = AuthApiController()
 
     func resetPassword(email: String, completion: () -> ()) {

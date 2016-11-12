@@ -180,4 +180,9 @@ struct Constants {
         static let CategoryColor = UIColor.blackColor()
         static let BorderColor = UIColor(r: 174, g: 171, b: 164)
     }
+
+    enum Routes: String {
+        case Messages = "/messages"
+        case Users = "/users"
+    }
 }

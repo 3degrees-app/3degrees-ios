@@ -11,5 +11,5 @@ import Foundation
 struct OneFieldCellViewModel: ViewModelProtocol {
     let icon: String
     let title: String
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 }

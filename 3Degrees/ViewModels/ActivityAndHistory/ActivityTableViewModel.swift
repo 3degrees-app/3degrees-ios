@@ -11,7 +11,7 @@ import Rswift
 import ThreeDegreesClient
 import SwiftPaginator
 
-extension ActivityTableViewModel: UITableViewDataSource {
+extension ActivityTableViewModel: UITableViewDataSource, Routable {
     func tableView(tableView: UITableView,
                    estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 200
@@ -40,7 +40,7 @@ extension ActivityTableViewModel: UITableViewDataSource {
         guard let typelessCell = tableView.dequeueReusableCellWithIdentifier(cellId)
             else { return UITableViewCell() }
         guard let cell = typelessCell as? ActivityItemTableViewCell else { return typelessCell }
-        cell.configure(ActivityItemViewModel(activityItem: item, router: self.router))
+        cell.configure(ActivityItemViewModel(activityItem: item, appNavigator: self.appNavigator))
         return cell
     }
 }
@@ -49,13 +49,7 @@ extension ActivityTableViewModel: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let username = activityItems[indexPath.row].originUser?.username
             else { return }
-        api.getUser(username) {[unowned self] (user) in
-            guard let viewController = R.storyboard.myNetworkScene.dateProfileViewController()
-                else { return }
-            viewController.user = user
-            viewController.selectedTab = MyNetworkTab.First
-            self.router?.showVcAction(vc: viewController)
-        }
+        self.routeToProfile(username)
     }
 
     func tableView(tableView: UITableView,
@@ -72,14 +66,14 @@ extension ActivityTableViewModel: UITableViewDelegate {
 
 class ActivityTableViewModel: NSObject, ViewModelProtocol {
     var api: ActivityApiProtocol = ActivityApiController()
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var activityItems: [Activity] = [Activity]()
     let tableView: UITableView
     var paginator: Paginator<Activity>? = nil
     var refreshCompletedCallback: (() -> ())? = nil
 
-    init(tabBarController: UITabBarController, router: RoutingProtocol, tableView: UITableView) {
-        self.router = router
+    init(tabBarController: UITabBarController, appNavigator: AppNavigator, tableView: UITableView) {
+        self.appNavigator = appNavigator
         self.tableView = tableView
         super.init()
         paginator = Paginator(pageSize: 40,

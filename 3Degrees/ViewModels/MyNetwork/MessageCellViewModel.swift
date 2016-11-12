@@ -10,7 +10,7 @@ import Foundation
 import ThreeDegreesClient
 
 struct MessageCellViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let message: Message
 
     init(message: Message) {

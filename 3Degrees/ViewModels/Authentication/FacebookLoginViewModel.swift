@@ -31,11 +31,11 @@ extension FacebookLoginDelegate where Self: ViewModelProtocol {
 }
 
 struct FacebookLoginViewModel: ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var delegate: FacebookLoginDelegate?
 
-    init(delegate: FacebookLoginDelegate? = nil, router: RoutingProtocol? = nil) {
-        self.router = router
+    init(delegate: FacebookLoginDelegate? = nil, appNavigator: AppNavigator? = nil) {
+        self.appNavigator = appNavigator
         self.delegate = delegate
     }
 

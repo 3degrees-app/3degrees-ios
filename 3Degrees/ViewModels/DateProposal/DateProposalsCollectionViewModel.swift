@@ -15,13 +15,13 @@ import ThreeDegreesClient
 
 class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
     var api: DateProposalApiProtocol = DateProposalApiController()
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     var users: [UserInfo] = []
     var collectionView: UICollectionView
     var paginator: Paginator<UserInfo>? = nil
 
-    init(collectionView: UICollectionView, router: RoutingProtocol?) {
-        self.router = router
+    init(collectionView: UICollectionView, appNavigator: AppNavigator?) {
+        self.appNavigator = appNavigator
         self.collectionView = collectionView
         super.init()
         self.collectionView.delegate = self
@@ -131,7 +131,7 @@ extension DateProposalsCollectionViewModel: UICollectionViewDelegate,
             forIndexPath: indexPath) else {
             return UICollectionViewCell()
         }
-        let viewModel = DateProposalViewModel(router: router,
+        let viewModel = DateProposalViewModel(appNavigator: appNavigator,
                                               user: users[indexPath.row])
         viewModel.delegate = self
         cell.configure(viewModel)

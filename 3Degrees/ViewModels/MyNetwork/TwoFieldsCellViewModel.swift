@@ -12,5 +12,5 @@ struct TwoFieldsCellViewModel: ViewModelProtocol {
     let icon: String
     let title: String
     let subtitle: String
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
 }

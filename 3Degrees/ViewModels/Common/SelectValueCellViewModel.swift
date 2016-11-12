@@ -13,7 +13,7 @@ protocol SelectValueCellViewModelProtocol: ViewModelProtocol {
 }
 
 struct SelectValueCellViewModel: SelectValueCellViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let value: String
 
     init(value: String) {

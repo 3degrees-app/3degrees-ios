@@ -46,10 +46,10 @@ class DateProposalViewModel: NSObject, ViewModelProtocol {
     var superDataSource: UITableViewDataSource? = nil
     var user: UserInfo
     var delegate: DateProposalRefreshDelegate? = nil
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
 
-    init(router: RoutingProtocol?, user: UserInfo) {
-        self.router = router
+    init(appNavigator: AppNavigator?, user: UserInfo) {
+        self.appNavigator = appNavigator
         self.user = user
     }
 
@@ -57,7 +57,7 @@ class DateProposalViewModel: NSObject, ViewModelProtocol {
         guard let username = user.username else { return }
         api.acceptDate(username) {[weak self] shouldSuggestDates in
             if (shouldSuggestDates) {
-                self?.router?.showAction(
+                self?.appNavigator?.showAction(
                     identifier: R.segue.dateProposalsCollectionViewController
                                        .scheduleTime.identifier
                 )

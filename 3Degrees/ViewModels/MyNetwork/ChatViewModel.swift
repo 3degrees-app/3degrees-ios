@@ -22,7 +22,7 @@ extension ChatViewModel: UITableViewDelegate {
             selectedImage = imageCell.mainView.image
             let quickLookVc = QLPreviewController()
             quickLookVc.dataSource = self
-            self.router?.presentVcAction(vc: quickLookVc)
+            self.appNavigator?.presentVcAction(vc: quickLookVc)
         }
     }
 }
@@ -118,7 +118,7 @@ class ChatViewModel: NSObject, ViewModelProtocol {
     let imageCellIdentifier = "ImageCell"
     let messageCellIdentifier = "MessageCell"
 
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var myNetworkApi: MyNetworkApiProtocol = MyNetworkApiController()
     let tableView: UITableView
     let interlocutor: UserInfo
@@ -127,8 +127,8 @@ class ChatViewModel: NSObject, ViewModelProtocol {
     var selectedImage: UIImage? = nil
     var paginator: Paginator<Message>? = nil
 
-    init(tableView: UITableView, interlocutor: UserInfo, router: RoutingProtocol) {
-        self.router = router
+    init(tableView: UITableView, interlocutor: UserInfo, appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
         self.tableView = tableView
         self.interlocutor = interlocutor
         self.tableView.registerClass(ImageMessageTableViewCell.classForCoder(),
@@ -187,7 +187,7 @@ class ChatViewModel: NSObject, ViewModelProtocol {
 
     func chooseImage() {
         imagePickerController.delegate = self
-        router?.presentVcAction(vc: imagePickerController)
+        appNavigator?.presentVcAction(vc: imagePickerController)
     }
 
     func insertMessage(message: Message) {

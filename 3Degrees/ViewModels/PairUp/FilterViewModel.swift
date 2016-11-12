@@ -43,11 +43,11 @@ extension FilterViewModel: UITextFieldDelegate {
 }
 
 class FilterViewModel: NSObject, ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var delegate: FilteringProtocol?
 
-    init(router: RoutingProtocol, delegate: FilteringProtocol?, prevFilter: FilterModel?) {
-        self.router = router
+    init(appNavigator: AppNavigator, delegate: FilteringProtocol?, prevFilter: FilterModel?) {
+        self.appNavigator = appNavigator
         self.delegate = delegate
         observableAgeLeftValue.next(prevFilter?.ageFrom)
         observableAgeRightValue.next(prevFilter?.ageTo)
@@ -84,12 +84,12 @@ class FilterViewModel: NSObject, ViewModelProtocol {
                                  ageTo: observableAgeRightValue.value,
                                  gender: observableGenderValue.value)
         delegate?.filtersSelected(filter)
-        self.router?.popAction()
+        self.appNavigator?.popAction()
     }
 
     func handleMatchmaker() {
         guard let controller = searchController else { return }
-        self.router?.presentVcAction(vc: controller)
+        self.appNavigator?.presentVcAction(vc: controller)
     }
 
     func resetFilters() {

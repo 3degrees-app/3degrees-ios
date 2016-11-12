@@ -17,7 +17,7 @@ protocol SignInViewControllerProtocol {
 
 class SignInViewController: UIViewController, ViewProtocol {
     private lazy var viewModel: SignInViewModel = {[unowned self] in
-        return SignInViewModel (router: self)
+        return SignInViewModel (appNavigator: self)
     }()
 
     @IBOutlet weak var fbSignInButton: UIButton!

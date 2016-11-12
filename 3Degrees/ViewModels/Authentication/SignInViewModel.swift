@@ -43,7 +43,7 @@ extension SignInViewModel: FacebookLoginDelegate {
 }
 
 struct SignInViewModel: ViewModelProtocol {
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol = AuthApiController()
     lazy var facebookLoginViewModel: FacebookLoginViewModel = {
         return FacebookLoginViewModel(delegate: self)
@@ -52,8 +52,8 @@ struct SignInViewModel: ViewModelProtocol {
     var email: String? = ""
     var password: String? = ""
 
-    init(router: RoutingProtocol) {
-        self.router = router
+    init(appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
     }
 
     var canSignIn: Bool {
@@ -69,10 +69,10 @@ struct SignInViewModel: ViewModelProtocol {
     }
 
     func backButtonClicked() {
-        router?.popAction()
+        appNavigator?.popAction()
     }
 
     func loginCompleted() {
-        router?.showAction(identifier: R.segue.signInViewController.toModeSelection.identifier)
+        appNavigator?.showAction(identifier: R.segue.signInViewController.toModeSelection.identifier)
     }
 }

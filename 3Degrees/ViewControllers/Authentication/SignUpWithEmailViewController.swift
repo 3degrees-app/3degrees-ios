@@ -13,7 +13,7 @@ import ThreeDegreesClient
 class SignUpWithEmailViewController: UITableViewController, ViewProtocol {
 
     lazy var viewModel: SignUpWithEmailViewModel = {[unowned self] in
-        return SignUpWithEmailViewModel (router: self)
+        return SignUpWithEmailViewModel (appNavigator: self)
     }()
 
     @IBOutlet weak var firstNameField: UITextField!

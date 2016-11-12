@@ -12,18 +12,18 @@ import SwiftMoment
 
 class ScheduleResultsViewModel: NSObject, ViewModelProtocol {
     var api: DateProposalApiProtocol = DateProposalApiController()
-    var router: RoutingProtocol?
+    var appNavigator: AppNavigator?
     var user: UserInfo
     var selectedDateTimes: Observable<[Moment]>
     var mode: ScheduleResultsViewController.ScreenMode
     var tableView: UITableView
 
-    init(router: RoutingProtocol,
+    init(appNavigator: AppNavigator,
          mode: ScheduleResultsViewController.ScreenMode,
          dates: [Moment] = [],
          user: UserInfo,
          tableView: UITableView) {
-        self.router = router
+        self.appNavigator = appNavigator
         self.mode = mode
         self.selectedDateTimes = Observable(dates)
         self.user = user
@@ -41,10 +41,10 @@ class ScheduleResultsViewModel: NSObject, ViewModelProtocol {
             guard let username = user.username else { return }
             api.suggestDates(username,
                              dates: selectedDateTimes.value.map { $0.date }) {[weak self] in
-                self?.router?.popAction()
+                self?.appNavigator?.popAction()
             }
         default:
-            router?.showAction(identifier: R.segue.scheduleResultsViewController
+            appNavigator?.showAction(identifier: R.segue.scheduleResultsViewController
                                                   .fromScheduleToChat.identifier)
         }
     }
@@ -116,7 +116,7 @@ extension ScheduleResultsViewModel: UITableViewDelegate, UITableViewDataSource {
             ) as? SelectedDateTimeTableViewCell else { return UITableViewCell() }
         let viewModel = SelectedDateTimeCellViewModel(
             value: selectedDateTimes.value[indexPath.row],
-            router: router,
+            appNavigator: appNavigator,
             user: user,
             mode: mode)
         cell.configure(viewModel)
@@ -128,6 +128,6 @@ extension ScheduleResultsViewModel: UITableViewDelegate, UITableViewDataSource {
     }
 
     func showScheduleTimesScreen() {
-        router?.showAction(identifier: R.segue.scheduleResultsViewController.scheduleDateTime.identifier)
+        appNavigator?.showAction(identifier: R.segue.scheduleResultsViewController.scheduleDateTime.identifier)
     }
 }

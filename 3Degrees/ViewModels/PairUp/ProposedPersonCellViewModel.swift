@@ -10,7 +10,7 @@ import Foundation
 import ThreeDegreesClient
 
 struct ProposedPersonCellViewModel: ViewModelProtocol {
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let person: UserInfo
 
     init(person: UserInfo) {

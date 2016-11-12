@@ -11,7 +11,7 @@ import SwiftMoment
 
 struct SelectedDateTimeCellViewModel: ViewModelProtocol {
     var api: DateProposalApiProtocol = DateProposalApiController()
-    var router: RoutingProtocol? = nil
+    var appNavigator: AppNavigator? = nil
     let value: Moment
     let user: UserInfo
     let mode: ScheduleResultsViewController.ScreenMode
@@ -21,11 +21,11 @@ struct SelectedDateTimeCellViewModel: ViewModelProtocol {
     }
 
     init(value: Moment,
-         router: RoutingProtocol?,
+         appNavigator: AppNavigator?,
          user: UserInfo,
          mode: ScheduleResultsViewController.ScreenMode) {
         self.value = value
-        self.router = router
+        self.appNavigator = appNavigator
         self.user = user
         self.mode = mode
     }
@@ -33,7 +33,7 @@ struct SelectedDateTimeCellViewModel: ViewModelProtocol {
     func accept() {
         guard let username = user.username else { return }
         api.acceptSuggestedDate(username, date: value.date) {
-            self.router?.popAction()
+            self.appNavigator?.popAction()
         }
     }
 }

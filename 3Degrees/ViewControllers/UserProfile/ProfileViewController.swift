@@ -19,7 +19,7 @@ class ProfileViewController: UITableViewController, ViewProtocol {
         let user = self.user ?? AppController.shared.currentUser.value!
         return ProfileViewModel(user: user,
                                 tableView: self.tableView,
-                                router: self,
+                                appNavigator: self,
                                 genderObservableValue: self.genderTextField.bnd_text)
     }()
 

@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 class PairUpViewController: UITableViewController, ViewProtocol, RootTabBarViewControllerProtocol {
     private lazy var viewModel: PairUpViewModel = {[unowned self] in
         let viewModel = PairUpViewModel(
-            router: self,
+            appNavigator: self,
             tableView: self.tableView,
             superTableViewDataSource: self
         )
