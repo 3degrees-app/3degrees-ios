@@ -1762,6 +1762,7 @@ struct _R: Rswift.Validatable {
       let bundle = _R.hostingBundle
       let name = "UserProfileScene"
       let profileViewController = StoryboardViewControllerResource<ProfileViewController>(identifier: "ProfileViewController")
+      let staticContentViewController = StoryboardViewControllerResource<StaticContentViewController>(identifier: "StaticContentViewController")
       let userProfileNavController = StoryboardViewControllerResource<UINavigationController>(identifier: "UserProfileNavController")
       
       func accountViewController(_: Void) -> AccountViewController? {
@@ -1770,6 +1771,10 @@ struct _R: Rswift.Validatable {
       
       func profileViewController(_: Void) -> ProfileViewController? {
         return UIStoryboard(resource: self).instantiateViewController(profileViewController)
+      }
+      
+      func staticContentViewController(_: Void) -> StaticContentViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(staticContentViewController)
       }
       
       func userProfileNavController(_: Void) -> UINavigationController? {
@@ -1786,6 +1791,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "importAvatarFromFb") == nil { throw ValidationError(description: "[R.swift] Image named 'importAvatarFromFb' is used in storyboard 'UserProfileScene', but couldn't be loaded.") }
         if _R.storyboard.userProfileScene().userProfileNavController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'userProfileNavController' could not be loaded from storyboard 'UserProfileScene' as 'UINavigationController'.") }
         if _R.storyboard.userProfileScene().accountViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'accountViewController' could not be loaded from storyboard 'UserProfileScene' as 'AccountViewController'.") }
+        if _R.storyboard.userProfileScene().staticContentViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'staticContentViewController' could not be loaded from storyboard 'UserProfileScene' as 'StaticContentViewController'.") }
         if _R.storyboard.userProfileScene().profileViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'profileViewController' could not be loaded from storyboard 'UserProfileScene' as 'ProfileViewController'.") }
       }
       

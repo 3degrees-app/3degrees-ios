@@ -12,7 +12,9 @@ import ThreeDegreesClient
 
 private let _router = Router()
 private var _routerLoaded = false
+
 private let _activityApi: ActivityApiProtocol = ActivityApiController()
+private let _staticContentApi: StaticContentApiProtocol = StaticContentApiController()
 
 protocol Routable: class, Loggable {
     func route(uri: String)
@@ -63,6 +65,14 @@ extension Routable {
                         else { return }
                     viewController.interlocutor = user
                     self?.appNavigator?.showVcAction(vc: viewController)
+                }
+            }
+            StaticContentType.allPageContent.forEach { (contentType) in
+                _router.bind("/\(contentType.rawValue)") { (req) in
+                    guard let viewController = R.storyboard.userProfileScene.staticContentViewController()
+                        else { return }
+                    viewController.actionType = AccountAction.fromStaticContentType(contentType)
+                    self.appNavigator?.showVcAction(vc: viewController)
                 }
             }
             _routerLoaded = true

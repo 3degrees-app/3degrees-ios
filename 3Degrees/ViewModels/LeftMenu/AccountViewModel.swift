@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import MessageUI
 import ThreeDegreesClient
 
-extension AccountViewModel: UITableViewDelegate {
+extension AccountViewModel: UITableViewDelegate, Routable {
     func tableView(tableView: UITableView,
                    heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 40
@@ -25,10 +25,10 @@ extension AccountViewModel: UITableViewDelegate {
             handleGeneralAction(indexPath.row, actions: AccountAction.generalActions)
             break
         case .About:
-            handleAboutAction(indexPath.row, actions: AccountAction.aboutActions)
+            handleStaticContentAction(AccountAction.aboutActions[indexPath.row])
             break
         case .Support:
-            handleSupportAction(indexPath.row, actions: AccountAction.supportActions)
+            handleStaticContentAction(AccountAction.supportActions[indexPath.row])
             break
         }
     }
@@ -61,35 +61,10 @@ extension AccountViewModel: UITableViewDelegate {
         }
     }
 
-    func handleSupportAction(index: Int, actions: [AccountAction]) {
-        switch actions[index] {
-        case .FAQ:
-            selectedStaticContent = .FAQ
-            break
-        case .ContactUs:
-            selectedStaticContent = .ContactUs
-            break
-        default:
-            break
+    func handleStaticContentAction(action: AccountAction) {
+        if let staticContentType = AccountAction.toStaticContentType(action) {
+            self.route("/\(staticContentType.rawValue)")
         }
-        appNavigator?.showAction(
-            identifier: R.segue.accountViewController.toStaticContent.identifier
-        )
-    }
-
-    func handleAboutAction(index: Int, actions: [AccountAction]) {
-        switch actions[index] {
-        case .TermsOfService:
-            selectedStaticContent = .TermsOfService
-            break
-        case .PrivacyPolicy:
-            selectedStaticContent = .PrivacyPolicy
-        default:
-            break
-        }
-        appNavigator?.showAction(
-            identifier: R.segue.accountViewController.toStaticContent.identifier
-        )
     }
 }
 
@@ -235,12 +210,6 @@ class AccountViewModel: NSObject, ViewModelProtocol {
             targetVc.delegate = self
             let values = UserPreference.allValues.map { $0.rawValue }
             targetVc.values = values
-        }
-        if identifier == R.segue.accountViewController.toStaticContent.identifier {
-            guard let type = selectedStaticContent else { return }
-            guard let targetVc = segue.destinationViewController as? StaticContentViewController
-                else { return }
-            targetVc.actionType = type
         }
     }
 

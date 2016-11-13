@@ -21,25 +21,10 @@ struct StaticContentViewModel: ViewModelProtocol {
     }
 
     func loadContent() {
-        var type: StaticContentType
-        switch contentType {
-        case .ContactUs:
-            type = .ContactUs
-            break
-        case .FAQ:
-            type = .FAQ
-            break
-        case .PrivacyPolicy:
-            type = .PrivacyPolicy
-            break
-        case .TermsOfService:
-            type = .Tos
-            break
-        default:
-            return
-        }
-        staticApi.getWithType(type) { (content) in
-            self.content.next(content)
+        if let type = AccountAction.toStaticContentType(contentType) {
+            staticApi.getWithType(type) { (content) in
+                self.content.next(content)
+            }
         }
     }
 }

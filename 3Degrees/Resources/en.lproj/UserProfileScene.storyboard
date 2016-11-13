@@ -296,7 +296,7 @@
         <!--Static Content View Controller-->
         <scene sceneID="e11-hx-mrZ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0Hl-HU-Pt8" customClass="StaticContentViewController" customModule="_Degrees" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StaticContentViewController" automaticallyAdjustsScrollViewInsets="NO" id="0Hl-HU-Pt8" customClass="StaticContentViewController" customModule="_Degrees" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dA4-g0-N3l"/>
                         <viewControllerLayoutGuide type="bottom" id="mls-1x-ca5"/>

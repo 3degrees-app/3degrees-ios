@@ -74,4 +74,34 @@ enum AccountAction: String {
     static var aboutActions:[AccountAction] {
         return [.PrivacyPolicy, .TermsOfService]
     }
+
+    static func fromStaticContentType(staticContentType: StaticContentType) -> AccountAction? {
+        switch staticContentType {
+        case .ContactUs:
+            return AccountAction.ContactUs
+        case .FAQ:
+            return AccountAction.FAQ
+        case .PrivacyPolicy:
+            return AccountAction.PrivacyPolicy
+        case .Tos:
+            return AccountAction.TermsOfService
+        default:
+            return nil
+        }
+    }
+
+    static func toStaticContentType(accountAction: AccountAction) -> StaticContentType? {
+        switch accountAction {
+        case .ContactUs:
+            return StaticContentType.ContactUs
+        case .FAQ:
+            return StaticContentType.FAQ
+        case .PrivacyPolicy:
+            return StaticContentType.PrivacyPolicy
+        case .TermsOfService:
+            return StaticContentType.Tos
+        default:
+            return nil
+        }
+    }
 }
