@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Router
 import ThreeDegreesClient
 import SwiftMoment
 
@@ -15,6 +16,7 @@ class ActivityItemViewModel: ViewModelProtocol, Routable {
     var dateProposalApi: DateProposalApiProtocol = DateProposalApiController()
     var appNavigator: AppNavigator? = nil
     let activityItem: Activity
+    let router = Router()
     var showConfirmationCallback: ((message: String) -> ())? = nil
 
     var activityUsername: String? {

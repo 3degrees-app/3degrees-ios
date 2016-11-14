@@ -50,7 +50,7 @@ DEPENDENCIES:
   - Fabric
   - FBSDKCoreKit (= 4.11)
   - FBSDKLoginKit (= 4.11)
-  - FLTextView (from `https://github.com/freeletics/FLTextView.git`)
+  - FLTextView (from `https://github.com/freeletics/FLTextView.git`, tag `1.0.5`)
   - ImagePicker (from `https://github.com/rlmartin/ImagePicker.git`, branch `swift-2.3`)
   - IQKeyboardManager (= 4.0.2)
   - JTAppleCalendar (= 5.0.1)
@@ -60,7 +60,7 @@ DEPENDENCIES:
   - PureLayout (= 3.0.2)
   - Quick (= 0.9.3)
   - R.swift (= 2.4.0)
-  - Router (= 1.0.0)
+  - Router (from `https://github.com/rlmartin/Router.git`, branch `swift-2.0`)
   - SlackTextViewController (= 1.9.2)
   - SVProgressHUD (= 2.0.3)
   - SwiftMoment (= 0.5.1)
@@ -72,19 +72,26 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   FLTextView:
     :git: https://github.com/freeletics/FLTextView.git
+    :tag: 1.0.5
   ImagePicker:
     :branch: swift-2.3
     :git: https://github.com/rlmartin/ImagePicker.git
+  Router:
+    :branch: swift-2.0
+    :git: https://github.com/rlmartin/Router.git
   ThreeDegreesClient:
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
 
 CHECKOUT OPTIONS:
   FLTextView:
-    :commit: 9c73df5ef550f61e8c2af9c16a05be8c4cfbd05a
     :git: https://github.com/freeletics/FLTextView.git
+    :tag: 1.0.5
   ImagePicker:
-    :commit: 87d4c7d3d4394db3e3621dccc2d854c84d5fe034
+    :commit: f5fd08c9a3561c5f468de06116f9a6dfc7ef5a85
     :git: https://github.com/rlmartin/ImagePicker.git
+  Router:
+    :commit: f8163cec278fbd548d907357d4625661fb4cafa3
+    :git: https://github.com/rlmartin/Router.git
   ThreeDegreesClient:
     :commit: b222140a20dece86c35ab3a54e31bb988dc7f78f
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
@@ -120,6 +127,6 @@ SPEC CHECKSUMS:
   TSMarkdownParser: 64cb52fe5a518b4875a6167a650cb0ed4b18cea5
   UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
 
-PODFILE CHECKSUM: 9f5fb3a03beb19aa1c06d3655138ba2d0e914117
+PODFILE CHECKSUM: 14bc2b7a1baa0c9fde9c44994f49fdb32c1aac61
 
 COCOAPODS: 1.0.1

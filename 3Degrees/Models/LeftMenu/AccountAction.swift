@@ -85,6 +85,8 @@ enum AccountAction: String {
             return AccountAction.PrivacyPolicy
         case .Tos:
             return AccountAction.TermsOfService
+        case .UnsupportedVersion:
+            return AccountAction.UnsupportedVersion
         default:
             return nil
         }
@@ -100,8 +102,13 @@ enum AccountAction: String {
             return StaticContentType.PrivacyPolicy
         case .TermsOfService:
             return StaticContentType.Tos
+        case .UnsupportedVersion:
+            return StaticContentType.UnsupportedVersion
         default:
             return nil
         }
     }
+
+    // MARK: Other
+    case UnsupportedVersion = "Unsupported Version"
 }

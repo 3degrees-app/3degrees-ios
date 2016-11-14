@@ -11,6 +11,7 @@ import UIKit
 import Bond
 import FBSDKLoginKit
 import MessageUI
+import Router
 import ThreeDegreesClient
 
 extension AccountViewModel: UITableViewDelegate, Routable {
@@ -63,7 +64,7 @@ extension AccountViewModel: UITableViewDelegate, Routable {
 
     func handleStaticContentAction(action: AccountAction) {
         if let staticContentType = AccountAction.toStaticContentType(action) {
-            self.route("/\(staticContentType.rawValue)")
+            self.routeToStaticContent(staticContentType)
         }
     }
 }
@@ -166,6 +167,7 @@ class AccountViewModel: NSObject, ViewModelProtocol {
     var staticContentApi: StaticContentApiProtocol = StaticContentApiController()
     var authApi: AuthApiProtocol = AuthApiController()
     var userApi: UserApiProtocol = UserApiController()
+    let router = Router()
 
     var selectedStaticContent: AccountAction? = nil
 

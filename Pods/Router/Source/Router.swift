@@ -43,6 +43,14 @@ public class Router {
     }
     
     /**
+     Indicates whether or not a Router has been loaded with routes. It is useful if the Router is initialized once (i.e.
+     in a singleton), to determine if it needs to be loaded on a subsequent call.
+     */
+    public func hasRoutes() -> Bool {
+        return routes.count > 0
+    }
+
+    /**
         Matches an incoming NSURL to a route present in the router. Returns nil if none are matched.
     
         - parameter url: An NSURL of an incoming request to the router
@@ -55,7 +63,7 @@ public class Router {
         }
         
         // form the host/path url
-        let host = routeComponents.host.flatMap({"/\($0)"}) ?? ""
+        let host = routeComponents.host.flatMap({$0.trimmed == "" ? nil : "/\($0)"}) ?? ""
         let path = routeComponents.path.flatMap({$0}) ?? ""
         let routeToMatch = "\(host)\(path)"
         let queryParams = routeComponents.queryItems

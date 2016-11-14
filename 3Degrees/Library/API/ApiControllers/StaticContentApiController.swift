@@ -16,8 +16,9 @@ enum StaticContentType: String {
     case FAQ = "faq"
     case InviteMessageMM = "invite.message.matchmaker"
     case InviteMessageSingle = "invite.message.single"
+    case UnsupportedVersion = "unsupported-version"
     
-    static let allPageContent = [ContactUs, Tos, PrivacyPolicy, FAQ]
+    static let allPageContent = [ContactUs, Tos, PrivacyPolicy, FAQ, UnsupportedVersion]
 }
 
 protocol StaticContentApiProtocol: BaseApiProtocol {

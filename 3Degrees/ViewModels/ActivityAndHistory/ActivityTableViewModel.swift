@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Router
 import Rswift
 import ThreeDegreesClient
 import SwiftPaginator
@@ -71,6 +72,7 @@ class ActivityTableViewModel: NSObject, ViewModelProtocol {
     let tableView: UITableView
     var paginator: Paginator<Activity>? = nil
     var refreshCompletedCallback: (() -> ())? = nil
+    let router = Router()
 
     init(tabBarController: UITabBarController, appNavigator: AppNavigator, tableView: UITableView) {
         self.appNavigator = appNavigator

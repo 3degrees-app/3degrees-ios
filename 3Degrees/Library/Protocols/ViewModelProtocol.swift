@@ -12,3 +12,9 @@ import SVProgressHUD
 protocol ViewModelProtocol {
     var appNavigator: AppNavigator? { get set }
 }
+
+extension ViewModelProtocol {
+    func show(viewController: UIViewController) {
+        self.appNavigator?.showVcAction(vc: viewController)
+    }
+}

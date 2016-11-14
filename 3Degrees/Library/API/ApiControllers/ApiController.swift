@@ -44,6 +44,12 @@ protocol ApiProtocol {
                     error: ErrorType?,
                     headers: Dictionary<NSObject, AnyObject>) -> ())
 
+    func supportedVersion(version: String,
+                          completion: (
+                              data: Empty?,
+                              error: ErrorType?,
+                              headers: Dictionary<NSObject, AnyObject>) -> ())
+
     // Left Menu
 
     func staticContent(contentType: String,
@@ -292,6 +298,15 @@ struct ApiController: ApiProtocol {
 
     func logout(completion: OtherAuthCompletionHandler) {
         DefaultAPI.authDelete(completion)
+    }
+
+    func supportedVersion(
+        version: String,
+        completion: (data: Empty?,
+                     error: ErrorType?,
+                     headers: Dictionary<NSObject, AnyObject>) -> ()) {
+        DefaultAPI.supportedVersionsVersionGet(version: version,
+                                               completion: completion)
     }
 
     func staticContent(

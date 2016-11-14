@@ -26,7 +26,7 @@ protocol AppControllerProtocol {
     func handleRemoteNotificaiton(userInfo: [String: AnyObject])
 }
 
-struct AppController: AppControllerProtocol {
+class AppController: AppControllerProtocol, Routable {
     static let shared: AppController = AppController()
 
     var cacheController: CacheProtocol
@@ -90,6 +90,12 @@ struct AppController: AppControllerProtocol {
         } else {
             handleAutoLogin()
         }
+        let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        SupportedVersionApiController().checkVersion(version) { isActive in
+            if !isActive {
+                self.routeToStaticContent(StaticContentType.UnsupportedVersion)
+            }
+        }
     }
 
     func setupMainAppContent() {
@@ -101,6 +107,11 @@ struct AppController: AppControllerProtocol {
                                    animations: {
                 w?.rootViewController = AppController.shared.leftMenu
             }, completion: nil)
+    }
+
+    func show(viewController: UIViewController) {
+        guard let w = getMainWindow() else { return }
+        w.rootViewController = viewController
     }
 
     func logOut() {
@@ -172,6 +183,7 @@ struct AppController: AppControllerProtocol {
     }
 
     private func registerRoutes() {
+        initRouter()
         router.bind("/reset_password") { (req) in
             guard let sessionKey = req.query("session-key") else { return }
             ThreeDegreesClientAPI.customHeaders.updateValue(sessionKey,

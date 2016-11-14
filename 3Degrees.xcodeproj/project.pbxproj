@@ -10,6 +10,7 @@
 		11ED4C68CB1592D3E6E88B81 /* Pods_3Degrees.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0D379447DC8D7E7A1878D2 /* Pods_3Degrees.framework */; };
 		7A694D7A1DD7719200CCE680 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D791DD7719200CCE680 /* Routable.swift */; };
 		7A694D7C1DD7A2A700CCE680 /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D7B1DD7A2A700CCE680 /* Loggable.swift */; };
+		7AC699B61DC993B200272CEE /* SupportedVersionApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */; };
 		86A42400FBC60D461A1A9F03 /* Pods_3DegreesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA1E74DF91BD55E8A92387A /* Pods_3DegreesTests.framework */; };
 		BE09D1571D802DE8002544E4 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */; };
 		BE0C784D1CDB644C00B98B41 /* CommonScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE0C784B1CDB644C00B98B41 /* CommonScene.storyboard */; };
@@ -228,6 +229,7 @@
 		5AA1E74DF91BD55E8A92387A /* Pods_3DegreesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_3DegreesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A694D791DD7719200CCE680 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		7A694D7B1DD7A2A700CCE680 /* Loggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
+		7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedVersionApiController.swift; sourceTree = "<group>"; };
 		BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		BE0C784F1CDB6A6200B98B41 /* ModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		BE0C78521CDB759600B98B41 /* ModeButton+Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ModeButton+Styles.swift"; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				BEB057121D01E05900B81EE5 /* MyNetworkApiController.swift */,
 				E9905A161CFE08420095C062 /* StaticContentApiController.swift */,
 				E9905A181CFE24520095C062 /* UserApiController.swift */,
+				7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */,
 			);
 			path = ApiControllers;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				E915C6921D7D901F00288FCB /* DayView.swift in Sources */,
 				7A694D7A1DD7719200CCE680 /* Routable.swift in Sources */,
 				BE4518381CD7A095009E1C86 /* AuthenticationViewController+Styles.swift in Sources */,
+				7AC699B61DC993B200272CEE /* SupportedVersionApiController.swift in Sources */,
 				E96C20331CD21A8900BC9A40 /* AccountViewController.swift in Sources */,
 				E968127D1CD22527001C7288 /* ActionCellViewModel.swift in Sources */,
 				E93779971CE260D1000B52C5 /* ActivityItemTableViewCell.swift in Sources */,
