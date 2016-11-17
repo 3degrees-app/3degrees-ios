@@ -791,11 +791,11 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let emptyEmailOrPassError = StringResource(key: "EmptyEmailOrPassError", tableName: "Localizable", locales: ["en"])
-      /// en translation: We are busy matching for you right now! Invite other matchmakers here to better your chances!
+      /// en translation: Want more match options for your singles? Invite more matchmakers!
       /// 
       /// Locales: en
       static let emptyPairUpScreenMessage = StringResource(key: "EmptyPairUpScreenMessage", tableName: "Localizable", locales: ["en"])
-      /// en translation: There aren't any matches for your selected single! Please, try again later!
+      /// en translation: There aren't any matches for your selected single! Please try again later!
       /// 
       /// Locales: en
       static let emptyProposedSinglesMessage = StringResource(key: "EmptyProposedSinglesMessage", tableName: "Localizable", locales: ["en"])
@@ -1162,14 +1162,14 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("EmptyEmailOrPassError", comment: "")
       }
       
-      /// en translation: We are busy matching for you right now! Invite other matchmakers here to better your chances!
+      /// en translation: Want more match options for your singles? Invite more matchmakers!
       /// 
       /// Locales: en
       static func emptyPairUpScreenMessage(_: Void) -> String {
         return NSLocalizedString("EmptyPairUpScreenMessage", comment: "")
       }
       
-      /// en translation: There aren't any matches for your selected single! Please, try again later!
+      /// en translation: There aren't any matches for your selected single! Please try again later!
       /// 
       /// Locales: en
       static func emptyProposedSinglesMessage(_: Void) -> String {

@@ -90,8 +90,8 @@
 
 // Pair Up
 
-"EmptyPairUpScreenMessage" = "We are busy matching for you right now! Invite other matchmakers here to better your chances!";
-"EmptyProposedSinglesMessage" = "There aren't any matches for your selected single! Please, try again later!";
+"EmptyPairUpScreenMessage" = "Want more match options for your singles? Invite more matchmakers!";
+"EmptyProposedSinglesMessage" = "There aren't any matches for your selected single! Please try again later!";
 
 // Date proposals screen
 
