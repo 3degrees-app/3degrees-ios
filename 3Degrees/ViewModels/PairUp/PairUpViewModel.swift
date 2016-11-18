@@ -174,7 +174,17 @@ extension PairUpViewModel {
     func proposedResultsHandler(paginator: Paginator<UserInfo>, results: [UserInfo]) {
         proposedSinglesViewModel.loadNewData(results)
         if isEmptyProposals() {
-            updateInfo(nil)
+            if isFirstLoad {
+                if let my = myPerson {
+                    self.mySinglesViewModel.nextAfter(my)
+                } else {
+                    updateInfo(nil)
+                }
+            } else {
+                updateInfo(nil)
+            }
+        } else {
+            isFirstLoad = false
         }
     }
 
@@ -209,6 +219,7 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
     var proposedPeoplePaginator: Paginator<UserInfo>? = nil
 
     var filterModel: FilterModel? = nil
+    private var isFirstLoad = true
 
     init(appNavigator: AppNavigator, tableView: UITableView, superTableViewDataSource: UITableViewDataSource) {
         self.appNavigator = appNavigator
@@ -265,11 +276,12 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
 
         api.pairUp(mySingleUsername, matchUsername: proposedSingleUsername) {[weak self] in
             self?.pairUpButton.next("Match Sent")
-            Observable("Pair Up").throttle(0.5, queue: .Main).observe { val in
+            Observable("Pair Up").throttle(1.0, queue: .Main).observe { val in
+                self?.proposedSinglesViewModel.removePerson(proposed)
+                self?.mySinglesViewModel.nextAfter(my) // Scroll to the matchmaker's next single, which will reload the bottom list
+                self?.checkIfNoAvailablePairs()
                 self?.pairUpButton.next(val)
             }
-            self?.proposedSinglesViewModel.removePerson(proposed)
-            self?.checkIfNoAvailablePairs()
         }
     }
 
@@ -286,7 +298,11 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
             tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
             tableView.endUpdates()
         } else if isEmptyProposals() {
-            updateInfo(nil)
+            if let my = myPerson {
+                self.mySinglesViewModel.nextAfter(my)
+            } else {
+                updateInfo(nil)
+            }
         }
     }
 

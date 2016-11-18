@@ -139,6 +139,13 @@ class ProposedPeopleCollectionViewModel: NSObject, ViewModelProtocol {
         }
     }
 
+    func nextAfter(user: UserInfo) {
+        guard let indexOfPerson = people.indexOf({ $0.username == user.username }) else { return }
+        if indexOfPerson != people.count - 1 {
+            showUser(people[indexOfPerson + 1])
+        }
+    }
+
     func reset() {
         people = []
         collectionView?.reloadData()
