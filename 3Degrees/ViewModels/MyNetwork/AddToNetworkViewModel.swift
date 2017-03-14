@@ -23,7 +23,7 @@ extension AddToNetworkViewModel: UISearchControllerDelegate {
 class AddToNetworkViewModel: NSObject, ViewModelProtocol {
     var appNavigator: AppNavigator?
     var actionTitle: String {
-        return "Add a New \(postfix)"
+        return "Add New \(postfix)"
     }
 
     var postfix: String {
