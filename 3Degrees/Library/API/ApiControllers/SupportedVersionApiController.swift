@@ -28,6 +28,7 @@ struct SupportedVersionApiController: SupportedVersionApiProtocol {
                     completion(isActive: true)
                 }
             }
+            self.hideActivityIndicator()
         }
     }
     
