@@ -41,7 +41,7 @@ class FilterViewController: UITableViewController, ViewProtocol {
         configureBindings()
         createRightButton()
         self.definesPresentationContext = false
-        title = "Filters"
+        title = "Filter your friends' singles"
     }
 
     func applyDefaultStyle() {
