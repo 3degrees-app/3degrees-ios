@@ -25,10 +25,10 @@ enum AccountAction: String {
         .EditProfile,
         .InviteMatchMaker,
         .InviteSingle,
-        .OpenToDate,
+        //.OpenToDate,
         .Preference,
         .PushNotifications,
-        .SwitchMode,
+        //.SwitchMode,
         .LogOut
     ]
 
@@ -36,19 +36,19 @@ enum AccountAction: String {
         .EditProfile,
         .InviteMatchMaker,
         .InviteSingle,
-        .OpenToDate,
+        //.OpenToDate,
         .PushNotifications,
-        .SwitchMode,
+        //.SwitchMode,
         .LogOut
     ]
 
     static var singleModeGeneralActionsList: [AccountAction] = [
         .EditProfile,
         .InviteMatchMaker,
-        .OpenToDate,
+        //.OpenToDate,
         .Preference,
         .PushNotifications,
-        .SwitchMode,
+        //.SwitchMode,
         .LogOut
     ]
 
