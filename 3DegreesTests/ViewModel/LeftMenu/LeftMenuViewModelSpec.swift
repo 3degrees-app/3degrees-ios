@@ -172,27 +172,6 @@ class AccountViewModelSpec: QuickSpec {
                     let vc = (UIApplication.sharedApplication().keyWindow?.rootViewController as! UINavigationController).topViewController
                     expect(vc).to(beAnInstanceOf(SignUpModeViewController))
                 }
-                it("did select invite matchmaker") {
-                    let user = PrivateUser()
-                    user.username = "username"
-                    AppController.shared.currentUser.next(user)
-                    let indexOfAction = AccountAction.generalActions.indexOf(.InviteMatchMaker)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
-                    #if (arch(i386) || arch(x86_64))
-                        expect(router.presentedViewController).to(beFalse())
-                    #else
-                        expect(router.presentedViewController).to(beTrue())
-                    #endif
-                }
-                it("did select invite single") {
-                    let indexOfAction = AccountAction.generalActions.indexOf(.InviteSingle)!
-                    viewModel.handleGeneralAction(indexOfAction, actions: AccountAction.generalActions)
-                    #if (arch(i386) || arch(x86_64))
-                        expect(router.presentedViewController).to(beFalse())
-                    #else
-                        expect(router.presentedViewController).to(beTrue())
-                    #endif
-                }
                 it("did select switching mode") {
                     let indexOfAction = AccountAction.generalActions.indexOf(.SwitchMode)!
                     let oldModeValue = AppController.shared.currentUserMode.value

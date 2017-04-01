@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Bond
 import FBSDKLoginKit
-import MessageUI
 import Router
 import ThreeDegreesClient
 
@@ -44,12 +43,6 @@ extension AccountViewModel: UITableViewDelegate, Routable {
         case .LogOut:
             logout()
             break
-        case .InviteMatchMaker:
-            handleInviteUser(StaticContentType.InviteMessageMM)
-            break
-        case .InviteSingle:
-            handleInviteUser(StaticContentType.InviteMessageSingle)
-            break
         case .SwitchMode:
             let currentMode = AppController.shared.currentUserMode.value
             AppController.shared.currentUserMode.next(currentMode.getOppositeValue())
@@ -66,17 +59,6 @@ extension AccountViewModel: UITableViewDelegate, Routable {
         if let staticContentType = AccountAction.toStaticContentType(action) {
             self.routeToStaticContent(staticContentType)
         }
-    }
-}
-
-extension AccountViewModel: MFMessageComposeViewControllerDelegate {
-    func messageComposeViewController(controller: MFMessageComposeViewController,
-                                      didFinishWithResult result: MessageComposeResult) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    var canInviteViaSms: Bool {
-        return MFMessageComposeViewController.canSendText()
     }
 }
 
@@ -224,16 +206,6 @@ class AccountViewModel: NSObject, ViewModelProtocol {
         self.observableName.next(newUser.name)
         self.observableUserInfo.next(newUser.userInfo)
         self.actionsTableView.reloadData()
-    }
-
-    func handleInviteUser(type: StaticContentType) {
-        guard canInviteViaSms else { return }
-        let composeSms = MFMessageComposeViewController()
-        composeSms.messageComposeDelegate = self
-        staticContentApi.getWithType(type) {[weak self] (content) in
-            composeSms.body = content
-            self?.appNavigator?.presentVcAction(vc: composeSms)
-        }
     }
 
     func logout() {

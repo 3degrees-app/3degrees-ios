@@ -22,8 +22,6 @@ class SelectActionViewModelSpec: QuickSpec {
                 expect(viewModel.actionName).to(equal(AccountAction.ContactUs.rawValue))
                 viewModel = SelectActionViewModel(action: AccountAction.FAQ, value: Observable(""))
                 expect(viewModel.actionName).to(equal(AccountAction.FAQ.rawValue))
-                viewModel = SelectActionViewModel(action: AccountAction.InviteSingle, value: Observable(""))
-                expect(viewModel.actionName).to(equal(AccountAction.InviteSingle.rawValue))
             }
         }
         describe("value observable") {

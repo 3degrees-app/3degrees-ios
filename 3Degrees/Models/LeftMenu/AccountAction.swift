@@ -13,8 +13,6 @@ enum AccountAction: String {
 
     // MARK: General Actions
     case EditProfile = "Edit My Profile"
-    case InviteMatchMaker = "Invite Matchmaker"
-    case InviteSingle = "Invite Single"
     case OpenToDate = "Open to Date"
     case PushNotifications = "Push Notifications"
     case Preference = "Match Preference"
@@ -23,8 +21,6 @@ enum AccountAction: String {
 
     static var fullGeneralActionsList:[AccountAction] = [
         .EditProfile,
-        .InviteMatchMaker,
-        .InviteSingle,
         //.OpenToDate,
         .Preference,
         .PushNotifications,
@@ -34,8 +30,6 @@ enum AccountAction: String {
 
     static var matchmakerModeGeneralActionsList: [AccountAction] = [
         .EditProfile,
-        .InviteMatchMaker,
-        .InviteSingle,
         //.OpenToDate,
         .PushNotifications,
         //.SwitchMode,
@@ -44,7 +38,6 @@ enum AccountAction: String {
 
     static var singleModeGeneralActionsList: [AccountAction] = [
         .EditProfile,
-        .InviteMatchMaker,
         //.OpenToDate,
         .Preference,
         .PushNotifications,
