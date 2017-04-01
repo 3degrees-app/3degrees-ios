@@ -32,8 +32,8 @@ class ContactSearchTableViewCell: UITableViewCell, TableCellProtocol {
             return
         }
         inviteButton.setTitle(R.string.localizable.inviteTitle(), forState: .Normal)
-        inviteButton.backgroundColor = UIColor.purpleColor()
-        inviteButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        inviteButton.backgroundColor = Constants.MyNetwork.InviteButtonColor
+        inviteButton.setTitleColor(Constants.MyNetwork.InviteButtonTextColor, forState: .Normal)
         inviteButton.bnd_tap.observeNew {[unowned self] in
             viewModel.invite(self.userWasInvited)
         }

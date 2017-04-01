@@ -73,6 +73,8 @@
 "MatchmakerTabName" = "Matchmakers";
 "DatesTabName" = "Dates";
 "SinglesTabName" = "Singles";
+"InvitePrompt" = "Can't find your friend?";
+"InviteNewButton" = "Invite New";
 
 "MatchmakersInfoPostfix" = "Matchmakers";
 "SinglesInfoPostfix" = "Singles";

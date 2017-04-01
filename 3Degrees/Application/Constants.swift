@@ -168,6 +168,9 @@ struct Constants {
         static let NameLabelColor = UIColor.blackColor()
         static let SeparatorColor = UIColor(r: 226, g: 226, b: 221)
         static let InfoLabelColor = UIColor(r: 179, g: 172, b: 160)
+        static let InvitePromptColor = UIColor.blackColor()
+        static let InviteButtonColor = UIColor.purpleColor()
+        static let InviteButtonTextColor = UIColor.whiteColor()
 
         static let ChatActionButtonColor = UIColor(r: 128, g: 240, b: 184)
         static let MatchActionButtonColor = UIColor(r:240, g: 184, b: 128)

@@ -48,6 +48,26 @@ extension ContactSearchViewModel: UITableViewDataSource {
             else { return UITableViewCell() }
         return cell
     }
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 50))
+
+        let invitePrompt = UILabel()
+        invitePrompt.text = R.string.localizable.invitePrompt()
+        invitePrompt.font = Constants.Fonts.SmallThin
+        invitePrompt.textColor = Constants.MyNetwork.InvitePromptColor
+        invitePrompt.frame = CGRectMake(25, 5, view.bounds.width - 25, view.bounds.height - 5)
+        view.addSubview(invitePrompt)
+
+        let inviteView = InviteNewViewModel(userType: self.userType, appNavigator: self.appNavigator)
+        inviteView.frame = CGRectMake(view.bounds.width - 105, 10, 90, view.bounds.height - 10)
+        view.addSubview(inviteView)
+        return view
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
 }
 
 

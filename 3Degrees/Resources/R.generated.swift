@@ -685,7 +685,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 73 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 75 localization keys.
     struct localizable {
       /// en translation: About
       /// 
@@ -843,6 +843,14 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let incorrectSignUpDataError = StringResource(key: "IncorrectSignUpDataError", tableName: "Localizable", locales: ["en"])
+      /// en translation: Invite New
+      /// 
+      /// Locales: en
+      static let inviteNewButton = StringResource(key: "InviteNewButton", tableName: "Localizable", locales: ["en"])
+      /// en translation: Can't find your friend?
+      /// 
+      /// Locales: en
+      static let invitePrompt = StringResource(key: "InvitePrompt", tableName: "Localizable", locales: ["en"])
       /// en translation: Invite Sent
       /// 
       /// Locales: en
@@ -1251,6 +1259,20 @@ struct R: Rswift.Validatable {
       /// Locales: en
       static func incorrectSignUpDataError(_: Void) -> String {
         return NSLocalizedString("IncorrectSignUpDataError", comment: "")
+      }
+      
+      /// en translation: Invite New
+      /// 
+      /// Locales: en
+      static func inviteNewButton(_: Void) -> String {
+        return NSLocalizedString("InviteNewButton", comment: "")
+      }
+      
+      /// en translation: Can't find your friend?
+      /// 
+      /// Locales: en
+      static func invitePrompt(_: Void) -> String {
+        return NSLocalizedString("InvitePrompt", comment: "")
       }
       
       /// en translation: Invite Sent
