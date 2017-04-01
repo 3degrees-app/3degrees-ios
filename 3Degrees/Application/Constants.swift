@@ -17,6 +17,25 @@ struct Constants {
         static let dateFormat = "MM/dd/yyyy"
     }
 
+    struct Fonts {
+        static let FontName = "HelveticaNeue"
+        static let FontNameLight = "HelveticaNeue-Light"
+        static let FontNameThin = "HelveticaNeue-Thin"
+
+        static let Default = UIFont(name: FontName, size: 18) ?? UIFont.systemFontOfSize(18)
+        static let DefaultLight = UIFont(name: FontNameLight, size: 18) ?? UIFont.systemFontOfSize(18, weight: UIFontWeightLight)
+        static let DefaultThin = UIFont(name: FontNameThin, size: 18) ?? UIFont.systemFontOfSize(18, weight: UIFontWeightThin)
+
+        static let Small = UIFont(name: FontName, size: 15) ?? UIFont.systemFontOfSize(15)
+        static let SmallLight = UIFont(name: FontNameLight, size: 15) ?? UIFont.systemFontOfSize(15, weight: UIFontWeightLight)
+        static let SmallThin = UIFont(name: FontNameThin, size: 15) ?? UIFont.systemFontOfSize(15, weight: UIFontWeightThin)
+
+        static let ExtraSmall = UIFont(name: FontName, size: 10) ?? UIFont.systemFontOfSize(10)
+        static let ExtraSmallLight = UIFont(name: FontNameLight, size: 10) ?? UIFont.systemFontOfSize(10, weight: UIFontWeightLight)
+        static let ExtraSmallThin = UIFont(name: FontNameThin, size: 10) ?? UIFont.systemFontOfSize(10, weight: UIFontWeightThin)
+
+    }
+    
     struct ProgressView {
         static let BackColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
     }
@@ -44,7 +63,6 @@ struct Constants {
 
     struct Avatar {
         static let BackgroundColor = UIColor(r: 245, g: 238, b: 229)
-        static let FontName = "HelveticaNeue-Thin"
     }
 
     struct Mode {

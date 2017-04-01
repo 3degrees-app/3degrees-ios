@@ -61,12 +61,8 @@ extension UIButton: ActivityActionButton {
     func configureActivityActionButton(title: String, textColor: UIColor, background: UIColor) {
         translatesAutoresizingMaskIntoConstraints = false
         hidden = false
-        var font = UIFont.systemFontOfSize(18)
-        if let f = UIFont(name: "HelveticaNeue", size: 15) {
-            font = f
-        }
         let attrs = [
-            NSFontAttributeName: font,
+            NSFontAttributeName: Constants.Fonts.Small,
             NSForegroundColorAttributeName: textColor,
         ]
         setAttributedTitle(NSAttributedString(string: title, attributes: attrs),

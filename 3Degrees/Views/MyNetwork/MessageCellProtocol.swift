@@ -56,11 +56,7 @@ extension MessageCellProtocol where Self: UITableViewCell {
 
     func getDateTimeLabel() -> UILabel {
         let label = UILabel()
-        var font = UIFont.systemFontOfSize(10, weight: UIFontWeightLight)
-        if let f = UIFont(name: "HelveticaNeue-Light", size: 10) {
-            font = f
-        }
-        label.font = font
+        label.font = Constants.Fonts.ExtraSmallLight
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 1

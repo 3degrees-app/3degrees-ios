@@ -88,15 +88,11 @@ class ProfileViewController: UITableViewController, ViewProtocol {
     }
 
     private func initEditNavBarButton() {
-        var font = UIFont.systemFontOfSize(15, weight: UIFontWeightThin)
-        if let f = UIFont(name: "HelveticaNeue", size: 17) {
-            font = f
-        }
         let attributes = NSAttributedString(
             string: "Save",
             attributes: [
                 NSForegroundColorAttributeName: Constants.NavBar.TintColor,
-                NSFontAttributeName: font,
+                NSFontAttributeName: Constants.Fonts.Default,
             ]
         )
         editButton.setAttributedTitle(attributes, forState: .Normal)

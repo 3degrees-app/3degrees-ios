@@ -14,11 +14,7 @@ class MessageTableViewCell: UITableViewCell, MessageCellProtocol {
 
     lazy var mainView: ContentView = {
         let label = UILabel()
-        var font = UIFont.systemFontOfSize(18, weight: UIFontWeightLight)
-        if let f = UIFont(name: "HelveticaNeue-Light", size: 18) {
-            font = f
-        }
-        label.font = font
+        label.font = Constants.Fonts.DefaultLight
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 100

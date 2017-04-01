@@ -112,15 +112,11 @@ class FilterViewController: UITableViewController, ViewProtocol {
     }
 
     func createRightButton() {
-        var font = UIFont.systemFontOfSize(15, weight: UIFontWeightThin)
-        if let f = UIFont(name: "HelveticaNeue-Thin", size: 15) {
-            font = f
-        }
         let attributes = NSAttributedString(
             string: "Apply",
             attributes: [
                 NSForegroundColorAttributeName: Constants.NavBar.TintColor,
-                NSFontAttributeName: font,
+                NSFontAttributeName: Constants.Fonts.SmallThin,
             ]
         )
         rightBarButton.contentHorizontalAlignment = .Right

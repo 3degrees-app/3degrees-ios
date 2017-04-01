@@ -13,7 +13,7 @@ import UIImageView_Letters
 extension UIImageView {
     func setAvatarImage(stringUrl: String?, fullName: String, callback: (() -> ())? = nil) {
         let attrs = [
-            NSFontAttributeName: fontForFontName(Constants.Avatar.FontName),
+            NSFontAttributeName: fontForFontName(Constants.Fonts.FontNameThin),
             NSForegroundColorAttributeName: UIColor.blackColor()
         ]
         setImageWithString(fullName,

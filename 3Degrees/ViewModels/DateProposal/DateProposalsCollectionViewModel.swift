@@ -88,12 +88,8 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
 extension DateProposalsCollectionViewModel: DZNEmptyDataSetSource,
                                             DZNEmptyDataSetDelegate {
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        guard let font = UIFont(name: "HelveticaNeue-Thin", size: 18) else {
-            return NSAttributedString()
-        }
-
         let attributes = [
-            NSFontAttributeName: font,
+            NSFontAttributeName: Constants.Fonts.DefaultThin,
             NSForegroundColorAttributeName: UIColor.blackColor()
         ]
 

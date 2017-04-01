@@ -14,12 +14,8 @@ import ThreeDegreesClient
 
 extension PairUpViewModel: DZNEmptyDataSetSource {
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        var font = UIFont.systemFontOfSize(18, weight: UIFontWeightThin)
-        if let f = UIFont(name: "HelveticaNeue-Thin", size: 18) {
-            font = f
-        }
         let attributes = [
-            NSFontAttributeName: font,
+            NSFontAttributeName: Constants.Fonts.DefaultThin,
             NSForegroundColorAttributeName: UIColor.blackColor()
         ]
 
