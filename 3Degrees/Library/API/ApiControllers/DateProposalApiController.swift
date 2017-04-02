@@ -11,7 +11,7 @@ import ThreeDegreesClient
 
 protocol DateProposalApiProtocol: BaseApiProtocol {
     func getDatesProposals(limit: Int, page: Int, completion: ([User]) -> ())
-    func acceptDate(username: String, completion: (shouldSuggestDates: Bool) -> ())
+    func acceptDate(username: String, completion: (bothPartiesAccepted: Bool) -> ())
     func declineDate(username: String, completion: () -> ())
     func suggestDates(username: String, dates: [NSDate], completion: () -> ())
     func acceptSuggestedDate(username: String, date: NSDate, completion: () -> ())
@@ -33,14 +33,14 @@ struct DateProposalApiController: DateProposalApiProtocol {
         }
     }
 
-    func acceptDate(username: String, completion: (shouldSuggestDates: Bool) -> ()) {
+    func acceptDate(username: String, completion: (bothPartiesAccepted: Bool) -> ()) {
         showActivityIndicator()
         api.acceptDate(username) { (data, error, headers) in
             guard self.handleError(error, getErrorMessage: self.acceptDateErrorMessage) else {
                 return
             }
-            let shouldSuggestDates = data?.status == .Accepted
-            completion(shouldSuggestDates: shouldSuggestDates)
+            let bothPartiesAccepted = data?.status == .Accepted
+            completion(bothPartiesAccepted: bothPartiesAccepted)
             self.hideActivityIndicator()
         }
     }

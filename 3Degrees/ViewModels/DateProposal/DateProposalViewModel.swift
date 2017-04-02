@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Router
 import ThreeDegreesClient
 
 protocol DateProposalRefreshDelegate {
@@ -41,7 +42,8 @@ extension DateProposalViewModel: UITableViewDelegate {
     }
 }
 
-class DateProposalViewModel: NSObject, ViewModelProtocol {
+class DateProposalViewModel: NSObject, ViewModelProtocol, Routable {
+    let router = Router()
     var api: DateProposalApiProtocol = DateProposalApiController()
     var superDataSource: UITableViewDataSource? = nil
     var user: UserInfo
@@ -55,12 +57,9 @@ class DateProposalViewModel: NSObject, ViewModelProtocol {
 
     func accept() {
         guard let username = user.username else { return }
-        api.acceptDate(username) {[weak self] shouldSuggestDates in
-            if (shouldSuggestDates) {
-                self?.appNavigator?.showAction(
-                    identifier: R.segue.dateProposalsCollectionViewController
-                                       .scheduleTime.identifier
-                )
+        api.acceptDate(username) {[weak self] bothPartiesAccepted in
+            if (bothPartiesAccepted) {
+                self?.routeToMessages(username)
             }
             guard let user = self?.user else { return }
             self?.delegate?.actionWasTaken(user)
