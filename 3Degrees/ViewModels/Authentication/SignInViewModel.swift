@@ -10,6 +10,7 @@ import Foundation
 import FBSDKLoginKit
 import SVProgressHUD
 import LKAlertController
+import Router
 import Rswift
 
 extension SignInViewModel: SignInViewControllerProtocol {
@@ -42,7 +43,8 @@ extension SignInViewModel: FacebookLoginDelegate {
     }
 }
 
-struct SignInViewModel: ViewModelProtocol {
+class SignInViewModel: ViewModelProtocol, Routable {
+    let router = Router()
     var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol = AuthApiController()
     lazy var facebookLoginViewModel: FacebookLoginViewModel = {
@@ -73,6 +75,6 @@ struct SignInViewModel: ViewModelProtocol {
     }
 
     func loginCompleted() {
-        appNavigator?.showAction(identifier: R.segue.signInViewController.toModeSelection.identifier)
+        route("/select-mode")
     }
 }

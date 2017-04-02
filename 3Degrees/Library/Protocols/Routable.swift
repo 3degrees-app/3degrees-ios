@@ -71,6 +71,10 @@ extension Routable {
                     self.show(viewController)
                 }
             }
+            self.router.bind("/select-mode") { (req) in
+                self.show(R.storyboard.commonScene.modeViewController()!)
+            }
+
             // TODO: Make this work
 //            router.bind("/reset_password") { (req) in
 //                guard let sessionKey = req.query("session-key") else { return }

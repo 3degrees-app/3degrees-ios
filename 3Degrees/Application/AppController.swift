@@ -107,6 +107,8 @@ class AppController: AppControllerProtocol, Routable {
                                    animations: {
                 w?.rootViewController = AppController.shared.leftMenu
             }, completion: nil)
+        self.leftMenu?.toMain()
+        self.leftMenu?.currentState = .Main
     }
 
     func show(viewController: UIViewController) {
