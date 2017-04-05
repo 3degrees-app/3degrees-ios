@@ -23,30 +23,46 @@ typedef NSFont UIFont;
     if (!self)
         return nil;
     
-    self.defaultAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:12] };
+#if TARGET_OS_TV
+    NSUInteger defaultSize = 29;
+#else
+    NSUInteger defaultSize = 12;
+#endif
     
+    self.defaultAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:defaultSize] };
+    
+#if TARGET_OS_TV
+    _headerAttributes = @[ @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:76] },
+                           @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:57] },
+                           @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:48] },
+                           @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:40] },
+                           @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:36] },
+                           @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:32] } ];
+#else
     _headerAttributes = @[ @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:23] },
                            @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:21] },
                            @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:19] },
                            @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:17] },
                            @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:15] },
                            @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:13] } ];
+#endif
+    
     _listAttributes = @[];
-    _quoteAttributes = @[@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Italic" size:12]}];
+    _quoteAttributes = @[@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Italic" size:defaultSize]}];
     
     _imageAttributes = @{};
     _linkAttributes = @{ NSForegroundColorAttributeName: [UIColor blueColor],
                          NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle) };
     
     // Courier New and Courier are the only monospace fonts compatible with watchOS 2
-    _monospaceAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Courier New" size:12],
+    _monospaceAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Courier New" size:defaultSize],
                               NSForegroundColorAttributeName: [UIColor colorWithRed:0.95 green:0.54 blue:0.55 alpha:1] };
-    _strongAttributes = @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:12] };
+    _strongAttributes = @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:defaultSize] };
     
 #if TARGET_OS_IPHONE
-    _emphasisAttributes = @{ NSFontAttributeName: [UIFont italicSystemFontOfSize:12] };
+    _emphasisAttributes = @{ NSFontAttributeName: [UIFont italicSystemFontOfSize:defaultSize] };
 #else
-    _emphasisAttributes = @{ NSFontAttributeName: [[NSFontManager sharedFontManager] convertFont:[UIFont systemFontOfSize:12] toHaveTrait:NSItalicFontMask] };
+    _emphasisAttributes = @{ NSFontAttributeName: [[NSFontManager sharedFontManager] convertFont:[UIFont systemFontOfSize:defaultSize] toHaveTrait:NSItalicFontMask] };
 #endif
     
     return self;
@@ -105,12 +121,23 @@ typedef NSFont UIFont;
                 NSURL *url = [NSURL URLWithString:link] ?: [NSURL URLWithString:
                                                             [link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                 if (url.scheme) {
-                    [attributedString addAttribute:NSLinkAttributeName
-                                             value:url
-                                             range:range];
+                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+                    if (image) {
+                        NSTextAttachment *imageAttachment = [NSTextAttachment new];
+                        imageAttachment.image = image;
+                        imageAttachment.bounds = CGRectMake(0, -5, image.size.width, image.size.height);
+                        NSAttributedString *imgStr = [NSAttributedString attributedStringWithAttachment:imageAttachment];
+                        [attributedString replaceCharactersInRange:range withAttributedString:imgStr];
+                    } else {
+                        [attributedString addAttribute:NSLinkAttributeName
+                                          value:url
+                                          range:range];
+                        [attributedString addAttributes:weakParser.imageAttributes range:range];
+                    }
                 }
+            } else {
+              [attributedString addAttributes:weakParser.imageAttributes range:range];
             }
-            [attributedString addAttributes:weakParser.imageAttributes range:range];
         }
     }];
     
@@ -131,8 +158,26 @@ typedef NSFont UIFont;
     
     [defaultParser addLinkDetectionWithLinkFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, NSString * _Nullable link) {
         if (!weakParser.skipLinkAttribute) {
+            __block BOOL alreadyLinked = NO;
+            [attributedString enumerateAttribute:NSLinkAttributeName
+                                         inRange:range
+                                         options:0
+                                      usingBlock:^(id _Nullable value, __unused NSRange range, BOOL * _Nonnull stop)
+             {
+                 if (value) {
+                     // this range has a link that overlaps with the autodetect range, so skip
+                     alreadyLinked = YES;
+                     *stop = YES;
+                 }
+             }];
+            if (alreadyLinked) {
+                return;
+            }
+            NSURL *url = [NSURL URLWithString:link] ?: [NSURL URLWithString:
+                                                        [link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+
             [attributedString addAttribute:NSLinkAttributeName
-                                     value:[NSURL URLWithString:link]
+                                     value:url
                                      range:range];
         }
         [attributedString addAttributes:weakParser.linkAttributes range:range];
@@ -181,7 +226,7 @@ static NSString *const TSMarkdownQuoteRegex         = @"^(\\>{1,%@})\\s+(.+)$";
 static NSString *const TSMarkdownShortQuoteRegex    = @"^(\\>{1,%@})\\s*([^\\>].*)$";
 
 // inline bracket regex
-static NSString *const TSMarkdownImageRegex         = @"\\!\\[[^\\[]*?\\]\\(\\S*\\)";
+static NSString *const TSMarkdownImageRegex         = @"\\!\\[[^\\[]*?\\]\\([^\\)]*\\)";
 static NSString *const TSMarkdownLinkRegex          = @"\\[[^\\[]*?\\]\\([^\\)]*\\)";
 
 // inline enclosed regex

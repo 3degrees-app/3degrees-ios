@@ -25,7 +25,7 @@ def main_pods
 	pod 'Router', :git => 'https://github.com/rlmartin/Router.git', :branch => 'swift-2.0'
 	pod 'Fabric'
 	pod 'Crashlytics'
-	pod 'TSMarkdownParser', '2.1.1'
+	pod 'TSMarkdownParser', :git => 'https://github.com/rlmartin/TSMarkdownParser.git'
 end
 
 def testing_pods
