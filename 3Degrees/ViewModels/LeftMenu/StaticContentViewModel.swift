@@ -23,7 +23,7 @@ struct StaticContentViewModel: ViewModelProtocol {
     func loadContent() {
         if let type = AccountAction.toStaticContentType(contentType) {
             staticApi.getWithType(type) { (content) in
-                self.content.next(content)
+                self.content.next(content.joinWithSeparator("\n\n"))
             }
         }
     }

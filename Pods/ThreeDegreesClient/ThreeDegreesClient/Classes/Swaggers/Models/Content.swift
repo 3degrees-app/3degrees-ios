@@ -10,14 +10,14 @@ import Foundation
 
 /** The JSON-formatted content returned for the endpoint */
 public class Content: JSONEncodable {
-    public var content: String?
+    public var content: [String]?
 
     public init() {}
 
     // MARK: JSONEncodable
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
-        nillableDictionary["content"] = self.content
+        nillableDictionary["content"] = self.content?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

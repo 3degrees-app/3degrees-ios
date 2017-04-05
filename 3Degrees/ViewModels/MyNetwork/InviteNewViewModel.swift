@@ -53,7 +53,7 @@ class InviteNewViewModel: UIButton, ViewModelProtocol {
         let composeSms = MFMessageComposeViewController()
         composeSms.messageComposeDelegate = self
         staticContentApi.getWithType(self.userType.value.isSingles ? .InviteMessageSingle : .InviteMessageMM) {[weak self] (content) in
-            composeSms.body = content
+            composeSms.body = content.first!
             self?.appNavigator?.presentVcAction(vc: composeSms)
         }
     }

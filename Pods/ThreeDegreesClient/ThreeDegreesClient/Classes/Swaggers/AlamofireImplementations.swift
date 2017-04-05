@@ -12,8 +12,33 @@ class AlamofireRequestBuilderFactory: RequestBuilderFactory {
     }
 }
 
+public struct SynchronizedDictionary<K: Hashable, V> {
+
+    private var dictionary = [K: V]()
+    private let queue = dispatch_queue_create("SynchronizedDictionary", DISPATCH_QUEUE_CONCURRENT)
+
+    public subscript(key: K) -> V? {
+        get {
+            var value: V?
+
+            dispatch_sync(queue) {
+                value = self.dictionary[key]
+            }
+
+            return value
+        }
+
+        set {
+            dispatch_barrier_sync(queue) {
+                self.dictionary[key] = newValue
+            }
+        }
+    }
+
+}
+
 // Store manager to retain its reference
-private var managerStore: [String: Alamofire.Manager] = [:]
+private var managerStore = SynchronizedDictionary<String, Alamofire.Manager>()
 
 class AlamofireRequestBuilder<T>: RequestBuilder<T> {
     required init(method: String, URLString: String, parameters: [String : AnyObject]?, isBody: Bool) {
@@ -86,14 +111,58 @@ class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         }
 
         let cleanupRequest = {
-            managerStore.removeValueForKey(managerId)
+            managerStore[managerId] = nil
         }
 
         let validatedRequest = request.validate()
 
         switch T.self {
+        case is String.Type:
+            validatedRequest.responseString(completionHandler: { (stringResponse) in
+                cleanupRequest()
+
+                if stringResponse.result.isFailure {
+                    completion(
+                        response: nil,
+                        error: ErrorResponse.RawError(stringResponse.response?.statusCode ?? 500, stringResponse.data, stringResponse.result.error!),
+                        headers: stringResponse.response?.allHeaderFields ?? [NSObject : AnyObject]()
+                    )
+                    return
+                }
+
+                completion(
+                    response: Response(
+                        response: stringResponse.response!,
+                        body: (stringResponse.result.value ?? "") as! T
+                    ),
+                    error: nil,
+                    headers: stringResponse.response!.allHeaderFields
+                )
+            })
+        case is Void.Type:
+            validatedRequest.responseData(completionHandler: { (voidResponse) in
+                cleanupRequest()
+
+                if voidResponse.result.isFailure {
+                    completion(
+                        response: nil,
+                        error: ErrorResponse.RawError(voidResponse.response?.statusCode ?? 500, voidResponse.data, voidResponse.result.error!),
+                        headers: voidResponse.response?.allHeaderFields ?? [NSObject : AnyObject]()
+                    )
+                    return
+                }
+
+                completion(
+                    response: Response(
+                        response: voidResponse.response!,
+                        body: nil
+                    ),
+                    error: nil,
+                    headers: voidResponse.response!.allHeaderFields
+                )
+            })
         case is NSData.Type:
-            validatedRequest.responseData({ (dataResponse) in
+            validatedRequest.responseData(completionHandler: { (dataResponse) in
                 cleanupRequest()
 
                 if (dataResponse.result.isFailure) {

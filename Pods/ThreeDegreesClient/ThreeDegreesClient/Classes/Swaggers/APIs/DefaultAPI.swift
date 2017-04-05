@@ -497,7 +497,7 @@ public class DefaultAPI: APIBase {
      - GET /content/{contentType}
      - Get static content. Current supported content-type: invite.message, tos, privacy-policy, faq.
      - examples: [{contentType=application/json, example={
-  "content" : "aeiou"
+  "content" : [ "aeiou" ]
 }}]
      
      - parameter contentType: (path)  
@@ -549,7 +549,7 @@ public class DefaultAPI: APIBase {
      - GET /content/{contentType}/{language}
      - Get static content. Current supported content-type: invite.message, tos, privacy-policy, faq.
      - examples: [{contentType=application/json, example={
-  "content" : "aeiou"
+  "content" : [ "aeiou" ]
 }}]
      
      - parameter contentType: (path)  

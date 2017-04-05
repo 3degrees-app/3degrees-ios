@@ -4,7 +4,7 @@
     "ios": "8.0",
     "osx": "10.9"
   },
-  "version": "0.0.28",
+  "version": "1.0.0",
   "source": {
     "git": "git@github.com:swagger-api/swagger-mustache.git",
     "tag": "v1.0.0"
@@ -16,7 +16,7 @@
   "source_files": "ThreeDegreesClient/Classes/Swaggers/**/*.swift",
   "dependencies": {
     "Alamofire": [
-      "~> 3.1.5"
+      "~> 3.4.1"
     ]
   }
 }
