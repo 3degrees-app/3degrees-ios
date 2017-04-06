@@ -17,6 +17,10 @@ struct Constants {
         static let dateFormat = "MM/dd/yyyy"
     }
 
+    struct Common {
+        static let MainColor = UIColor(r: 87, g: 49, b: 146)
+    }
+
     struct Fonts {
         static let FontName = "HelveticaNeue"
         static let FontNameLight = "HelveticaNeue-Light"

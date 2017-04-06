@@ -11,6 +11,7 @@
 		7A64C08D1E8A03D70007356C /* InviteNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64C08C1E8A03D70007356C /* InviteNewViewModel.swift */; };
 		7A694D7A1DD7719200CCE680 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D791DD7719200CCE680 /* Routable.swift */; };
 		7A694D7C1DD7A2A700CCE680 /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D7B1DD7A2A700CCE680 /* Loggable.swift */; };
+		7A6A64E91E94A92F002AE5BA /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A64E81E94A92F002AE5BA /* OnboardingPageViewController.swift */; };
 		7AC699B61DC993B200272CEE /* SupportedVersionApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */; };
 		86A42400FBC60D461A1A9F03 /* Pods_3DegreesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA1E74DF91BD55E8A92387A /* Pods_3DegreesTests.framework */; };
 		BE09D1571D802DE8002544E4 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */; };
@@ -231,6 +232,7 @@
 		7A64C08C1E8A03D70007356C /* InviteNewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteNewViewModel.swift; sourceTree = "<group>"; };
 		7A694D791DD7719200CCE680 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		7A694D7B1DD7A2A700CCE680 /* Loggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
+		7A6A64E81E94A92F002AE5BA /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedVersionApiController.swift; sourceTree = "<group>"; };
 		BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		BE0C784F1CDB6A6200B98B41 /* ModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				BE0C784F1CDB6A6200B98B41 /* ModeViewController.swift */,
 				E97BF04F1CDD607D0073C638 /* SelectValueTableViewController.swift */,
 				BE0C78561CDB7EC800B98B41 /* TabBarViewController.swift */,
+				7A6A64E81E94A92F002AE5BA /* OnboardingPageViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1488,6 +1491,7 @@
 				E9905A191CFE24520095C062 /* UserApiController.swift in Sources */,
 				E90E5B531D47DCDE002AEF53 /* UIImageView+StringUrl.swift in Sources */,
 				BE643E2C1CFDC1D800068636 /* BaseApiProtocol.swift in Sources */,
+				7A6A64E91E94A92F002AE5BA /* OnboardingPageViewController.swift in Sources */,
 				E987E5401D5F068B00E8D8F9 /* ActivityApiController.swift in Sources */,
 				E91BBAEA1CD1697E00723289 /* SignInViewController.swift in Sources */,
 				E96812851CD24BAE001C7288 /* FacebookLoginViewModel.swift in Sources */,

@@ -12,6 +12,7 @@ import ThreeDegreesClient
 enum StaticContentType: String {
     case ContactUs = "contact-us"
     case Tos = "tos"
+    case Onboarding = "onboarding"
     case PrivacyPolicy = "privacy-policy"
     case FAQ = "faq"
     case InviteMessageMM = "invite.message.matchmaker"

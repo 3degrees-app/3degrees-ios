@@ -74,6 +74,9 @@ extension Routable {
             self.router.bind("/select-mode") { (req) in
                 self.show(R.storyboard.commonScene.modeViewController()!)
             }
+            self.router.bind("/get-started") { (req) in
+                self.show(R.storyboard.commonScene.onboardingPageViewController()!)
+            }
 
             // TODO: Make this work
 //            router.bind("/reset_password") { (req) in

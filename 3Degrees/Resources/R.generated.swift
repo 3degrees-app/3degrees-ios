@@ -1612,11 +1612,16 @@ struct _R: Rswift.Validatable {
       let bundle = _R.hostingBundle
       let modeViewController = StoryboardViewControllerResource<ModeViewController>(identifier: "ModeViewController")
       let name = "CommonScene"
+      let onboardingPageViewController = StoryboardViewControllerResource<OnboardingPageViewController>(identifier: "OnboardingPageViewController")
       let pairUpNavViewController = StoryboardViewControllerResource<UINavigationController>(identifier: "PairUpNavViewController")
       let tabBarViewController = StoryboardViewControllerResource<TabBarViewController>(identifier: "TabBarViewController")
       
       func modeViewController(_: Void) -> ModeViewController? {
         return UIStoryboard(resource: self).instantiateViewController(modeViewController)
+      }
+      
+      func onboardingPageViewController(_: Void) -> OnboardingPageViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(onboardingPageViewController)
       }
       
       func pairUpNavViewController(_: Void) -> UINavigationController? {
@@ -1635,6 +1640,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "myNetworkSelected") == nil { throw ValidationError(description: "[R.swift] Image named 'myNetworkSelected' is used in storyboard 'CommonScene', but couldn't be loaded.") }
         if UIImage(named: "dateProposalSelected") == nil { throw ValidationError(description: "[R.swift] Image named 'dateProposalSelected' is used in storyboard 'CommonScene', but couldn't be loaded.") }
         if UIImage(named: "activityAndHistorySelected") == nil { throw ValidationError(description: "[R.swift] Image named 'activityAndHistorySelected' is used in storyboard 'CommonScene', but couldn't be loaded.") }
+        if _R.storyboard.commonScene().onboardingPageViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'onboardingPageViewController' could not be loaded from storyboard 'CommonScene' as 'OnboardingPageViewController'.") }
         if _R.storyboard.commonScene().modeViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'modeViewController' could not be loaded from storyboard 'CommonScene' as 'ModeViewController'.") }
         if _R.storyboard.commonScene().tabBarViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'tabBarViewController' could not be loaded from storyboard 'CommonScene' as 'TabBarViewController'.") }
         if _R.storyboard.commonScene().pairUpNavViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'pairUpNavViewController' could not be loaded from storyboard 'CommonScene' as 'UINavigationController'.") }
