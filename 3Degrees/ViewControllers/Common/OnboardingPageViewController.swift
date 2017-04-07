@@ -40,7 +40,7 @@ class OnboardingPageViewController: UIPageViewController {
 // MARK: UIPageViewControllerDataSource
 
 extension OnboardingPageViewController: UIPageViewControllerDataSource {
-    
+
     func pageViewController(pageViewController: UIPageViewController,
                             viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
@@ -59,10 +59,11 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
 
         return orderedViewControllers[previousIndex]
     }
-    
+
     func pageViewController(pageViewController: UIPageViewController,
                             viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+            AppController.shared.setupMainAppContent()
             return nil
         }
 
@@ -70,7 +71,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         let orderedViewControllersCount = orderedViewControllers.count
 
         guard orderedViewControllersCount != nextIndex else {
-            return nil
+            return UIViewController()
         }
 
         guard orderedViewControllersCount > nextIndex else {

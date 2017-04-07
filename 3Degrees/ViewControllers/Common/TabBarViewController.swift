@@ -50,9 +50,6 @@ class TabBarViewController: UITabBarController, ViewProtocol {
     }
 
     func configureBindings() {
-        AppController.shared.currentUserMode.observeNew {[unowned self] (mode) in
-            self.setUpContent(mode)
-        }
     }
 
     func setUpContent(mode: Mode) {

@@ -8,7 +8,11 @@
         <!--Onboarding Page View Controller-->
         <scene sceneID="Mbb-oF-820">
             <objects>
-                <pageViewController storyboardIdentifier="OnboardingPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxM-Bg-2F1" customClass="OnboardingPageViewController" customModule="_Degrees" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="OnboardingPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxM-Bg-2F1" customClass="OnboardingPageViewController" customModule="_Degrees" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="vaM-Fe-owx" kind="show" identifier="ToMainContent" id="YcB-ty-00Y"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBe-uI-BO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="920" y="-310"/>
@@ -81,8 +85,8 @@
                         <outlet property="logoLabel" destination="sLa-KB-duG" id="Poj-a5-YR5"/>
                         <outlet property="matchmakerButton" destination="56S-Vb-0lu" id="b1Z-2e-kOg"/>
                         <outlet property="singleButton" destination="1s9-Wc-kKe" id="Hd1-6P-Y5V"/>
-                        <segue destination="vaM-Fe-owx" kind="show" identifier="ToMainAppContent" id="o7t-r8-eDr"/>
                         <segue destination="zZe-hc-eS7" kind="show" identifier="ToUserProfile" id="BfL-oe-WbE"/>
+                        <segue destination="fxM-Bg-2F1" kind="show" identifier="ToOnboarding" id="gor-dN-9cN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g81-7x-PyI" userLabel="First Responder" sceneMemberID="firstResponder"/>

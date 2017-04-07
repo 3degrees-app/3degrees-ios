@@ -346,7 +346,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 12 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 13 view controllers.
   struct segue {
     /// This struct is generated for `AccountViewController`, and contains static references to 4 segues.
     struct accountViewController {
@@ -455,16 +455,16 @@ struct R: Rswift.Validatable {
     
     /// This struct is generated for `ModeViewController`, and contains static references to 2 segues.
     struct modeViewController {
-      /// Segue identifier `ToMainAppContent`.
-      static let toMainAppContent: StoryboardSegueIdentifier<UIStoryboardSegue, ModeViewController, TabBarViewController> = StoryboardSegueIdentifier(identifier: "ToMainAppContent")
+      /// Segue identifier `ToOnboarding`.
+      static let toOnboarding: StoryboardSegueIdentifier<UIStoryboardSegue, ModeViewController, OnboardingPageViewController> = StoryboardSegueIdentifier(identifier: "ToOnboarding")
       /// Segue identifier `ToUserProfile`.
       static let toUserProfile: StoryboardSegueIdentifier<UIStoryboardSegue, ModeViewController, UINavigationController> = StoryboardSegueIdentifier(identifier: "ToUserProfile")
       
-      /// Optionally returns a typed version of segue `ToMainAppContent`.
+      /// Optionally returns a typed version of segue `ToOnboarding`.
       /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toMainAppContent(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, ModeViewController, TabBarViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.modeViewController.toMainAppContent, segue: segue)
+      static func toOnboarding(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, ModeViewController, OnboardingPageViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.modeViewController.toOnboarding, segue: segue)
       }
       
       /// Optionally returns a typed version of segue `ToUserProfile`.
@@ -496,6 +496,21 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func toProfile(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, MyNetworkViewController, DateProfileViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.myNetworkViewController.toProfile, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
+    /// This struct is generated for `OnboardingPageViewController`, and contains static references to 1 segues.
+    struct onboardingPageViewController {
+      /// Segue identifier `ToMainContent`.
+      static let toMainContent: StoryboardSegueIdentifier<UIStoryboardSegue, OnboardingPageViewController, TabBarViewController> = StoryboardSegueIdentifier(identifier: "ToMainContent")
+      
+      /// Optionally returns a typed version of segue `ToMainContent`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func toMainContent(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, OnboardingPageViewController, TabBarViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.onboardingPageViewController.toMainContent, segue: segue)
       }
       
       private init() {}

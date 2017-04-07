@@ -8,23 +8,28 @@
 
 import Foundation
 import Bond
+import Router
 
 protocol ModeViewModelProtocol {
     func handleSingleSelected()
     func handleMatchmakerSelected()
 }
 
-struct ModeViewModel: ViewModelProtocol, ModeViewModelProtocol {
+class ModeViewModel: ViewModelProtocol, ModeViewModelProtocol, Routable {
     var appNavigator: AppNavigator? = nil
+    let router = Router()
+
+    init(appNavigator: AppNavigator) {
+        self.appNavigator = appNavigator
+    }
 
     func handleSingleSelected() {
-        AppController.shared.setupMainAppContent()
         AppController.shared.currentUserMode.next(.Single)
+        self.route("/get-started")
     }
 
     func handleMatchmakerSelected() {
-        AppController.shared.setupMainAppContent()
         AppController.shared.currentUserMode.next(.Matchmaker)
-
+        self.route("/get-started")
     }
 }

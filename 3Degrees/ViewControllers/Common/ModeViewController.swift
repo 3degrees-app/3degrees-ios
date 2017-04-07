@@ -9,8 +9,8 @@
 import UIKit
 
 class ModeViewController: UIViewController, ViewProtocol {
-    private lazy var viewModel: ModeViewModelProtocol = {
-        return ModeViewModel()
+    private lazy var viewModel: ModeViewModelProtocol = {[unowned self] () in
+        return ModeViewModel(appNavigator: self)
     }()
 
     @IBOutlet weak var singleButton: UIButton!
@@ -43,5 +43,9 @@ class ModeViewController: UIViewController, ViewProtocol {
         singleButton.bnd_tap.observe(self.viewModel.handleSingleSelected)
 
         matchmakerButton.bnd_tap.observe(self.viewModel.handleMatchmakerSelected)
+    }
+
+    func show(viewController: UIViewController) {
+        self.showVcAction(vc: viewController)
     }
 }
