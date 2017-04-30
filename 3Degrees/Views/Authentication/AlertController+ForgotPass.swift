@@ -19,7 +19,7 @@ extension Alert {
         addAction(R.string.localizable.resetPassActionName(), style: .Default) {
             (action) in
             guard let tf = self.getAlertController().textFields?.first else { return }
-            viewModel.resetPassword(tf.text!) {
+            viewModel.resetPassword(tf.text!) { _ in 
                 self.getAlertController()
                     .dismissViewControllerAnimated(true, completion: nil)
             }

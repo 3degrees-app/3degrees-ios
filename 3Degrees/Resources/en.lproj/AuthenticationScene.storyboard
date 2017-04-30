@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="osI-Te-wM4">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="osI-Te-wM4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -221,7 +221,6 @@
                         <outlet property="passwordField" destination="c59-9X-vfp" id="slt-Mc-aEI"/>
                         <outletCollection property="textFieldsBackViews" destination="rHE-r7-sOk" collectionClass="NSMutableArray" id="2ke-sw-btL"/>
                         <outletCollection property="textFieldsBackViews" destination="Qhg-fE-Q8F" collectionClass="NSMutableArray" id="gBW-qt-c6Q"/>
-                        <segue destination="dFf-b4-Czy" kind="show" identifier="ToModeSelection" id="FQC-aH-mlx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngt-qo-sfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -596,6 +595,6 @@
         <image name="fbIcon" width="6" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FQC-aH-mlx"/>
+        <segue reference="Nhz-Gv-Ram"/>
     </inferredMetricsTieBreakers>
 </document>

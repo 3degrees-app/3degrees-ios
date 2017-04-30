@@ -13,6 +13,8 @@ enum StaticContentType: String {
     case ContactUs = "contact-us"
     case Tos = "tos"
     case Onboarding = "onboarding"
+    case OnboardingMatchmaker = "onboarding-matchmaker"
+    case OnboardingSingle = "onboarding-single"
     case PrivacyPolicy = "privacy-policy"
     case FAQ = "faq"
     case InviteMessageMM = "invite.message.matchmaker"

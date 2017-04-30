@@ -18,65 +18,65 @@ struct AuthApiControllerMock: AuthApiProtocol {
     
     func loginWithFacebook(
         fbAccessToken: String,
-        completion: () -> ()) {
+        completion: (String?) -> ()) {
         if shouldError {
             return
         } else {
-            completion()
+            completion(.None)
         }
     }
     
     func loginWithEmail(
         email: String,
         password: String,
-        completion: () -> ()) {
+        completion: (String?) -> ()) {
         if shouldError {
             return
         } else {
-            completion()
+            completion(.None)
         }
     }
 
     func signUp(
         facebookAccessToken: String?,
-        completion: () -> ()) {
+        completion: (String?) -> ()) {
         if shouldError {
             return
         } else {
-            completion()
+            completion(.None)
         }
     }
 
     func signUp(user: PrivateUser,
-                completion: () -> ()) {
+                completion: (String?) -> ()) {
         if shouldError {
             return
         } else {
-            completion()
+            completion(.None)
         }
     }
 
-    func forgotPassword(email: String, completion: (() -> ())?) {
+    func forgotPassword(email: String, completion: ((String?) -> ())?) {
         if shouldError {
             return
         } else {
-            completion?()
+            completion?(.None)
         }
     }
 
-    func logout(completion: (()->())?) {
+    func logout(completion: ((String?)->())?) {
         if shouldError {
             return
         } else {
-            completion?()
+            completion?(.None)
         }
     }
 
-    func resetPassword(password: String, completion: () -> ()) {
+    func resetPassword(password: String, completion: (String?) -> ()) {
         if shouldError {
             return
         } else {
-            completion()
+            completion(.None)
         }
     }
 }

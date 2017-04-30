@@ -12,6 +12,7 @@
 		7A694D7A1DD7719200CCE680 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D791DD7719200CCE680 /* Routable.swift */; };
 		7A694D7C1DD7A2A700CCE680 /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694D7B1DD7A2A700CCE680 /* Loggable.swift */; };
 		7A6A64E91E94A92F002AE5BA /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A64E81E94A92F002AE5BA /* OnboardingPageViewController.swift */; };
+		7AC4B9A41EB19FB90015DCAD /* FullScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4B9A31EB19FB90015DCAD /* FullScreenViewModelProtocol.swift */; };
 		7AC699B61DC993B200272CEE /* SupportedVersionApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */; };
 		86A42400FBC60D461A1A9F03 /* Pods_3DegreesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA1E74DF91BD55E8A92387A /* Pods_3DegreesTests.framework */; };
 		BE09D1571D802DE8002544E4 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */; };
@@ -233,6 +234,7 @@
 		7A694D791DD7719200CCE680 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		7A694D7B1DD7A2A700CCE680 /* Loggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		7A6A64E81E94A92F002AE5BA /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		7AC4B9A31EB19FB90015DCAD /* FullScreenViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		7AC699B51DC993B200272CEE /* SupportedVersionApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedVersionApiController.swift; sourceTree = "<group>"; };
 		BE09D1561D802DE8002544E4 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		BE0C784F1CDB6A6200B98B41 /* ModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 				E91B39221CD0A12B00F6598E /* ViewProtocol.swift */,
 				7A694D791DD7719200CCE680 /* Routable.swift */,
 				7A694D7B1DD7A2A700CCE680 /* Loggable.swift */,
+				7AC4B9A31EB19FB90015DCAD /* FullScreenViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1512,6 +1515,7 @@
 				BE32685B1CF382F800ECF82E /* ContactSearchViewModel.swift in Sources */,
 				E915C68C1D7CA9E500288FCB /* ProposedDatesDescriptionTableViewCell.swift in Sources */,
 				BEB017C51CEB877A00F33E18 /* OneFieldTableViewCell.swift in Sources */,
+				7AC4B9A41EB19FB90015DCAD /* FullScreenViewModelProtocol.swift in Sources */,
 				BE32685D1CF3898500ECF82E /* ContactSearchTableViewCell.swift in Sources */,
 				E91B392D1CD0CFF900F6598E /* AppController.swift in Sources */,
 				7A64C08D1E8A03D70007356C /* InviteNewViewModel.swift in Sources */,

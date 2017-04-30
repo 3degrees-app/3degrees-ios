@@ -98,6 +98,14 @@ class AppController: AppControllerProtocol, Routable {
         }
     }
 
+    func setupApp(mode: Mode) {
+        AppController.shared.setupMainAppContent()
+        AppController.shared.currentUserMode.next(mode)
+        guard let tabBar = leftMenu?.mainView as? TabBarViewController
+            else { return }
+        tabBar.setUpContent(mode)
+    }
+
     func setupMainAppContent() {
         guard let appDelegate = UIApplication.sharedApplication().delegate else { return }
         guard let w = appDelegate.window else { return }
@@ -111,9 +119,13 @@ class AppController: AppControllerProtocol, Routable {
         self.leftMenu?.currentState = .Main
     }
 
-    func show(viewController: UIViewController) {
+    func show(viewController: UIViewController, withMenu: Bool) {
         guard let w = getMainWindow() else { return }
-        w.rootViewController = viewController
+        if (withMenu) {
+            w.rootViewController?.presentVcAction(vc: viewController)
+        } else {
+            w.rootViewController = viewController
+        }
     }
 
     func logOut() {
@@ -133,11 +145,7 @@ class AppController: AppControllerProtocol, Routable {
     func handleAutoLogin() {
         guard let token = cacheController.getAuthToken() where !token.isEmpty else { return }
         if let mode = cacheController.lastMode {
-            AppController.shared.setupMainAppContent()
-            AppController.shared.currentUserMode.next(mode)
-            guard let tabBar = leftMenu?.mainView as? TabBarViewController
-                else { return }
-            tabBar.setUpContent(mode)
+            AppController.shared.setupApp(mode)
         } else {
             guard let w = getMainWindow() else { return }
             w.rootViewController = R.storyboard.commonScene.modeViewController()

@@ -43,7 +43,7 @@ extension SignInViewModel: FacebookLoginDelegate {
     }
 }
 
-class SignInViewModel: ViewModelProtocol, Routable {
+class SignInViewModel: FullScreenViewModelProtocol, Routable {
     let router = Router()
     var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol = AuthApiController()
@@ -74,7 +74,8 @@ class SignInViewModel: ViewModelProtocol, Routable {
         appNavigator?.popAction()
     }
 
-    func loginCompleted() {
-        route("/select-mode")
+    func loginCompleted(startPage: String?) {
+        guard let startPage = startPage else { route("/select-mode"); return }
+        route("\(startPage)")
     }
 }

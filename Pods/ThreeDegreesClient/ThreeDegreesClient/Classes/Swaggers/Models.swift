@@ -526,6 +526,7 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = SessionKey()
                 instance.key = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["key"])
+                instance.startPage = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["start_page"])
                 return instance
             }
 

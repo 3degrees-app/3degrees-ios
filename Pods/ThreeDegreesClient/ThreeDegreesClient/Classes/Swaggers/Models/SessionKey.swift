@@ -10,6 +10,7 @@ import Foundation
 
 public class SessionKey: JSONEncodable {
     public var key: String?
+    public var startPage: String?
 
     public init() {}
 
@@ -17,6 +18,7 @@ public class SessionKey: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["key"] = self.key
+        nillableDictionary["start_page"] = self.startPage
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

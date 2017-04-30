@@ -209,7 +209,7 @@ class AccountViewModel: NSObject, ViewModelProtocol {
     }
 
     func logout() {
-        authApi.logout {
+        authApi.logout { _ in
             FBSDKLoginManager().logOut()
             AppController.shared.logOut()
         }

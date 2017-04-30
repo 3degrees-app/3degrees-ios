@@ -11,14 +11,14 @@ import LKAlertController
 import Rswift
 import SVProgressHUD
 
-struct ForgotPasswordViewModel: ViewModelProtocol {
+struct ForgotPasswordViewModel: FullScreenViewModelProtocol {
     var appNavigator: AppNavigator? = nil
     var apiController: AuthApiProtocol? = AuthApiController()
 
-    func resetPassword(email: String, completion: () -> ()) {
+    func resetPassword(email: String, completion: (String?) -> ()) {
         guard !email.isEmpty else { return }
-        apiController?.forgotPassword(email) {
-            completion()
+        apiController?.forgotPassword(email) { _ in
+            completion(.None)
             SVProgressHUD.showSuccessWithStatus(
                 R.string.localizable.forgotPasswordConfirmation()
             )

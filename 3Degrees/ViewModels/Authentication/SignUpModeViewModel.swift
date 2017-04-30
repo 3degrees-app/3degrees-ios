@@ -17,7 +17,7 @@ extension SignUpModeViewModel: FacebookLoginDelegate {
             showAlertWithUndefinedError()
             return
         }
-        apiController.signUp(token) {[unowned self] in
+        apiController.signUp(token) {[unowned self] _ in
             let segueId = R.segue.signUpModeViewController.toModeSelection.identifier
             self.appNavigator?.showAction(identifier: segueId)
         }
@@ -40,7 +40,7 @@ extension SignUpModeViewModel: SignUpModeViewControllerDelegate {
     }
 }
 
-class SignUpModeViewModel: NSObject, ViewModelProtocol {
+class SignUpModeViewModel: NSObject, FullScreenViewModelProtocol {
     var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol = AuthApiController()
     lazy var facebookLoginViewModel: FacebookLoginViewModel = {

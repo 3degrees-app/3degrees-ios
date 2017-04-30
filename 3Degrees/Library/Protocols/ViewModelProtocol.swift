@@ -14,7 +14,11 @@ protocol ViewModelProtocol {
 }
 
 extension ViewModelProtocol {
-    func show(viewController: UIViewController) {
-        self.appNavigator?.showVcAction(vc: viewController)
+    func show(viewController: UIViewController, withMenu: Bool) {
+        if (withMenu) {
+            self.appNavigator?.showVcAction(vc: viewController)
+        } else {
+            self.appNavigator?.presentOnWindowRootVc(vc: viewController)
+        }
     }
 }

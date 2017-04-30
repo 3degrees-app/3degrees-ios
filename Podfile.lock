@@ -95,7 +95,7 @@ CHECKOUT OPTIONS:
     :commit: f8163cec278fbd548d907357d4625661fb4cafa3
     :git: https://github.com/rlmartin/Router.git
   ThreeDegreesClient:
-    :commit: 9a7e2fcca3071d26536ead8fd5dfd375c7533239
+    :commit: b8253421936c327f449df9d30fcf1544324d8c0f
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
   TSMarkdownParser:
     :commit: 32e24b33c3db7851d3781b276bc796f17242faf5

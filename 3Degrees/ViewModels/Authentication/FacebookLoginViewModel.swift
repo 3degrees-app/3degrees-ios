@@ -21,7 +21,7 @@ protocol FacebookLoginDelegate {
     func handleError(error: FacebookLoginError)
 }
 
-extension FacebookLoginDelegate where Self: ViewModelProtocol {
+extension FacebookLoginDelegate where Self: FullScreenViewModelProtocol {
     func showAlertWithUndefinedError() {
         Alert(
             title: R.string.localizable.error(),
@@ -30,7 +30,7 @@ extension FacebookLoginDelegate where Self: ViewModelProtocol {
     }
 }
 
-struct FacebookLoginViewModel: ViewModelProtocol {
+struct FacebookLoginViewModel: FullScreenViewModelProtocol {
     var appNavigator: AppNavigator?
     var delegate: FacebookLoginDelegate?
 

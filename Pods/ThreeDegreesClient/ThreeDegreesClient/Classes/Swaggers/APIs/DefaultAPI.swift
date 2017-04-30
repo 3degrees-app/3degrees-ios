@@ -349,6 +349,7 @@ public class DefaultAPI: APIBase {
      - PUT /auth/{loginType}
      - Login the user. The content in the request body is determined by login-type. email: password facebook: auth code
      - examples: [{contentType=application/json, example={
+  "start_page" : "aeiou",
   "key" : "aeiou"
 }}]
      
@@ -1233,6 +1234,7 @@ public class DefaultAPI: APIBase {
      - PUT /me/password
      - Set password for the logged-in user.
      - examples: [{contentType=application/json, example={
+  "start_page" : "aeiou",
   "key" : "aeiou"
 }}]
      
@@ -1945,6 +1947,7 @@ public class DefaultAPI: APIBase {
      - PUT /users
      - Create a user. Either PrivateUser or fb-auth-code is required (see UserForm defintion for details). For user profile updates, see PUT /me.
      - examples: [{contentType=application/json, example={
+  "start_page" : "aeiou",
   "key" : "aeiou"
 }}]
      

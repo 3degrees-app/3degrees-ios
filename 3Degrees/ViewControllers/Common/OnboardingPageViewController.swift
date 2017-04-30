@@ -17,7 +17,16 @@ class OnboardingPageViewController: UIPageViewController {
         dataSource = self
 
         let staticApi: StaticContentApiProtocol = StaticContentApiController()
-        staticApi.getWithType(StaticContentType.Onboarding) { (content) in
+        var contentType = StaticContentType.Onboarding
+        switch AppController.shared.currentUserMode.value {
+        case .Matchmaker:
+            contentType = .OnboardingMatchmaker
+            break
+        case .Single:
+            contentType = .OnboardingSingle
+            break
+        }
+        staticApi.getWithType(contentType) { (content) in
             self.orderedViewControllers = content.map({md in self.newContentViewController(md)})
             if let firstViewController = self.orderedViewControllers.first {
                 self.setViewControllers([firstViewController],

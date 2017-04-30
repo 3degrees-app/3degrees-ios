@@ -44,8 +44,4 @@ class ModeViewController: UIViewController, ViewProtocol {
 
         matchmakerButton.bnd_tap.observe(self.viewModel.handleMatchmakerSelected)
     }
-
-    func show(viewController: UIViewController) {
-        self.showVcAction(vc: viewController)
-    }
 }

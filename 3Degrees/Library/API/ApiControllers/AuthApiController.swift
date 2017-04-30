@@ -11,20 +11,20 @@ import LKAlertController
 import ThreeDegreesClient
 
 protocol AuthApiProtocol: BaseApiProtocol {
-    func loginWithEmail(email: String, password: String, completion: () -> ())
-    func loginWithFacebook(fbAccessToken: String, completion: () -> ())
-    func signUp(facebookAccessToken: String?, completion:() -> ())
-    func signUp(user: PrivateUser, completion: () -> ())
-    func forgotPassword(email: String, completion: (() -> ())?)
-    func resetPassword(password: String, completion: () -> ())
-    func logout(completion: (() -> ())?)
+    func loginWithEmail(email: String, password: String, completion: (String?) -> ())
+    func loginWithFacebook(fbAccessToken: String, completion: (String?) -> ())
+    func signUp(facebookAccessToken: String?, completion:(String?) -> ())
+    func signUp(user: PrivateUser, completion: (String?) -> ())
+    func forgotPassword(email: String, completion: ((String?) -> ())?)
+    func resetPassword(password: String, completion: (String?) -> ())
+    func logout(completion: ((String?) -> ())?)
 }
 
 struct AuthApiController: AuthApiProtocol {
     var api: ApiProtocol = ApiController()
     var cache: CacheProtocol = AppController.shared.cacheController
 
-    typealias AuthCompletionHandler = (() -> ())
+    typealias AuthCompletionHandler = ((String?) -> ())
 
     func loginWithEmail(email: String, password: String, completion:AuthCompletionHandler) {
         showActivityIndicator()
@@ -80,7 +80,7 @@ struct AuthApiController: AuthApiProtocol {
         showActivityIndicator()
         api.forgotPassword(email) { (data, error, headers) in
             guard self.handleError(error, getErrorMessage: self.getErrorMessage) else { return }
-            completion?()
+            completion?(nil)
         }
     }
 
@@ -95,7 +95,7 @@ struct AuthApiController: AuthApiProtocol {
     func logout(completion: AuthCompletionHandler?) {
         api.logout { (data, error, headers) in
             ThreeDegreesClientAPI.customHeaders.removeAll()
-            completion?()
+            completion?(nil)
         }
     }
 
@@ -111,12 +111,17 @@ struct AuthApiController: AuthApiProtocol {
             return
         }
         AppController.shared.cacheController.loggedIn(sessionKey.key)
-        completion()
         guard let key = sessionKey.key else { return }
         ThreeDegreesClientAPI.customHeaders.updateValue(key,
                                                         forKey: Constants.Api.SessionKeyHeader)
         self.hideActivityIndicator()
         UserApiController().currentUser {
+            if let isSingle = AppController.shared.currentUser.value?.isSingle {
+                AppController.shared.setupApp(isSingle ? Mode.Single : Mode.Matchmaker)
+            } else {
+                AppController.shared.setupApp(Mode.Single)
+            }
+            completion(sessionKey.startPage)
             UserApiController().pushNotificationsValue { (value) in
                 AppController.shared.cacheController.pushNotificationsSettingChanged(value)
             }

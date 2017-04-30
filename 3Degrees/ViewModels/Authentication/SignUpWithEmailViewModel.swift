@@ -9,6 +9,7 @@
 import Foundation
 import Bond
 import LKAlertController
+import Router
 import Rswift
 import ThreeDegreesClient
 
@@ -30,11 +31,10 @@ extension SignUpWithEmailViewModel: SignUpWithEmailViewDelegate {
         privateUser.password = password
         privateUser.dob = birthday?.birthdayNSDate
         privateUser.gender = gender
-        apiController.signUp(privateUser) {() in
-            let segueId = R.segue
-                           .signUpWithEmailViewController
-                           .toModeSelection.identifier
-            self.appNavigator?.showAction(identifier: segueId)
+        apiController.signUp(privateUser) { startPage in
+            if let startPage = startPage {
+                self.route(startPage)
+            }
         }
     }
 
@@ -46,13 +46,14 @@ extension SignUpWithEmailViewModel: SignUpWithEmailViewDelegate {
     }
 }
 
-struct SignUpWithEmailViewModel: ViewModelProtocol {
+class SignUpWithEmailViewModel: FullScreenViewModelProtocol, Routable {
 
     var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol
     let genderPickerDelegate: UIPickerViewDelegate
     let genderPickerDataSource: UIPickerViewDataSource
     let genderObservableValue: Observable<String?>
+    let router = Router()
 
     var firstName: String? = ""
     var lastName: String? = ""

@@ -15,21 +15,26 @@ protocol ModeViewModelProtocol {
     func handleMatchmakerSelected()
 }
 
-class ModeViewModel: ViewModelProtocol, ModeViewModelProtocol, Routable {
+class ModeViewModel: FullScreenViewModelProtocol, ModeViewModelProtocol, Routable {
     var appNavigator: AppNavigator? = nil
     let router = Router()
+    var userApi: UserApiProtocol = UserApiController()
 
     init(appNavigator: AppNavigator) {
         self.appNavigator = appNavigator
     }
 
     func handleSingleSelected() {
-        AppController.shared.currentUserMode.next(.Single)
-        self.route("/get-started")
+        userApi.switchIsSingle(true) {
+            AppController.shared.currentUserMode.next(.Single)
+            self.route(":root:/get-started")
+        }
     }
 
     func handleMatchmakerSelected() {
-        AppController.shared.currentUserMode.next(.Matchmaker)
-        self.route("/get-started")
+        userApi.switchIsSingle(false) {
+            AppController.shared.currentUserMode.next(.Matchmaker)
+            self.route(":root:/get-started")
+        }
     }
 }

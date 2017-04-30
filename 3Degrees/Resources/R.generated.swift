@@ -346,7 +346,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 13 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 12 view controllers.
   struct segue {
     /// This struct is generated for `AccountViewController`, and contains static references to 4 segues.
     struct accountViewController {
@@ -565,21 +565,6 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func scheduleDateTime(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, ScheduleResultsViewController, ScheduleDateTimeViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.scheduleResultsViewController.scheduleDateTime, segue: segue)
-      }
-      
-      private init() {}
-    }
-    
-    /// This struct is generated for `SignInViewController`, and contains static references to 1 segues.
-    struct signInViewController {
-      /// Segue identifier `ToModeSelection`.
-      static let toModeSelection: StoryboardSegueIdentifier<UIStoryboardSegue, SignInViewController, ModeViewController> = StoryboardSegueIdentifier(identifier: "ToModeSelection")
-      
-      /// Optionally returns a typed version of segue `ToModeSelection`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func toModeSelection(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, SignInViewController, ModeViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.signInViewController.toModeSelection, segue: segue)
       }
       
       private init() {}
