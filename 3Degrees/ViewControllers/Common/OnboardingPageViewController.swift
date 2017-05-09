@@ -41,6 +41,8 @@ class OnboardingPageViewController: UIPageViewController {
         let controller = UIViewController()
         let contentView = FLTextView()
         contentView.attributedText = TSMarkdownParser.standardParser().attributedStringFromMarkdown(content)
+        contentView.backgroundColor = Constants.Common.MainColor
+        contentView.textAlignment = .Center
         controller.view = contentView
         return controller
     }
