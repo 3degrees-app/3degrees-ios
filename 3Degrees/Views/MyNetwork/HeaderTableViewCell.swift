@@ -23,6 +23,8 @@ class HeaderTableViewCell: UITableViewCell, TableCellProtocol {
                                        fullName: cellViewModel.name)
         contentView.sendSubviewToBack(avatarImageView)
         nameLabel.text = cellViewModel.name
+        nameLabel.textColor = Constants.Profile.NameLabelColor
+        nameLabel.dropShadow()
         userInfoLabel.text = cellViewModel.info
         chatButton.bnd_tap.observe(cellViewModel.chatButtonPressed)
         matchButton.bnd_hidden.next(AppController.shared.currentUserMode.value == .Single)

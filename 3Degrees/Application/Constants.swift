@@ -127,7 +127,7 @@ struct Constants {
         static let EditTitleColor = UIColor.blackColor()
         static let EditSubtitleColor = UIColor(r: 179, g: 172, b: 160)
 
-        static let TextShadowRadius: CGFloat = 2
+        static let TextShadowRadius: CGFloat = 1
     }
 
     struct SelectValue {

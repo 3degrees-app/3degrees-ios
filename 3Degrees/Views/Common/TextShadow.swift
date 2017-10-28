@@ -10,28 +10,30 @@ import UIKit
 
 extension UIButton {
     func dropShadow() {
-        self.layer.shadowOffset = CGSize()
-        self.layer.shadowRadius = Constants.Profile.TextShadowRadius
+        self.layer.shadowColor = Constants.Profile.TextShadowColor.CGColor
         self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = Constants.Profile.TextShadowRadius
+        self.layer.shadowOffset = CGSize()
+        self.layer.backgroundColor = UIColor.clearColor().CGColor
     }
 }
 
 extension UILabel {
     func dropShadow(radius: CGFloat = Constants.Profile.TextShadowRadius) {
-        self.shadowColor = Constants.Profile.TextShadowColor
-        self.shadowOffset = CGSize()
+        self.layer.shadowColor = Constants.Profile.TextShadowColor.CGColor
         self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = radius
+        self.layer.shadowRadius = Constants.Profile.TextShadowRadius
         self.layer.shadowOffset = CGSize()
+        self.layer.backgroundColor = UIColor.clearColor().CGColor
     }
 }
 
 extension UITextField {
     func dropShadow() {
-        let shadow = NSShadow()
-        shadow.shadowColor = Constants.Profile.TextShadowColor
-        shadow.shadowOffset = CGSize()
-        shadow.shadowBlurRadius = Constants.Profile.TextShadowRadius
-        self.defaultTextAttributes[NSShadowAttributeName] = shadow
+        self.layer.shadowColor = Constants.Profile.TextShadowColor.CGColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = Constants.Profile.TextShadowRadius
+        self.layer.shadowOffset = CGSize()
+        self.layer.backgroundColor = UIColor.clearColor().CGColor
     }
 }
