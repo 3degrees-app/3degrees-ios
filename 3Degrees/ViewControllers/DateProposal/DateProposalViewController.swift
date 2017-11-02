@@ -65,10 +65,23 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         acceptButton.bnd_tap.observe {[unowned self] () in
             self.viewModel?.accept()
         }
+        buttonize(acceptButton, color: UIColor(r: 0, g: 255, b: 0, a: 0.25))
+        buttonize(declineButton, color: UIColor(r: 255, g: 0, b: 0, a: 0.25))
 
         declineButton.bnd_tap.observe {[unowned self] () in
             self.viewModel?.decline()
         }
         tableView.reloadData()
+    }
+
+    func buttonize(button: UIButton, color: UIColor) {
+        // TODO: There is no set width; if the button text is different widths, the buttons won't look standardized.
+        button.backgroundColor = color
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 10
+        button.contentEdgeInsets.bottom = 5
+        button.contentEdgeInsets.left = 10
+        button.contentEdgeInsets.right = 10
+        button.contentEdgeInsets.top = 5
     }
 }
