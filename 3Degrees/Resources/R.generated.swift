@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 33 images.
+  /// This `R.image` struct is generated, and contains static references to 34 images.
   struct image {
     /// Image `accountButton`.
     static let accountButton = ImageResource(bundle: _R.hostingBundle, name: "accountButton")
@@ -72,6 +72,8 @@ struct R: Rswift.Validatable {
     static let forwardIcon = ImageResource(bundle: _R.hostingBundle, name: "forward-icon")
     /// Image `importAvatarFromFb`.
     static let importAvatarFromFb = ImageResource(bundle: _R.hostingBundle, name: "importAvatarFromFb")
+    /// Image `matchmakerIcon`.
+    static let matchmakerIcon = ImageResource(bundle: _R.hostingBundle, name: "matchmakerIcon")
     /// Image `mathProfileButton`.
     static let mathProfileButton = ImageResource(bundle: _R.hostingBundle, name: "mathProfileButton")
     /// Image `modeScreenBackground`.
@@ -203,6 +205,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "importAvatarFromFb", bundle: ..., traitCollection: ...)`
     static func importAvatarFromFb(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.importAvatarFromFb, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "matchmakerIcon", bundle: ..., traitCollection: ...)`
+    static func matchmakerIcon(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.matchmakerIcon, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "mathProfileButton", bundle: ..., traitCollection: ...)`
@@ -1682,6 +1689,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIImage(named: "occupationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'occupationIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
+        if UIImage(named: "matchmakerIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'matchmakerIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "defaultAvatarImage") == nil { throw ValidationError(description: "[R.swift] Image named 'defaultAvatarImage' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "educationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'educationIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "bioIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'bioIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
