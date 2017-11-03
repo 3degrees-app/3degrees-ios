@@ -67,6 +67,11 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         }
         buttonize(acceptButton, color: UIColor(r: 0, g: 255, b: 0, a: 0.25))
         buttonize(declineButton, color: UIColor(r: 255, g: 0, b: 0, a: 0.25))
+        nameTextField.textColor = Constants.Profile.NameLabelColor
+        nameTextField.font = nameTextField.font.fontWithSize(30)
+        nameTextField.dropShadow()
+        userInfoTextField.textColor = Constants.Profile.NameLabelColor
+        userInfoTextField.dropShadow()
 
         declineButton.bnd_tap.observe {[unowned self] () in
             self.viewModel?.decline()

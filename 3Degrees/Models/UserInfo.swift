@@ -69,9 +69,44 @@ extension User: UserInfo {
         return fullName.trimmed
     }
 
+    var age: String {
+        guard let age = self.dob?.age else { return "" }
+        if age > 0 {
+            return String(age)
+        } else {
+            return ""
+        }
+    }
+    
     var degree: String {
         guard let degree = self.education?.degree else { return "" }
         return degree.trimmed
+    }
+
+    var city: String {
+        guard let city = self.location?.city else { return "" }
+        return city.trimmed
+    }
+
+    var cityState: String {
+        if (self.city != "" && self.state != "") {
+            return self.city + ", " + self.state
+        } else {
+            return self.city + self.state
+        }
+    }
+
+    var state: String {
+        guard let state = self.location?.state else { return "" }
+        return state.trimmed
+    }
+
+    var info: String {
+        if (age != "" && cityState != "") {
+            return age + " | " + cityState
+        } else {
+            return age + cityState
+        }
     }
 
     var school: String {
