@@ -8,11 +8,11 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - Bond (4.3.1)
-  - Crashlytics (3.8.2):
-    - Fabric (~> 1.6.3)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
   - DualSlideMenu (1.7.1)
   - DZNEmptyDataSet (1.8)
-  - Fabric (1.6.9)
+  - Fabric (1.7.2)
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -36,7 +36,7 @@ PODS:
   - SVProgressHUD (2.0.3)
   - SwiftMoment (0.5.1)
   - SwiftPaginator (1.0.1)
-  - ThreeDegreesClient (1.0.0):
+  - ThreeDegreesClient (1.1.0):
     - Alamofire (~> 3.4.1)
   - TSMarkdownParser (2.1.3)
   - UIImageView-Letters (1.1.4)
@@ -95,7 +95,7 @@ CHECKOUT OPTIONS:
     :commit: f8163cec278fbd548d907357d4625661fb4cafa3
     :git: https://github.com/rlmartin/Router.git
   ThreeDegreesClient:
-    :commit: b8253421936c327f449df9d30fcf1544324d8c0f
+    :commit: 5360fe613326a4f13b75a4f91f052c7fc1c51440
     :git: https://github.com/3degreesapp/3degrees-swift-client.git
   TSMarkdownParser:
     :commit: 32e24b33c3db7851d3781b276bc796f17242faf5
@@ -106,10 +106,10 @@ SPEC CHECKSUMS:
   AwesomeCache: a1561c926b6cf812c5f3f4262ea22e20bf8323c1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
-  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DualSlideMenu: c81d55c3b61c0053abdaadf000a7b32d7956245e
   DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
-  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FLTextView: eac36e475bb81cd3369802207c6ba66c3129501e
@@ -128,7 +128,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftMoment: 469c0734b5d4d6631a15a91f8093cf436c3cbb7c
   SwiftPaginator: 70cd05296e612a13b1882667d583621de8053354
-  ThreeDegreesClient: 32c53b43699f4b61d4e16ca391fa4547e0721b62
+  ThreeDegreesClient: e366faf9e76b8ec302ed647fc18b6cf7443c8791
   TSMarkdownParser: 114779f14d46e7fc6d9880d4797e5abcc01f92c3
   UIImageView-Letters: f62db28076797adf3560ab7410647dc6899b9eef
 

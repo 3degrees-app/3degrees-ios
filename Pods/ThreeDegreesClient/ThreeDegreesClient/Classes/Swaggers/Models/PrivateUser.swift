@@ -30,6 +30,7 @@ public class PrivateUser: JSONEncodable {
     public var education: Education?
     public var employment: Employment?
     public var gender: Gender?
+    public var height: Height?
     /** If True, user will be available to be matched up by matchmakers */
     public var isSingle: Bool?
     public var location: Location?
@@ -56,6 +57,7 @@ public class PrivateUser: JSONEncodable {
         nillableDictionary["education"] = self.education?.encodeToJSON()
         nillableDictionary["employment"] = self.employment?.encodeToJSON()
         nillableDictionary["gender"] = self.gender?.rawValue
+        nillableDictionary["height"] = self.height?.encodeToJSON()
         nillableDictionary["is_single"] = self.isSingle
         nillableDictionary["location"] = self.location?.encodeToJSON()
         nillableDictionary["match_with_gender"] = self.matchWithGender?.rawValue

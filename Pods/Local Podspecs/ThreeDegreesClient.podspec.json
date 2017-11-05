@@ -4,7 +4,7 @@
     "ios": "8.0",
     "osx": "10.9"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "source": {
     "git": "git@github.com:swagger-api/swagger-mustache.git",
     "tag": "v1.0.0"
@@ -12,7 +12,7 @@
   "authors": "rlmartin@gmail.com",
   "license": "Apache License, Version 2.0",
   "homepage": "https://api.threedegreesapp.com",
-  "summary": "Generated client",
+  "summary": "Client library for 3degrees API",
   "source_files": "ThreeDegreesClient/Classes/Swaggers/**/*.swift",
   "dependencies": {
     "Alamofire": [

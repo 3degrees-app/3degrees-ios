@@ -376,6 +376,20 @@ class Decoders {
             }
 
 
+            // Decoder for [Height]
+            Decoders.addDecoder(clazz: [Height].self) { (source: AnyObject) -> [Height] in
+                return Decoders.decode(clazz: [Height].self, source: source)
+            }
+            // Decoder for Height
+            Decoders.addDecoder(clazz: Height.self) { (source: AnyObject) -> Height in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Height()
+                instance.amount = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["amount"])
+                instance.unit = Height.Unit(rawValue: (sourceDictionary["unit"] as? String) ?? "") 
+                return instance
+            }
+
+
             // Decoder for [Image]
             Decoders.addDecoder(clazz: [Image].self) { (source: AnyObject) -> [Image] in
                 return Decoders.decode(clazz: [Image].self, source: source)
@@ -506,6 +520,7 @@ class Decoders {
                 instance.education = Decoders.decodeOptional(clazz: Education.self, source: sourceDictionary["education"])
                 instance.employment = Decoders.decodeOptional(clazz: Employment.self, source: sourceDictionary["employment"])
                 instance.gender = PrivateUser.Gender(rawValue: (sourceDictionary["gender"] as? String) ?? "") 
+                instance.height = Decoders.decodeOptional(clazz: Height.self, source: sourceDictionary["height"])
                 instance.isSingle = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["is_single"])
                 instance.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"])
                 instance.matchWithGender = PrivateUser.MatchWithGender(rawValue: (sourceDictionary["match_with_gender"] as? String) ?? "") 
@@ -574,6 +589,7 @@ class Decoders {
                 instance.education = Decoders.decodeOptional(clazz: Education.self, source: sourceDictionary["education"])
                 instance.employment = Decoders.decodeOptional(clazz: Employment.self, source: sourceDictionary["employment"])
                 instance.gender = User.Gender(rawValue: (sourceDictionary["gender"] as? String) ?? "") 
+                instance.height = Decoders.decodeOptional(clazz: Height.self, source: sourceDictionary["height"])
                 instance.isSingle = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["is_single"])
                 instance.location = Decoders.decodeOptional(clazz: Location.self, source: sourceDictionary["location"])
                 instance.matchWithGender = User.MatchWithGender(rawValue: (sourceDictionary["match_with_gender"] as? String) ?? "") 
