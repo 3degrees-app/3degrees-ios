@@ -19,8 +19,7 @@ class ProfileViewController: UITableViewController, ViewProtocol {
         let user = self.user ?? AppController.shared.currentUser.value!
         return ProfileViewModel(user: user,
                                 tableView: self.tableView,
-                                appNavigator: self,
-                                genderObservableValue: self.genderTextField.bnd_text)
+                                appNavigator: self)
     }()
 
     @IBOutlet weak var nameField: UITextField!
@@ -31,6 +30,7 @@ class ProfileViewController: UITableViewController, ViewProtocol {
     @IBOutlet weak var schoolTextView: FLTextView!
     @IBOutlet weak var bioTextView: FLTextView!
     @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var editAvatarButton: UIButton!
@@ -119,6 +119,8 @@ class ProfileViewController: UITableViewController, ViewProtocol {
         bioTextView.placeholder = R.string.localizable.bioPlaceholder()
         genderTextField.bnd_text.next(viewModel.user.gender?.rawValue.capitalizedString)
         genderTextField.placeholder = R.string.localizable.genderPlaceholder()
+        heightTextField.bnd_text.next(viewModel.user.height?.prettyString)
+        heightTextField.placeholder = R.string.localizable.heightPlaceholder()
         birthdayTextField.bnd_text.next(viewModel.user.dob?.birthdayString)
         birthdayTextField.placeholder = R.string.localizable.birthdayPlaceholder()
         locationTextField.bnd_text.next(viewModel.location)
@@ -126,6 +128,8 @@ class ProfileViewController: UITableViewController, ViewProtocol {
     }
 
     func configureBindings() {
+        _ = GenderPickerDelegate(textField: genderTextField)
+        _ = HeightPickerDelegate(textField: heightTextField)
         nameField.delegate = viewModel
         jobTitleTextView.delegate = viewModel
         placeOfWorkTextView.delegate = viewModel
@@ -138,10 +142,6 @@ class ProfileViewController: UITableViewController, ViewProtocol {
                 self.birthdayTextField.bnd_text.next(date.birthdayString)
             }
         }
-        genderTextField.configurePickerView(
-            viewModel.genderPickerDelegate,
-            dataSource: viewModel.genderPickerDataSource
-        )
         viewModel.observableImageUrl.observe {[unowned self] in
             self.avatarImageView.setAvatarImage($0, fullName: self.viewModel.name)
         }
@@ -159,6 +159,7 @@ class ProfileViewController: UITableViewController, ViewProtocol {
             self.viewModel.handleSchool(self.schoolTextView.text)
             self.viewModel.user.bio = self.bioTextView.text
             self.viewModel.handleGender(self.genderTextField.text ?? "")
+            self.viewModel.handleHeight(self.heightTextField.text ?? "")
             self.viewModel.handleBirthday(self.birthdayTextField.text ?? "")
             self.viewModel.handleLocation(self.locationTextField.text ?? "")
 

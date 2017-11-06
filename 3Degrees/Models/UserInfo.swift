@@ -17,6 +17,7 @@ protocol UserInfo {
     var degree: String { get }
     var school: String { get }
     var biography: String { get }
+    var heightString: String { get }
     var title: String { get }
     var placeOfWork: String { get }
     var matchmakerInfo: String { get }
@@ -36,6 +37,7 @@ extension UserInfo {
     var degree: String { return "" }
     var school: String { return "" }
     var biography: String { return "" }
+    var heightString: String { return "" }
     var title: String { return "" }
     var placeOfWork: String { return "" }
     var matchmakerInfo: String { return "" }
@@ -119,6 +121,11 @@ extension User: UserInfo {
         return biography.trimmed
     }
 
+    var heightString: String {
+        guard let height = self.height else { return "" }
+        return height.prettyString
+    }
+    
     var title: String {
         guard let title = self.employment?.title else { return "" }
         return title.trimmed

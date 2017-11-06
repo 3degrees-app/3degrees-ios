@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 34 images.
+  /// This `R.image` struct is generated, and contains static references to 35 images.
   struct image {
     /// Image `accountButton`.
     static let accountButton = ImageResource(bundle: _R.hostingBundle, name: "accountButton")
@@ -70,6 +70,8 @@ struct R: Rswift.Validatable {
     static let filterPage = ImageResource(bundle: _R.hostingBundle, name: "filterPage")
     /// Image `forward-icon`.
     static let forwardIcon = ImageResource(bundle: _R.hostingBundle, name: "forward-icon")
+    /// Image `heightIcon`.
+    static let heightIcon = ImageResource(bundle: _R.hostingBundle, name: "heightIcon")
     /// Image `importAvatarFromFb`.
     static let importAvatarFromFb = ImageResource(bundle: _R.hostingBundle, name: "importAvatarFromFb")
     /// Image `matchmakerIcon`.
@@ -202,6 +204,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.forwardIcon, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "heightIcon", bundle: ..., traitCollection: ...)`
+    static func heightIcon(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.heightIcon, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "importAvatarFromFb", bundle: ..., traitCollection: ...)`
     static func importAvatarFromFb(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.importAvatarFromFb, compatibleWithTraitCollection: traitCollection)
@@ -291,7 +298,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 28 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 29 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AcceptSelectedDateCell`.
     static let acceptSelectedDateCell: ReuseIdentifier<SelectedDateTimeTableViewCell> = ReuseIdentifier(identifier: "AcceptSelectedDateCell")
@@ -321,6 +328,8 @@ struct R: Rswift.Validatable {
     static let gender: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "Gender")
     /// Reuse identifier `HeaderCell`.
     static let headerCell: ReuseIdentifier<HeaderTableViewCell> = ReuseIdentifier(identifier: "HeaderCell")
+    /// Reuse identifier `Height`.
+    static let height: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "Height")
     /// Reuse identifier `Location`.
     static let location: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "Location")
     /// Reuse identifier `MatchCell`.
@@ -692,7 +701,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 75 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 76 localization keys.
     struct localizable {
       /// en translation: About
       /// 
@@ -846,6 +855,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let getCurrentUserError = StringResource(key: "GetCurrentUserError", tableName: "Localizable", locales: ["en"])
+      /// en translation: Height
+      /// 
+      /// Locales: en
+      static let heightPlaceholder = StringResource(key: "HeightPlaceholder", tableName: "Localizable", locales: ["en"])
       /// en translation: Please, check the info you entered.
       /// 
       /// Locales: en
@@ -1259,6 +1272,13 @@ struct R: Rswift.Validatable {
       /// Locales: en
       static func getCurrentUserError(_: Void) -> String {
         return NSLocalizedString("GetCurrentUserError", comment: "")
+      }
+      
+      /// en translation: Height
+      /// 
+      /// Locales: en
+      static func heightPlaceholder(_: Void) -> String {
+        return NSLocalizedString("HeightPlaceholder", comment: "")
       }
       
       /// en translation: Please, check the info you entered.
@@ -1694,6 +1714,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "educationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'educationIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "bioIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'bioIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "forward-icon") == nil { throw ValidationError(description: "[R.swift] Image named 'forward-icon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
+        if UIImage(named: "heightIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'heightIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "back-icon") == nil { throw ValidationError(description: "[R.swift] Image named 'back-icon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if UIImage(named: "dateIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'dateIcon' is used in storyboard 'DateProposalScene', but couldn't be loaded.") }
         if _R.storyboard.dateProposalScene().dateProposalSceneNavController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dateProposalSceneNavController' could not be loaded from storyboard 'DateProposalScene' as 'UINavigationController'.") }
@@ -1781,6 +1802,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIImage(named: "occupationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'occupationIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "defaultAvatarImage") == nil { throw ValidationError(description: "[R.swift] Image named 'defaultAvatarImage' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
+        if UIImage(named: "heightIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'heightIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "educationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'educationIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "pairUpButtonBack") == nil { throw ValidationError(description: "[R.swift] Image named 'pairUpButtonBack' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "bioIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'bioIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }

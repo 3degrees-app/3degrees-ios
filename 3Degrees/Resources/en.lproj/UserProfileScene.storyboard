@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jxx-jW-sqM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jxx-jW-sqM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -615,6 +615,32 @@
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Height" rowHeight="90" id="zbD-cW-2hR">
+                                        <rect key="frame" x="0.0" y="850" width="600" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zbD-cW-2hR" id="It0-Sy-tqm">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-qV-jXL">
+                                                    <rect key="frame" x="30" y="34" width="540" height="22"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="PLP-qV-jXL" secondAttribute="trailing" constant="30" id="Fna-ZV-2Vf"/>
+                                                <constraint firstItem="PLP-qV-jXL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="It0-Sy-tqm" secondAttribute="top" constant="20" id="VF0-Tf-vtk"/>
+                                                <constraint firstItem="PLP-qV-jXL" firstAttribute="centerY" secondItem="It0-Sy-tqm" secondAttribute="centerY" id="bvA-kt-Dpu"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PLP-qV-jXL" secondAttribute="bottom" constant="20" id="pke-hg-wID"/>
+                                                <constraint firstItem="PLP-qV-jXL" firstAttribute="leading" secondItem="It0-Sy-tqm" secondAttribute="leading" constant="30" id="zKB-kx-ymv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -633,6 +659,7 @@
                         <outlet property="degreeTextView" destination="5oS-74-vUO" id="MMT-rl-qXF"/>
                         <outlet property="editAvatarButton" destination="fzT-h1-vUV" id="7AF-ok-8Sh"/>
                         <outlet property="genderTextField" destination="Yeq-t0-Kzf" id="NnR-Vj-Rnq"/>
+                        <outlet property="heightTextField" destination="PLP-qV-jXL" id="xh7-sU-nfV"/>
                         <outlet property="importFromFbButton" destination="AbE-MC-yDZ" id="Fm6-KG-wYS"/>
                         <outlet property="jobTitleTextView" destination="a0w-RK-NEr" id="t2O-fm-lm4"/>
                         <outlet property="locationTextField" destination="TGq-xi-AbA" id="lEP-Yj-dHu"/>

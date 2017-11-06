@@ -45,6 +45,7 @@
 "ConfirmPassPlaceholder" = "Confirm Password";
 "BirthdayPlaceholder" = "Birthday";
 "GenderPlaceholder" = "Gender";
+"HeightPlaceholder" = "Height";
 "SignUpButtonTitle" = "Sign up";
 
 // Left Menu

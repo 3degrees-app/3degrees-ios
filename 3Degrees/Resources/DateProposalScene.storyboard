@@ -653,6 +653,41 @@
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Bio" rowHeight="110" id="PfN-wk-LpI" userLabel="Height">
+                                        <rect key="frame" x="0.0" y="689" width="375" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PfN-wk-LpI" id="ZVv-x8-xUi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heightIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wqh-PN-oR7" userLabel="heightIcon">
+                                                    <rect key="frame" x="30" y="47" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="5dK-yc-0fe"/>
+                                                        <constraint firstAttribute="width" constant="16" id="lqW-V7-Qb6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y14-bb-w0U" userLabel="Height">
+                                                    <rect key="frame" x="61" y="25" width="284" height="59"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="wqh-PN-oR7" firstAttribute="leading" secondItem="ZVv-x8-xUi" secondAttribute="leading" constant="30" id="Mtd-bv-jV6"/>
+                                                <constraint firstItem="y14-bb-w0U" firstAttribute="top" secondItem="ZVv-x8-xUi" secondAttribute="top" priority="750" constant="25" id="W2m-0w-YHl"/>
+                                                <constraint firstItem="wqh-PN-oR7" firstAttribute="centerY" secondItem="ZVv-x8-xUi" secondAttribute="centerY" id="XkE-mu-ihW"/>
+                                                <constraint firstAttribute="bottom" secondItem="y14-bb-w0U" secondAttribute="bottom" priority="750" constant="25" id="sAM-HI-omd"/>
+                                                <constraint firstItem="y14-bb-w0U" firstAttribute="leading" secondItem="wqh-PN-oR7" secondAttribute="trailing" constant="15" id="u0V-3w-NGI"/>
+                                                <constraint firstAttribute="trailing" secondItem="y14-bb-w0U" secondAttribute="trailing" constant="30" id="x0t-p3-k9d"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -670,6 +705,7 @@
                         <outlet property="bioLabel" destination="JkY-jQ-lKM" id="4qq-c1-U4P"/>
                         <outlet property="declineButton" destination="MgN-pA-XDM" id="FcG-mp-p6I"/>
                         <outlet property="degreeLabel" destination="2HK-8e-y9u" id="kQZ-M3-wZc"/>
+                        <outlet property="heightLabel" destination="y14-bb-w0U" id="hlW-PX-sYe"/>
                         <outlet property="mmNameLabel" destination="JgN-f5-zX0" id="8dk-Nn-jzS"/>
                         <outlet property="nameTextField" destination="P45-hC-7bt" id="cPC-XG-h4c"/>
                         <outlet property="placeOfWorkLabel" destination="l60-be-GMA" id="0sS-I4-D2J"/>
@@ -691,6 +727,7 @@
         <image name="defaultAvatarImage" width="128" height="128"/>
         <image name="educationIcon" width="16" height="16"/>
         <image name="forward-icon" width="48" height="48"/>
+        <image name="heightIcon" width="16" height="16"/>
         <image name="matchmakerIcon" width="16" height="16"/>
         <image name="occupationIcon" width="16" height="15"/>
     </resources>

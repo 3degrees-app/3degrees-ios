@@ -71,6 +71,25 @@ extension ProfileViewModel: ProfileViewModelProtocol {
         }
     }
 
+    func handleHeight(heightRawValue: String) {
+        var matches: [String] = heightRawValue.capturedGroups("(\\d+)'\\s*(\\d+)\"")
+        if (matches.count > 0) {
+            self.user.height = Height()
+            self.user.height!.amount = Int32(matches[0])! * 12 + Int32(matches[1])!
+            self.user.height!.unit = Height.Unit.In
+        } else {
+            matches = heightRawValue.capturedGroups("(\\d+)((\\.)(\\d+))?\\s*[m|M]")
+            if (matches.count > 0) {
+                self.user.height = Height()
+                self.user.height!.amount = Int32(matches[0])! * 100
+                if (matches.count > 1) {
+                    self.user.height!.amount = self.user.height!.amount! + Int32(matches[3])!
+                }
+                self.user.height!.unit = Height.Unit.Cm
+            }
+        }
+    }
+    
     func handleLocation(location: String) {
         let parts = location.characters.split { $0 == ","}.map(String.init)
         self.user.location = Location()
@@ -193,20 +212,15 @@ class ProfileViewModel: NSObject {
     let imagePickerController: ImagePickerController?
     let user: PrivateUser
     let tableView: UITableView
-    let genderPickerDataSource: UIPickerViewDataSource
-    let genderPickerDelegate: UIPickerViewDelegate
     let observableImageUrl: Observable<String?> = Observable(nil)
     let observableImage: Observable<UIImage?> = Observable(nil)
 
     init(user: PrivateUser,
          tableView: UITableView,
-         appNavigator: AppNavigator,
-         genderObservableValue: Observable<String?>) {
+         appNavigator: AppNavigator) {
         self.appNavigator = appNavigator
         self.user = user
         self.tableView = tableView
-        self.genderPickerDataSource = GenderPickerDataSource()
-        self.genderPickerDelegate = GenderPickerDelegate(observableValue: genderObservableValue)
         Configuration.requestPermissionMessage = "To capture and use an in-app photo, 3degrees needs to access both Camera and Photos"
         self.imagePickerController = ImagePickerController()
         self.imagePickerController?.imageLimit = 1

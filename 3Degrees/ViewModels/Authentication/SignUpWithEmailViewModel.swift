@@ -50,9 +50,6 @@ class SignUpWithEmailViewModel: FullScreenViewModelProtocol, Routable {
 
     var appNavigator: AppNavigator?
     var apiController: AuthApiProtocol
-    let genderPickerDelegate: UIPickerViewDelegate
-    let genderPickerDataSource: UIPickerViewDataSource
-    let genderObservableValue: Observable<String?>
     let router = Router()
 
     var firstName: String? = ""
@@ -66,9 +63,6 @@ class SignUpWithEmailViewModel: FullScreenViewModelProtocol, Routable {
     init(appNavigator: AppNavigator) {
         self.appNavigator = appNavigator
         self.apiController = AuthApiController()
-        self.genderObservableValue = Observable(gender?.rawValue)
-        self.genderPickerDelegate = GenderPickerDelegate(observableValue: self.genderObservableValue)
-        self.genderPickerDataSource = GenderPickerDataSource()
     }
 
     var canSignUp: Bool {

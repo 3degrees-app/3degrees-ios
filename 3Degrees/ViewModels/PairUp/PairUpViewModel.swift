@@ -58,6 +58,9 @@ extension PairUpViewModel: UITableViewDelegate {
         case 4:
             guard proposedPerson?.biography.isEmpty == true else { break }
             return 0
+        case 5:
+            guard proposedPerson?.heightString.isEmpty == true else { break }
+            return 0
         default:
             break
         }
@@ -74,7 +77,7 @@ extension PairUpViewModel: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isEmptyMySingles() ? 0 : 5
+        return isEmptyMySingles() ? 0 : 6
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -207,6 +210,7 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
     let degree: Observable<String?>
     let school: Observable<String?>
     let bio: Observable<String?>
+    let height: Observable<String?>
 
     private var myPerson: UserInfo? = nil
     private var proposedPerson: UserInfo? = nil
@@ -230,6 +234,7 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
         degree = Observable(nil)
         school = Observable(nil)
         bio = Observable(nil)
+        height = Observable(nil)
         mySinglesViewModel = ProposedPeopleCollectionViewModel(appNavigator: appNavigator, type: .Mine)
         proposedSinglesViewModel = ProposedPeopleCollectionViewModel(appNavigator: appNavigator, type: .Alian)
         super.init()
@@ -261,6 +266,7 @@ class PairUpViewModel: NSObject, ViewModelProtocol {
         degree.next(user?.degree ?? "")
         school.next(user?.school ?? "")
         bio.next(user?.biography ?? "")
+        height.next(user?.heightString ?? "")
         tableView.beginUpdates()
         tableView.endUpdates()
     }

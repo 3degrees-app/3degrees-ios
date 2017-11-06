@@ -30,6 +30,7 @@ class PairUpViewController: UITableViewController, ViewProtocol, RootTabBarViewC
     @IBOutlet weak var degree: UILabel!
     @IBOutlet weak var school: UILabel!
     @IBOutlet weak var bio: UILabel!
+    @IBOutlet weak var height: UILabel!
 
     private var filterButton: UIButton = UIButton()
 
@@ -81,6 +82,7 @@ class PairUpViewController: UITableViewController, ViewProtocol, RootTabBarViewC
         viewModel.degree.bindTo(degree.bnd_text)
         viewModel.school.bindTo(school.bnd_text)
         viewModel.bio.bindTo(bio.bnd_text)
+        viewModel.height.bindTo(height.bnd_text)
 
         pairUpButton.bnd_tap.observeNew(viewModel.handlePairUpRequest)
 

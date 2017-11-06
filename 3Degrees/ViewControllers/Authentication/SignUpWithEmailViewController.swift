@@ -35,7 +35,6 @@ class SignUpWithEmailViewController: UITableViewController, ViewProtocol {
         applyDefaultStyle()
         configureBindings()
         initializeBirthdayInputSource()
-        initializeGenderInputSource()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -67,16 +66,8 @@ class SignUpWithEmailViewController: UITableViewController, ViewProtocol {
                   .bindTo(self.birthdayField.bnd_text)
     }
 
-    private func initializeGenderInputSource() {
-        let pickerDelegate = viewModel.genderPickerDelegate
-        let pickerDataSource = viewModel.genderPickerDataSource
-        genderField.configurePickerView(pickerDelegate, dataSource: pickerDataSource)
-        viewModel.genderObservableValue.observeNew {[unowned self] (text) in
-            self.genderField.bnd_text.next(text)
-        }
-    }
-
     internal func configureBindings() {
+        _ = GenderPickerDelegate(textField: genderField)
         backButton.bnd_tap.observe {[unowned self] () in
             self.viewModel.backButtonPressed()
         }

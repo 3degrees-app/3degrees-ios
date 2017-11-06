@@ -57,6 +57,8 @@ extension DateProfileViewModel: UITableViewDataSource {
                 icon: R.image.educationIcon.name)
         case .BioCell:
             return getOneFieldCell(user.biography, icon: R.image.bioIcon.name)
+        case .HeightCell:
+            return getOneFieldCell(user.heightString, icon: R.image.heightIcon.name)
         }
     }
 
@@ -167,13 +169,14 @@ class DateProfileViewModel: NSObject, ViewModelProtocol {
         case OccupationCell
         case EducationCell
         case BioCell
+        case HeightCell
 
         static let all: [TableRows] = [
             .HeaderCell, .OccupationCell, .EducationCell, .BioCell
         ]
 
         static let allForDate: [TableRows] = [
-            .HeaderCell, .MatchmakerCell, .OccupationCell, .EducationCell, .BioCell
+            .HeaderCell, .MatchmakerCell, .OccupationCell, .EducationCell, .BioCell, .HeightCell
         ]
 
         static func getRowsForUser(user: UserInfo, userType: MyNetworkTab.UsersType) -> [TableRows] {
@@ -189,6 +192,9 @@ class DateProfileViewModel: NSObject, ViewModelProtocol {
             }
             if !user.biography.isEmpty {
                 rows.append(.BioCell)
+            }
+            if (userType == .Dates || userType == .Singles) && !user.heightString.isEmpty {
+                rows.append(.HeightCell)
             }
             return rows
         }

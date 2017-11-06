@@ -21,6 +21,7 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -61,6 +62,7 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         degreeLabel.bnd_text.next(user.degree)
         schoolLabel.bnd_text.next(user.school)
         bioLabel.bnd_text.next(user.biography)
+        heightLabel.bnd_text.next(user.heightString)
 
         acceptButton.bnd_tap.observe {[unowned self] () in
             self.viewModel?.accept()

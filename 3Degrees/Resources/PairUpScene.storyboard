@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8B-Rr-FYr">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8B-Rr-FYr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -330,6 +330,41 @@
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Height" rowHeight="110" id="Bgx-Tl-2C6" userLabel="Height">
+                                        <rect key="frame" x="0.0" y="841" width="600" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bgx-Tl-2C6" id="6oQ-1w-YLN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heightIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RGm-2B-ioy">
+                                                    <rect key="frame" x="30" y="47" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="VzO-5K-saI"/>
+                                                        <constraint firstAttribute="width" constant="16" id="jFD-Hf-qjp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtG-wy-O3j" userLabel="Height">
+                                                    <rect key="frame" x="61" y="25" width="509" height="59"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ZtG-wy-O3j" secondAttribute="bottom" priority="750" constant="25" id="6K4-uR-TBH"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZtG-wy-O3j" secondAttribute="trailing" constant="30" id="9f9-34-Hh4"/>
+                                                <constraint firstItem="ZtG-wy-O3j" firstAttribute="top" secondItem="6oQ-1w-YLN" secondAttribute="top" priority="750" constant="25" id="Bwm-aL-y2o"/>
+                                                <constraint firstItem="RGm-2B-ioy" firstAttribute="leading" secondItem="6oQ-1w-YLN" secondAttribute="leading" constant="30" id="NJd-aQ-rO8"/>
+                                                <constraint firstItem="RGm-2B-ioy" firstAttribute="centerY" secondItem="6oQ-1w-YLN" secondAttribute="centerY" id="oR9-K9-XNn"/>
+                                                <constraint firstItem="ZtG-wy-O3j" firstAttribute="leading" secondItem="RGm-2B-ioy" secondAttribute="trailing" constant="15" id="t9T-Vq-02k"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -343,6 +378,7 @@
                     <connections>
                         <outlet property="bio" destination="1jh-lB-yjN" id="cUt-nZ-Qpn"/>
                         <outlet property="degree" destination="ybo-ME-BMu" id="u09-am-Tdh"/>
+                        <outlet property="height" destination="ZtG-wy-O3j" id="dQv-GR-ScY"/>
                         <outlet property="jobTitle" destination="rA2-wb-Tbl" id="3jp-LW-FfJ"/>
                         <outlet property="matchmakerName" destination="kMN-5G-eZc" id="enu-5D-9ud"/>
                         <outlet property="mySingleCollectionView" destination="Ygg-ND-urR" id="u2j-9u-x2k"/>
@@ -654,6 +690,7 @@
         <image name="bioIcon" width="16" height="16"/>
         <image name="defaultAvatarImage" width="128" height="128"/>
         <image name="educationIcon" width="16" height="16"/>
+        <image name="heightIcon" width="16" height="16"/>
         <image name="occupationIcon" width="16" height="15"/>
         <image name="pairUpButtonBack" width="116" height="116"/>
     </resources>

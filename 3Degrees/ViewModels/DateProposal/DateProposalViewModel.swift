@@ -29,6 +29,8 @@ extension DateProposalViewModel: UITableViewDelegate {
         case 4:
             guard user.biography.isEmpty else { break }
             return 0
+        case 5: guard user.heightString.isEmpty else { break }
+            return 0
         default:
             return UITableViewAutomaticDimension
         }
