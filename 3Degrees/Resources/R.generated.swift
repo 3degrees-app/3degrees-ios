@@ -1801,11 +1801,12 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIImage(named: "occupationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'occupationIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
+        if UIImage(named: "matchmakerIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'matchmakerIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "defaultAvatarImage") == nil { throw ValidationError(description: "[R.swift] Image named 'defaultAvatarImage' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
-        if UIImage(named: "heightIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'heightIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "educationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'educationIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "pairUpButtonBack") == nil { throw ValidationError(description: "[R.swift] Image named 'pairUpButtonBack' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if UIImage(named: "bioIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'bioIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
+        if UIImage(named: "heightIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'heightIcon' is used in storyboard 'PairUpScene', but couldn't be loaded.") }
         if _R.storyboard.pairUpScene().pairUpViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'pairUpViewController' could not be loaded from storyboard 'PairUpScene' as 'PairUpViewController'.") }
         if _R.storyboard.pairUpScene().filterViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'filterViewController' could not be loaded from storyboard 'PairUpScene' as 'FilterViewController'.") }
       }

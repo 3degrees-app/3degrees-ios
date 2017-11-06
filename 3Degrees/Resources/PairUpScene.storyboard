@@ -169,7 +169,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R5H-hI-JIh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matchmakerIcon" translatesAutoresizingMaskIntoConstraints="NO" id="R5H-hI-JIh">
                                                     <rect key="frame" x="30" y="47" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="37A-IT-OR6"/>
@@ -691,6 +691,7 @@
         <image name="defaultAvatarImage" width="128" height="128"/>
         <image name="educationIcon" width="16" height="16"/>
         <image name="heightIcon" width="16" height="16"/>
+        <image name="matchmakerIcon" width="16" height="16"/>
         <image name="occupationIcon" width="16" height="15"/>
         <image name="pairUpButtonBack" width="116" height="116"/>
     </resources>
