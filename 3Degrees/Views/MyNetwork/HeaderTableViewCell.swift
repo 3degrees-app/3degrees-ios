@@ -26,6 +26,8 @@ class HeaderTableViewCell: UITableViewCell, TableCellProtocol {
         nameLabel.textColor = Constants.Profile.NameLabelColor
         nameLabel.dropShadow()
         userInfoLabel.text = cellViewModel.info
+        userInfoLabel.textColor = Constants.Profile.NameLabelColor
+        userInfoLabel.dropShadow()
         chatButton.bnd_tap.observe(cellViewModel.chatButtonPressed)
         matchButton.bnd_hidden.next(AppController.shared.currentUserMode.value == .Single)
         matchButton.bnd_tap.observe(cellViewModel.matchButtonPressed)
