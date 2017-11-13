@@ -25,7 +25,7 @@ class MatchmakerTableViewCell: UITableViewCell, TableCellProtocol {
         }
         if let vm = viewModel {
             let count = vm.matchmakers.count
-            self.pageControl.numberOfPages = count > 3 ? 3 : count
+            self.pageControl.numberOfPages = count
         }
 
         matchmakersCollectionView.delegate = viewModel
