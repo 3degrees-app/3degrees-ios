@@ -136,7 +136,7 @@ extension MyNetworkViewModel: UITableViewDataSource {
 
     func loadDates() {
         myNetworkApi.getDates(0, limit: 1000) {(dates) in
-            self.updateTable(dates.map { $0 as UserInfo })
+            self.updateTable(dates.map { $0.user as! UserInfo })
         }
     }
 

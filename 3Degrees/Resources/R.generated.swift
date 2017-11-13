@@ -701,7 +701,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 76 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 78 localization keys.
     struct localizable {
       /// en translation: About
       /// 
@@ -919,6 +919,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let pushNotificationsFailedRegistration = StringResource(key: "PushNotificationsFailedRegistration", tableName: "Localizable", locales: ["en"])
+      /// en translation: who is friends with
+      /// 
+      /// Locales: en
+      static let relatedMatchmakerPrefix = StringResource(key: "RelatedMatchmakerPrefix", tableName: "Localizable", locales: ["en"])
       /// en translation: Reset Password
       /// 
       /// Locales: en
@@ -975,6 +979,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let staticPagesLoadingError = StringResource(key: "StaticPagesLoadingError", tableName: "Localizable", locales: ["en"])
+      /// en translation: Suggested by
+      /// 
+      /// Locales: en
+      static let suggestedByMatchmakerPrefix = StringResource(key: "SuggestedByMatchmakerPrefix", tableName: "Localizable", locales: ["en"])
       /// en translation: Support
       /// 
       /// Locales: en
@@ -1386,6 +1394,13 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("PushNotificationsFailedRegistration", comment: "")
       }
       
+      /// en translation: who is friends with
+      /// 
+      /// Locales: en
+      static func relatedMatchmakerPrefix(_: Void) -> String {
+        return NSLocalizedString("RelatedMatchmakerPrefix", comment: "")
+      }
+      
       /// en translation: Reset Password
       /// 
       /// Locales: en
@@ -1482,6 +1497,13 @@ struct R: Rswift.Validatable {
       /// Locales: en
       static func staticPagesLoadingError(_: Void) -> String {
         return NSLocalizedString("StaticPagesLoadingError", comment: "")
+      }
+      
+      /// en translation: Suggested by
+      /// 
+      /// Locales: en
+      static func suggestedByMatchmakerPrefix(_: Void) -> String {
+        return NSLocalizedString("SuggestedByMatchmakerPrefix", comment: "")
       }
       
       /// en translation: Support
@@ -1768,6 +1790,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIImage(named: "occupationIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'occupationIcon' is used in storyboard 'MyNetworkScene', but couldn't be loaded.") }
+        if UIImage(named: "matchmakerIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'matchmakerIcon' is used in storyboard 'MyNetworkScene', but couldn't be loaded.") }
         if UIImage(named: "defaultAvatarImage") == nil { throw ValidationError(description: "[R.swift] Image named 'defaultAvatarImage' is used in storyboard 'MyNetworkScene', but couldn't be loaded.") }
         if UIImage(named: "mathProfileButton") == nil { throw ValidationError(description: "[R.swift] Image named 'mathProfileButton' is used in storyboard 'MyNetworkScene', but couldn't be loaded.") }
         if UIImage(named: "bioIcon") == nil { throw ValidationError(description: "[R.swift] Image named 'bioIcon' is used in storyboard 'MyNetworkScene', but couldn't be loaded.") }

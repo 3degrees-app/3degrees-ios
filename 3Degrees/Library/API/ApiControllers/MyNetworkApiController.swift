@@ -12,7 +12,7 @@ import ThreeDegreesClient
 protocol MyNetworkApiProtocol: BaseApiProtocol {
     func getSingles(page: Int, limit: Int, completion:([User]) -> ())
     func getMatchmakers(page: Int, limit: Int, completion:([User]) -> ())
-    func getDates(page: Int, limit: Int, completion:[User] ->())
+    func getDates(page: Int, limit: Int, completion:[Match] ->())
     func deleteConnection(username: String, completion:() -> ())
     func getUsers(requestModel: UsersRequestModel, completion:([User]) -> ())
     func addUser(username: String, completion:() -> ())
@@ -45,7 +45,7 @@ struct MyNetworkApiController: MyNetworkApiProtocol {
         }
     }
 
-    func getDates(page: Int, limit: Int, completion:[User] ->()) {
+    func getDates(page: Int, limit: Int, completion:[Match] ->()) {
         showActivityIndicator()
         api.getDates(page, limit: limit) { (dates, error, headers) in
             guard self.handleError(error, getErrorMessage: self.getErrorMessage)

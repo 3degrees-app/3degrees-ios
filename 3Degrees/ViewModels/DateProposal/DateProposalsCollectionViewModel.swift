@@ -6,6 +6,7 @@
 //  Copyright © 2016 Gigster. All rights reserved.
 //
 
+import Bond
 import UIKit
 import SwiftPaginator
 import DZNEmptyDataSet
@@ -15,10 +16,12 @@ import ThreeDegreesClient
 
 class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
     var api: DateProposalApiProtocol = DateProposalApiController()
+    var myNetworkapi: MyNetworkApiProtocol = MyNetworkApiController()
     var appNavigator: AppNavigator? = nil
-    var users: [UserInfo] = []
+    var matches: [Match] = []
     var collectionView: UICollectionView
-    var paginator: Paginator<UserInfo>? = nil
+    var paginator: Paginator<Match>? = nil
+    private var myMatchmakers: Observable<[UserInfo]> = Observable([])
 
     init(collectionView: UICollectionView, appNavigator: AppNavigator?) {
         self.appNavigator = appNavigator
@@ -33,10 +36,10 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
                               resultsHandler: handleNewPageLoadResults,
                               resetHandler: paginatorResetHandler)
 
-        NSNotificationCenter.subsribeToShowSuggestedMath {[weak self] (user) in
-            guard let userIndex = self?.users.indexOf({ $0.username == user.username }) else {
-                let ip = NSIndexPath(forItem: self?.users.count ?? 0, inSection: 0)
-                self?.users.append(user)
+        NSNotificationCenter.subsribeToShowSuggestedMatch {[weak self] (user) in
+            guard let userIndex = self?.matches.indexOf({ $0.user!.username == user.username }) else {
+                let ip = NSIndexPath(forItem: self?.matches.count ?? 0, inSection: 0)
+                //self?.users.append(user)
                 self?.collectionView.insertItemsAtIndexPaths([ip])
                 self?.collectionView.scrollToItemAtIndexPath(
                     ip,
@@ -51,36 +54,40 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
                 animated: true
             )
         }
+
+        myNetworkapi.getMatchmakers(0, limit: 1000, completion: { [unowned self] matchmakers in
+            self.myMatchmakers.next(matchmakers.map({$0}))
+        })
     }
 
     func viewWillAppear() {
         paginator?.fetchFirstPage()
     }
 
-    func fetchProposals(paginator: Paginator<UserInfo>, page: Int, pageSize: Int) {
+    func fetchProposals(paginator: Paginator<Match>, page: Int, pageSize: Int) {
         api.getDatesProposals(pageSize, page: page - 1) {(users) in
-            paginator.receivedResults(users.map { $0 as UserInfo }, total: users.count)
+            paginator.receivedResults(users, total: users.count)
         }
     }
 
-    func handleNewPageLoadResults(paginator: Paginator<UserInfo>, users: [UserInfo]) {
-        users.forEach {[unowned self] (user) in
-            let indexPath = NSIndexPath(forItem: self.users.count, inSection: 0)
-            self.users.append(user)
+    func handleNewPageLoadResults(paginator: Paginator<Match>, matches: [Match]) {
+        matches.forEach {[unowned self] (match) in
+            let indexPath = NSIndexPath(forItem: self.matches.count, inSection: 0)
+            self.matches.append(match)
             self.collectionView.insertItemsAtIndexPaths([indexPath])
             self.collectionView.reloadEmptyDataSet()
         }
     }
 
-    func paginatorResetHandler(paginator: Paginator<UserInfo>) {
-        users = []
+    func paginatorResetHandler(paginator: Paginator<Match>) {
+        matches = []
         collectionView.reloadSections(NSIndexSet(index: 0))
     }
 
     func prepareForSegue(segue: UIStoryboardSegue) {
         if let viewController = segue.destinationViewController as? ScheduleResultsViewController {
             guard let index = collectionView.indexPathsForVisibleItems().first?.item else { return }
-            viewController.user = users[index]
+            viewController.user = matches[index].user!
         }
     }
 }
@@ -104,7 +111,7 @@ extension DateProposalsCollectionViewModel: DZNEmptyDataSetSource,
     }
 
     func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
-        return users.isEmpty
+        return matches.isEmpty
     }
 }
 
@@ -116,7 +123,7 @@ extension DateProposalsCollectionViewModel: UICollectionViewDelegate,
 
     func collectionView(collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        return matches.count
     }
 
     func collectionView(collectionView: UICollectionView,
@@ -128,7 +135,8 @@ extension DateProposalsCollectionViewModel: UICollectionViewDelegate,
             return UICollectionViewCell()
         }
         let viewModel = DateProposalViewModel(appNavigator: appNavigator,
-                                              user: users[indexPath.row])
+                                              match: matches[indexPath.row],
+                                              myMatchmakers: myMatchmakers)
         viewModel.delegate = self
         cell.configure(viewModel)
         return cell
@@ -137,7 +145,7 @@ extension DateProposalsCollectionViewModel: UICollectionViewDelegate,
     func collectionView(collectionView: UICollectionView,
                         willDisplayCell cell: UICollectionViewCell,
                         forItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.item == users.count - 2 {
+        if indexPath.item == matches.count - 2 {
             paginator?.fetchNextPage()
         }
     }
@@ -145,9 +153,9 @@ extension DateProposalsCollectionViewModel: UICollectionViewDelegate,
 
 extension DateProposalsCollectionViewModel: DateProposalRefreshDelegate {
     func actionWasTaken(user: UserInfo) {
-        let i = users.indexOf { $0.username == user.username }
+        let i = matches.indexOf { $0.user!.username == user.username }
         guard let index = i else { return }
-        users.removeAtIndex(index)
+        matches.removeAtIndex(index)
         collectionView.deleteItemsAtIndexPaths([NSIndexPath(forItem: index, inSection: 0)])
         collectionView.reloadEmptyDataSet()
     }

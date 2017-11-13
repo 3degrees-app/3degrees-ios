@@ -70,7 +70,7 @@ class ActivityItemViewModel: ViewModelProtocol, Routable {
 
     func postOriginUserToShow() {
         guard let user = activityItem.originUser else { return }
-        NSNotificationCenter.showSuggestedMathWithUser(user)
+        NSNotificationCenter.showSuggestedMatchWithUser(user)
     }
 
     func showSuggestedTimes() {

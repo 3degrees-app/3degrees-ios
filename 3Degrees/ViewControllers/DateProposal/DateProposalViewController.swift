@@ -14,8 +14,8 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
 
     @IBOutlet weak var nameTextField: UILabel!
     @IBOutlet weak var userInfoTextField: UILabel!
-    @IBOutlet weak var mmNameLabel: UILabel!
-    @IBOutlet weak var whoseMmLabel: UILabel!
+    @IBOutlet weak var mmNameLabel: UIButton!
+    @IBOutlet weak var whoseMmLabel: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var placeOfWorkLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
@@ -52,10 +52,37 @@ class DateProposalViewController: UITableViewController, ViewProtocol {
         nameTextField.bnd_text.next(user.fullName)
         userInfoTextField.bnd_text.next(user.info)
 
-        mmNameLabel.bnd_text.next(user.matchmakerInfo)
-
-
-        whoseMmLabel.bnd_text.next(user.firstName ?? "" + "'s Matchmaker")
+        self.viewModel?.suggestedBy.observe {[unowned self] matchmakerOpt in
+            if let matchmaker = matchmakerOpt {
+                self.mmNameLabel.setTitle(R.string.localizable.suggestedByMatchmakerPrefix() + " " + matchmaker.fullName.trimmed, forState: UIControlState.Normal)
+            }
+        }
+        self.viewModel?.iAmConnected.observe {[unowned self] iAmConnected in
+            if iAmConnected {
+                self.mmNameLabel.userInteractionEnabled = true
+                self.whoseMmLabel.userInteractionEnabled = false
+                self.whoseMmLabel.setTitle("", forState: UIControlState.Normal)
+                self.whoseMmLabel.removeFromSuperview()
+                self.mmNameLabel.bnd_tap.observe{[unowned self] () in
+                    if let matchmaker = self.viewModel?.suggestedBy.value {
+                        self.viewModel!.routeToMessages(matchmaker.username!)
+                    }
+                }
+            } else {
+                self.mmNameLabel.userInteractionEnabled = false
+                self.whoseMmLabel.userInteractionEnabled = true
+                self.whoseMmLabel.hidden = false
+                if let suggestedBy = self.viewModel?.suggestedBy.value {
+                    self.whoseMmLabel.setTitle(R.string.localizable.relatedMatchmakerPrefix() + " " + suggestedBy.userMatchmakers.first!.fullName.trimmed, forState: UIControlState.Normal)
+                    self.whoseMmLabel.bnd_tap.observe{[unowned self] () in
+                        if let matchmaker = self.viewModel!.suggestedBy.value!.userMatchmakers.first {
+                            self.viewModel!.routeToMessages(matchmaker.username!)
+                        }
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
 
         titleLabel.bnd_text.next(user.title)
         placeOfWorkLabel.bnd_text.next(user.placeOfWork)

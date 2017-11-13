@@ -460,6 +460,20 @@ class Decoders {
             }
 
 
+            // Decoder for [Match]
+            Decoders.addDecoder(clazz: [Match].self) { (source: AnyObject) -> [Match] in
+                return Decoders.decode(clazz: [Match].self, source: source)
+            }
+            // Decoder for Match
+            Decoders.addDecoder(clazz: Match.self) { (source: AnyObject) -> Match in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Match()
+                instance.matchmakerUsername = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["matchmaker_username"])
+                instance.user = Decoders.decodeOptional(clazz: User.self, source: sourceDictionary["user"])
+                return instance
+            }
+
+
             // Decoder for [Message]
             Decoders.addDecoder(clazz: [Message].self) { (source: AnyObject) -> [Message] in
                 return Decoders.decode(clazz: [Message].self, source: source)

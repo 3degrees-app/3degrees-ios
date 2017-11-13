@@ -116,7 +116,7 @@ protocol ApiProtocol {
     func getDates(page: Int,
                   limit: Int,
                   completion: (
-                    users:[User]?,
+                    users:[Match]?,
                     error:ErrorType?,
                     headers: Dictionary<NSObject, AnyObject>) -> ())
     func deleteConnection(username: String,
@@ -224,7 +224,7 @@ protocol ApiProtocol {
 
     func getDatesProposals(limit: Int,
                            page: Int,
-                           completion: (data: [User]?,
+                           completion: (data: [Match]?,
                                         error: ErrorType?,
                                         headers: Dictionary<NSObject, AnyObject>) -> ())
     func acceptDate(username: String,
@@ -413,7 +413,7 @@ struct ApiController: ApiProtocol {
     func getDates(page: Int,
                   limit: Int,
                   completion: (
-                    users:[User]?,
+                    users:[Match]?,
                     error:ErrorType?,
                     headers: Dictionary<NSObject, AnyObject>) -> ()) {
         DefaultAPI.matchesGet(matchType: .Accepted, page: Int32(page), limit: Int32(limit), completion: completion)
@@ -597,7 +597,7 @@ struct ApiController: ApiProtocol {
 
     func getDatesProposals(limit: Int,
                            page: Int,
-                           completion: (data: [User]?,
+                           completion: (data: [Match]?,
                                         error: ErrorType?,
                                         headers: Dictionary<NSObject, AnyObject>) -> ()) {
         DefaultAPI.matchesGet(matchType: .Pending, limit: Int32(limit), page: Int32(page), completion: completion)

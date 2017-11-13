@@ -10,7 +10,7 @@ import Foundation
 import ThreeDegreesClient
 
 protocol DateProposalApiProtocol: BaseApiProtocol {
-    func getDatesProposals(limit: Int, page: Int, completion: ([User]) -> ())
+    func getDatesProposals(limit: Int, page: Int, completion: ([Match]) -> ())
     func acceptDate(username: String, completion: (bothPartiesAccepted: Bool) -> ())
     func declineDate(username: String, completion: () -> ())
     func suggestDates(username: String, dates: [NSDate], completion: () -> ())
@@ -21,14 +21,14 @@ protocol DateProposalApiProtocol: BaseApiProtocol {
 struct DateProposalApiController: DateProposalApiProtocol {
     var api: ApiProtocol = ApiController()
 
-    func getDatesProposals(limit: Int, page: Int, completion: ([User]) -> ()) {
+    func getDatesProposals(limit: Int, page: Int, completion: ([Match]) -> ()) {
         showActivityIndicator()
         api.getDatesProposals(limit, page: page) { (data, error, headers) in
             guard self.handleError(error, getErrorMessage: self.getDateProposalsErrorMessage) else {
                 return
             }
-            guard let users = data else { return }
-            completion(users)
+            guard let matches = data else { return }
+            completion(matches)
             self.hideActivityIndicator()
         }
     }

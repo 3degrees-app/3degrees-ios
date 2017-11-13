@@ -112,3 +112,5 @@
 "ChooseDateTimesScreenTitle" = "Choose Date";
 "AcceptDateTimeScreenTitle" = "Date Proposals";
 "NumberOfSelectedDates" = " of 5 Selected";
+"SuggestedByMatchmakerPrefix" = "Suggested by";
+"RelatedMatchmakerPrefix" = "who is friends with";

@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSNotificationCenter {
-    static func showSuggestedMathWithUser(user: UserInfo) {
+    static func showSuggestedMatchWithUser(user: UserInfo) {
         guard AppController.shared.currentUserMode.value == .Single else { return }
         guard let userAnyObject = user as? AnyObject else { return }
         NSNotificationCenter.defaultCenter().postNotificationName("ShowSuggestedMatch",
@@ -17,7 +17,7 @@ extension NSNotificationCenter {
                                                                   userInfo: ["user": userAnyObject])
     }
 
-    static func subsribeToShowSuggestedMath(callback: (UserInfo) -> ()) {
+    static func subsribeToShowSuggestedMatch(callback: (UserInfo) -> ()) {
         guard AppController.shared.currentUserMode.value == .Single else { return }
         NSNotificationCenter.defaultCenter().addObserverForName(
             "ShowSuggestedMatch",

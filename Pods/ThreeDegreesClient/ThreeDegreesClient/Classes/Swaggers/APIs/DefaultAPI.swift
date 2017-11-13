@@ -591,7 +591,7 @@ public class DefaultAPI: APIBase {
      - parameter page: (query)  (optional, default to 0)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func matchesGet(matchType matchType: MatchType_matchesGet? = nil, limit: Int32? = nil, page: Int32? = nil, completion: ((data: [User]?, error: ErrorType?, headers: Dictionary<NSObject, AnyObject>) -> Void)) {
+    public class func matchesGet(matchType matchType: MatchType_matchesGet? = nil, limit: Int32? = nil, page: Int32? = nil, completion: ((data: [Match]?, error: ErrorType?, headers: Dictionary<NSObject, AnyObject>) -> Void)) {
         matchesGetWithRequestBuilder(matchType: matchType, limit: limit, page: page).execute { (response, rawError, headers) -> Void in
             var err: ErrorType? = nil
             do {
@@ -615,15 +615,18 @@ public class DefaultAPI: APIBase {
      - responseHeaders: [count(Int32), limit(Int32), page(Int32)]
      - responseHeaders: [count(Int32), limit(Int32), page(Int32)]
      - responseHeaders: [count(Int32), limit(Int32), page(Int32)]
-     - examples: [{contentType=application/json, example=[ "" ]}]
+     - examples: [{contentType=application/json, example=[ {
+  "user" : "",
+  "matchmaker_username" : "aeiou"
+} ]}]
      
      - parameter matchType: (query)  (optional, default to accepted)
      - parameter limit: (query)  (optional, default to 100)
      - parameter page: (query)  (optional, default to 0)
 
-     - returns: RequestBuilder<[User]> 
+     - returns: RequestBuilder<[Match]> 
      */
-    public class func matchesGetWithRequestBuilder(matchType matchType: MatchType_matchesGet? = nil, limit: Int32? = nil, page: Int32? = nil) -> RequestBuilder<[User]> {
+    public class func matchesGetWithRequestBuilder(matchType matchType: MatchType_matchesGet? = nil, limit: Int32? = nil, page: Int32? = nil) -> RequestBuilder<[Match]> {
         let path = "/matches"
         let URLString = ThreeDegreesClientAPI.basePath + path
 
@@ -637,7 +640,7 @@ public class DefaultAPI: APIBase {
 
         let convertedParameters = APIHelper.convertBoolToString(parameters)
 
-        let requestBuilderClass: RequestBuilder<[User]>.Type = ThreeDegreesClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilderClass: RequestBuilder<[Match]>.Type = ThreeDegreesClientAPI.requestBuilderFactory.getBuilder()
         let requestBuilder = requestBuilderClass.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
         requestBuilder.addHeaders(["Accept": "application/json"])
         return requestBuilder
