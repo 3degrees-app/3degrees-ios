@@ -7,24 +7,25 @@
 //
 
 import Foundation
+import ThreeDegreesClient
 
 extension NSNotificationCenter {
-    static func showSuggestedMatchWithUser(user: UserInfo) {
+    static func showSuggestedMatchWithUser(match: Match) {
         guard AppController.shared.currentUserMode.value == .Single else { return }
-        guard let userAnyObject = user as? AnyObject else { return }
+        let userAnyObject = match as AnyObject
         NSNotificationCenter.defaultCenter().postNotificationName("ShowSuggestedMatch",
                                                                   object: nil,
-                                                                  userInfo: ["user": userAnyObject])
+                                                                  userInfo: ["match": userAnyObject])
     }
 
-    static func subsribeToShowSuggestedMatch(callback: (UserInfo) -> ()) {
+    static func subsribeToShowSuggestedMatch(callback: (Match) -> ()) {
         guard AppController.shared.currentUserMode.value == .Single else { return }
         NSNotificationCenter.defaultCenter().addObserverForName(
             "ShowSuggestedMatch",
             object: nil,
             queue: NSOperationQueue.mainQueue()) { (notification) in
-                if let user = notification.userInfo?["user"] as? UserInfo {
-                    callback(user)
+                if let match = notification.userInfo?["match"] as? Match {
+                    callback(match)
                 }
         }
     }

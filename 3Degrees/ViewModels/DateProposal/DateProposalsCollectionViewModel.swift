@@ -36,10 +36,10 @@ class DateProposalsCollectionViewModel: NSObject, ViewModelProtocol {
                               resultsHandler: handleNewPageLoadResults,
                               resetHandler: paginatorResetHandler)
 
-        NSNotificationCenter.subsribeToShowSuggestedMatch {[weak self] (user) in
-            guard let userIndex = self?.matches.indexOf({ $0.user!.username == user.username }) else {
+        NSNotificationCenter.subsribeToShowSuggestedMatch {[weak self] (match) in
+            guard let userIndex = self?.matches.indexOf({ $0.user!.username == match.user!.username }) else {
                 let ip = NSIndexPath(forItem: self?.matches.count ?? 0, inSection: 0)
-                //self?.users.append(user)
+                self?.matches.append(match)
                 self?.collectionView.insertItemsAtIndexPaths([ip])
                 self?.collectionView.scrollToItemAtIndexPath(
                     ip,

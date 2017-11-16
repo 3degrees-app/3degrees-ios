@@ -69,8 +69,16 @@ class ActivityItemViewModel: ViewModelProtocol, Routable {
     }
 
     func postOriginUserToShow() {
-        guard let user = activityItem.originUser else { return }
-        NSNotificationCenter.showSuggestedMatchWithUser(user)
+        guard let originUser = activityItem.originUser, let matchmakerUsername = activityItem.attributes?.username else { return }
+        let match = Match()
+        // This is a complete hack, but it's late
+        match.user = User()
+        match.user?.firstName = originUser.firstName
+        match.user?.image = originUser.image
+        match.user?.lastName = originUser.lastName
+        match.user?.username = originUser.username
+        match.matchmakerUsername = matchmakerUsername
+        NSNotificationCenter.showSuggestedMatchWithUser(match)
     }
 
     func showSuggestedTimes() {
