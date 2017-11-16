@@ -93,6 +93,9 @@ class ActivityTableViewModel: NSObject, ViewModelProtocol {
         let mode = AppController.shared.currentUserMode.value
         api.getActivities(mode, limit: pageSize, page: page - 1) {(feedItems) in
             if let items = feedItems {
+                if (page == 1) {
+                    self.paginatorResetHandler(paginator)
+                }
                 paginator.receivedResults(items, total: self.activityItems.count + items.count + 1)
                 return
             }
