@@ -11,7 +11,7 @@ import Bond
 import ThreeDegreesClient
 
 class GenderPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    static let genders = [PrivateUser.Gender.Male, PrivateUser.Gender.Female]
+    static let genders = [PrivateUser.Gender.Female, PrivateUser.Gender.Male]
     let picker = UIPickerView()
     var textField: UITextField
 

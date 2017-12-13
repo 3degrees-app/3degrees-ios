@@ -67,7 +67,6 @@ class SignUpWithEmailViewController: UITableViewController, ViewProtocol {
     }
 
     internal func configureBindings() {
-        _ = GenderPickerDelegate(textField: genderField)
         backButton.bnd_tap.observe {[unowned self] () in
             self.viewModel.backButtonPressed()
         }
@@ -117,6 +116,20 @@ class SignUpWithEmailViewController: UITableViewController, ViewProtocol {
 
         signUpButton.bnd_tap.observe {[unowned self] () in
             self.viewModel.signUp()
+        }
+
+        _ = GenderPickerDelegate(textField: genderField) as UIPickerViewDataSource
+
+        genderField.addTarget(self, action: #selector(SignUpWithEmailViewController.setGenderText(_:)), forControlEvents: UIControlEvents.EditingDidBegin)
+        
+        genderField.inputView?.bnd_userInteractionEnabled.observe {[unowned self] (enabled) in
+            self.viewModel.gender = GenderPickerDelegate.genders[0]
+        }
+    }
+
+    func setGenderText(textField: UITextField) {
+        if let picker = genderField.inputView as? UIPickerView {
+            genderField.bnd_text.next(GenderPickerDelegate.genders[picker.selectedRowInComponent(0)].rawValue.capitalizedString)
         }
     }
 }
